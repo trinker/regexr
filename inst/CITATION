@@ -1,0 +1,16 @@
+citHeader("To cite regexr in publications, please use:")
+
+
+citEntry(entry = "manual",
+    title = "{regexr}: Readable Regular Expressions",
+    author = "Tyler W. Rinker",
+    organization = "University at Buffalo/SUNY",
+    address = "Buffalo, New York",
+    note = "version 0.0.1",
+    year = "2014",
+    url = "http://github.com/trinker/regexr", 
+    textVersion  = paste("Rinker, T. W. (2014).",
+        "regexr: Readable Regular Expressions.",
+        "version 0.0.1. University at Buffalo. Buffalo, New York.",
+        "http://github.com/trinker/regexr")
+)

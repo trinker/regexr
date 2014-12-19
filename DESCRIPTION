@@ -1,0 +1,19 @@
+Package: regexr
+Type: Package
+Title: Readable Regular Expressions
+Version: 0.0.1
+Date: 2014-04-19
+Authors@R: c(person("Jason", "Gray", "", role = "ctb"),
+    person("Tyler", "Rinker", email = "tyler.rinker@gmail.com",
+    role = c("aut", "cre")))
+Maintainer: Tyler Rinker <tyler.rinker@gmail.com>
+Depends:
+    R (>= 3.1.0)
+Suggests:
+    testthat
+LazyData: TRUE
+Description: A...
+License: GPL-2
+URL: http://trinker.github.com/regexr/
+BugReports: http://github.com/trinker/regexr/issues
+Roxygen: list(wrap = FALSE)
