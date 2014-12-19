@@ -33,14 +33,21 @@ names.regexr <- function(x, ...){
 }
 
 summary.regexr <- function(object, ...){
-    out <- Map(function(x, y) list(comment = x, regex=y),  
+
+    if (length(attributes(object)[["comments"]]) != 
+        length(attributes(object)[["regex"]])) {
+        warning("Mismatch in number of regexes and comments; items recycled\n",
+            "Consider using `comments` and/or `regex` to update the regexr object")
+    }
+    out <- suppressWarnings(Map(function(x, y) list(comment = x, regex=y),  
         attributes(object)[["comments"]],
         attributes(object)[["regex"]]
-    )
-    class(out) <- "summary_regexr"
+    ))
+    class(out) <- "summary"
     attributes(out)[["regex"]] <- as.character(object)
     out
 }
+
 
 
 print.summary_regexr <- function(x, ...){
