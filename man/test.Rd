@@ -40,7 +40,7 @@ m <- construct(
 
 
 test(m)
-\dontrun{
+\donttest{
 regex(m)[5:7] <- c("(", "([A-Z]|(\\\\d{5})", ")")
 test(m)
 }

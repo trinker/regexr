@@ -49,7 +49,7 @@
 #' regex(m)[4] <- "(F{O}2)|(BAR)"
 #' summary(m)
 #' test(m)
-#' \dontrun{
+#' \donttest{
 #' regex(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")")
 #' test(m)
 #' }
