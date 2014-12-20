@@ -38,7 +38,7 @@ library(regexr)
 
 The `construct` function creates an object of the class `regexr`.  This is a character string with meta expression information contained in the object's attributes.
 
-Notice that the *regular expression chunks* follow the followingconvention:
+Notice that the *regular expression chunks* follow the following convention:
 
 > name     
 -> regular expression      
