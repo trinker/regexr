@@ -42,7 +42,7 @@ Notice that the *regular expression chunks* follow the followingconvention:
 
 > name     
 -> regular expression      
-  -> comment     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  -> comment     
 
 
 ```r
