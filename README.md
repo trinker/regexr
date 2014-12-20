@@ -40,9 +40,9 @@ The `construct` function creates an object of the class `regexr`.  This is a cha
 
 Notice that the *regular expression chunks* follow the followingconvention:
 
-> name
--> regular expression
-  -> comment
+> name     
+-> regular expression      
+  -> comment     
 
 
 ```r
