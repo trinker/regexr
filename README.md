@@ -44,7 +44,7 @@ Notice that the *regular expression chunks* follow the following convention:
 -> regular expression      
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  -> comment     
 
-The `%:)%` binary operator allows the user to optionally add comments to the regular expressions.  The `%:)%` is a smiley face emoticon is used here because commented code/expressions is happy code.
+The `%:)%` binary operator allows the user to optionally add comments to the regular expressions.  The `%:)%`, containing a smiley face emoticon (&#9786;), is used here because commented code/expressions is happy code.
 
 
 
