@@ -67,7 +67,9 @@ m
 ## [1] "\\s+(?<=(foo))(;|:)\\s*[a]s th[atey]"
 ```
 
-### Viewing the regular expression chunks that make up the *concatenated expression*
+### Viewing the `regexr` Object
+
+Th generic `summary` function provides an integrated view the comments, regexes, and names that make up the *concatenated expression*.
 
 
 ```r

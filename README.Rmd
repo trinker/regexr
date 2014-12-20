@@ -62,7 +62,9 @@ m <- construct(
 m
 ```
 
-### Viewing the regular expression chunks that make up the *concatenated expression*
+### Viewing the `regexr` Object
+
+Th generic `summary` function provides an integrated view the comments, regexes, and names that make up the *concatenated expression*.
 
 ```{r}
 summary(m)
