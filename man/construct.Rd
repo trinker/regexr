@@ -7,7 +7,7 @@ construct(...)
 }
 \arguments{
 \item{\ldots}{A series of comma separated charcter strings (chunks) that may
-optionally be named, commented (see \code{?`\%*\%`}, and indented.}
+optionally be named, commented (see \code{?`\%:)\%`}, and indented.}
 }
 \value{
 Returns a character vector of the class \code{regexr}. The attributes
@@ -24,17 +24,27 @@ insight such as nested groups, and the chunks can be commented to provide
 linguistic grounding for more complex chunks.
 }
 \examples{
+## Minimal Example
+minimal <- construct("a", "b", "c")
+minimal
+unglue(minimal)
+comments(minimal)
+regex(minimal)
+test(minimal)
+summary(minimal)
+
+## Example 1
 m <- construct(
     space =
         "\\\\s+"
-            *"I see",
+            \%:)\%"I see",
 
     simp =
         "(?<=(foo))",
 
     or =
         "(;|:)\\\\s*"
-            *"comment on what this does",
+            \%:)\%"comment on what this does",
 
     "[a]s th[atey]"
 )
@@ -42,34 +52,46 @@ m <- construct(
 m
 unglue(m)
 summary(m)
-
-regex(m)[4] <- "FOO"
+regex(m)
+comments(m)
+regex(m)[4] <- "(F{O}2)|(BAR)"
 summary(m)
+test(m)
+\donttest{
+regex(m)[5:7] <- c("(", "([A-Z]|(\\\\d{5})", ")")
+test(m)
+}
+
+library(qdapRegex)
 explain(m)
 
+## Exmaple 2 (Twitter Handle)
 twitter <- construct(
         neg_lookbehing =
             "(?<![@\\\\w])"
-                *"Make sure the string doesn't start with @ or a word",
+                \%:)\%"Make sure the string doesn't start with @ or a word",
         at =
             "(@)"
-                *"capture starting with @ symbol",
+                \%:)\%"capture starting with @ symbol",
         s_gr1 =
             "("
-                *"Opening parenthesis group 1",
+                \%:)\%"Opening parenthesis group 1",
             handle =
                 "([a-z0-9_]{1,15})"
-                *"Mix of 15 letters, numbers, or underscores",
+                \%:)\%"Mix of 15 letters, numbers, or underscores",
             boundary =
                 "\\\\b",
         e_gr1 =
             ")"
-                *"Closing parenthesis group 1"
+                \%:)\%"Closing parenthesis group 1"
 )
 
 twitter
 unglue(twitter)
 comments(twitter)
+regex(twitter)
+summary(twitter)
+test(twitter)
 explain(twitter)
 
 x <- c("@hadley I like #rstats for #ggplot2 work.",
@@ -81,34 +103,29 @@ x <- c("@hadley I like #rstats for #ggplot2 work.",
     "A non valid Twitter is @abcdefghijklmnopqrstuvwxyz"
 )
 
+library(qdapRegex)
 rm_default(x, pattern = twitter, extract = TRUE)
 
-
-
-
-minimal <- regex(1, 2, 3)
-minimal
-unglue(minimal)
-comments(minimal)
-
-
+## Example 3 (Modular Chunks)
 combined <- construct(
     twitter =
         twitter
-            *"Twitter regex created previously",
+            \%:)\%"Twitter regex created previously",
     or =
         "|"
-            *"Join the twitter handle regex and a hash tag regex",
+            \%:)\%"Join the twitter handle regex and a hash tag regex",
     hash =
         grab("@rm_hash")
-            *"Twitter hash tag regex"
+            \%:)\%"Twitter hash tag regex"
 )
 
 combined
 unglue(combined)
 comments(combined)
+regex(combined)
+summary(combined)
+test(combined)
 explain(combined)
-explain(combined, TRUE)
 }
 \keyword{regex}
 

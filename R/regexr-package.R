@@ -1,19 +1,16 @@
-#' regexr: Regular Expression Removal, Extraction, & Replacement Tools for the \pkg{qdap} Package
+#' regexr: Tools for Human Readable Regular Expressions
 #'
-#' \pkg{regexr} is a collection of  regular expression tools associated with 
-#' the \pkg{qdap} package that may be useful outside of the context of discourse
-#' analysis.  Tools include removal/extraction/replacement of abbreviations, 
-#' dates, dollar amounts, email addresses, hash tags, numbers, percentages, 
-#' person tags, phone numbers, times, and zip codes.
-#' 
-#' The \pkg{regexr} package does not aim to compete with string manipulation 
-#' packages such as 
-#' \href{http://cran.r-project.org/web/packages/stringr/index.html}{\pkg{stringr}} 
-#' or \href{http://cran.r-project.org/web/packages/stringi/index.html}{\pkg{stringi}} 
-#' but is meant to provide access to canned, common regular expression patterns 
-#' that can be used within \pkg{regexr}, with \pkg{R}'s own regular 
-#' expression functions, or add on string manipulation packages such as 
-#' \code{stringr} and \code{stringi}.
+#' \pkg{regexr} is an R framework for constructing human readable regular 
+#' expressions.  It aims to provide tools that enable the user to write regular 
+#' expressions in a way that is similar to the ways R code is written.  
+#' The tools allow the user to (1) write in smaller, modular, named, regular 
+#' expression chunks, (2) write top to bottom, rather than a single string (3) 
+#' comment idividual chunks, (4) indent expressions to represent regular 
+#' expression groups, and (5) test the validity of the concatenated expression 
+#' and the modular chunks. \cr \cr
+#' This framework harnesses the power and flexibility of regular expressions 
+#' but provides a structural frame that is more consistent with both coding 
+#' writing and natural language conventions.  
 #'
 #' @docType package
 #' @name regexr

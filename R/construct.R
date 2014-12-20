@@ -10,23 +10,33 @@
 #' linguistic grounding for more complex chunks.
 #' 
 #' @param \ldots A series of comma separated charcter strings (chunks) that may 
-#' optionally be named, commented (see \code{?`\%*\%`}, and indented.
+#' optionally be named, commented (see \code{?`\%:)\%`}, and indented.
 #' @return Returns a character vector of the class \code{regexr}. The attributes 
 #' of the returned object retaint he original name and comment properties.
 #' @keywords regex
 #' @export
 #' @examples
+#' ## Minimal Example
+#' minimal <- construct("a", "b", "c")
+#' minimal
+#' unglue(minimal)
+#' comments(minimal)
+#' regex(minimal)
+#' test(minimal)
+#' summary(minimal)
+#' 
+#' ## Example 1
 #' m <- construct(
 #'     space = 
 #'         "\\s+" 
-#'             *"I see",
+#'             %:)%"I see",
 #' 
 #'     simp = 
 #'         "(?<=(foo))",
 #' 
 #'     or = 
 #'         "(;|:)\\s*"  
-#'             *"comment on what this does",
+#'             %:)%"comment on what this does",
 #' 
 #'     "[a]s th[atey]"
 #' )
@@ -34,34 +44,46 @@
 #' m
 #' unglue(m)
 #' summary(m)
-#' 
-#' regex(m)[4] <- "FOO"
+#' regex(m)
+#' comments(m)
+#' regex(m)[4] <- "(F{O}2)|(BAR)"
 #' summary(m)
+#' test(m)
+#' \donttest{
+#' regex(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")")
+#' test(m)
+#' }
+#' 
+#' library(qdapRegex)
 #' explain(m)
 #' 
+#' ## Exmaple 2 (Twitter Handle)
 #' twitter <- construct(
 #'         neg_lookbehing = 
 #'             "(?<![@@\\w])"
-#'                 *"Make sure the string doesn't start with @@ or a word",
+#'                 %:)%"Make sure the string doesn't start with @@ or a word",
 #'         at = 
 #'             "(@@)"
-#'                 *"capture starting with @@ symbol",
+#'                 %:)%"capture starting with @@ symbol",
 #'         s_gr1 = 
 #'             "("
-#'                 *"Opening parenthesis group 1",            
+#'                 %:)%"Opening parenthesis group 1",            
 #'             handle =     
 #'                 "([a-z0-9_]{1,15})"
-#'                 *"Mix of 15 letters, numbers, or underscores", 
+#'                 %:)%"Mix of 15 letters, numbers, or underscores", 
 #'             boundary =
 #'                 "\\b",
 #'         e_gr1 = 
 #'             ")"
-#'                 *"Closing parenthesis group 1"
+#'                 %:)%"Closing parenthesis group 1"
 #' )
 #' 
 #' twitter
 #' unglue(twitter)
 #' comments(twitter)
+#' regex(twitter)
+#' summary(twitter)
+#' test(twitter)
 #' explain(twitter)
 #' 
 #' x <- c("@@hadley I like #rstats for #ggplot2 work.",
@@ -73,34 +95,29 @@
 #'     "A non valid Twitter is @@abcdefghijklmnopqrstuvwxyz"
 #' )
 #' 
+#' library(qdapRegex)
 #' rm_default(x, pattern = twitter, extract = TRUE)
 #' 
-#' 
-#' 
-#' 
-#' minimal <- regex(1, 2, 3)
-#' minimal
-#' unglue(minimal)
-#' comments(minimal)
-#' 
-#' 
+#' ## Example 3 (Modular Chunks)
 #' combined <- construct(
 #'     twitter = 
 #'         twitter 
-#'             *"Twitter regex created previously",
+#'             %:)%"Twitter regex created previously",
 #'     or =
 #'         "|"
-#'             *"Join the twitter handle regex and a hash tag regex",
+#'             %:)%"Join the twitter handle regex and a hash tag regex",
 #'     hash =
 #'         grab("@@rm_hash")
-#'             *"Twitter hash tag regex"
+#'             %:)%"Twitter hash tag regex"
 #' )
 #' 
 #' combined
 #' unglue(combined)
 #' comments(combined)
+#' regex(combined)
+#' summary(combined)
+#' test(combined)
 #' explain(combined)
-#' explain(combined, TRUE)
 construct <- function(...){
     out <- paste0(...)
     class(out) <- c("regexr", class(out))
@@ -108,131 +125,3 @@ construct <- function(...){
     attributes(out)[["comments"]] <- lapply(list(...), get_comment)
     out
 }
-
-
-print.regexr <- function(x, ...){
-    print(as.character(x))
-}
-
-
-unglue.regexr <- function(x, ...){
-    out <- attributes(x)[["regex"]]
-    class(out) <- unique(c("unglued", class(out)))
-    out
-}
-
-print.unglued <- function(x, ...){
-    class(x) <- "list"
-    out <- invisible(lapply(x, function(x) {class(x) <- "character";x}))
-    print(out)
-}
-
-
-
-comments <- function (x, ...){
-    UseMethod("comments")
-}
-
-comments.regexr <- function(x, ...){
-    attributes(x)[["comments"]]
-}
-
-
-regex.regexr <- function(x, ...){
-    attributes(x)[["regex"]]
-}
-
-
-`regex<-.regexr` <- function(x, value){
-    attributes(x)[["regex"]] <- value
-    len <- length(attributes(x)[["regex"]])
-    dif <- diff(c(length(attributes(x)[["comments"]]), len))
-    if (dif > 0){  
-        null <- structure(list(NULL), .Names = "")
-        attributes(x)[["comments"]] <- unlist(list(attributes(x)[["comments"]], 
-            rep(null, dif)), recursive=FALSE)
-    }
-    x[[1]] <- paste(unlist(attributes(x)[["regex"]]), collapse="")
-    x
-}
-
-
-`comments<-.regexr` <- function(x, value){
-    attributes(x)[["comments"]] <- value
-    len <- length(attributes(x)[["comments"]])
-    dif <- diff(c(length(attributes(x)[["regex"]]), len))
-    if (dif > 0){  
-        null <- structure(list(NULL), .Names = "")
-        attributes(x)[["regex"]] <- unlist(list(attributes(x)[["regex"]], 
-            rep(null, dif)), recursive=FALSE)
-    }    
-    x
-}
-
-
-
-names.regexr <- function(x, ...){
-
-    names(attributes(x)[["regex"]])
-
-}
-
-`names<-.regexr` <- function(x, value){
-
-    names(attributes(x)[["regex"]]) <- value
-    names(attributes(x)[["comments"]]) <- value
-    x
-
-}
-
-summary.regexr <- function(object, ...){
-
-    if (length(attributes(object)[["comments"]]) != 
-        length(attributes(object)[["regex"]])) {
-        warning("Mismatch in number of regexes and comments; items recycled\n",
-            "Consider using `comments` and/or `regex` to update the regexr object")
-    }
-    out <- suppressWarnings(Map(function(x, y) list(comment = x, regex=y),  
-        attributes(object)[["comments"]],
-        attributes(object)[["regex"]]
-    ))
-    class(out) <- "summary"
-    attributes(out)[["regex"]] <- as.character(object)
-    out
-}
-
-
-
-print.summary_regexr <- function(x, ...){
-   
-    class(x) <- "list"
-
-    reg <- attributes(x)[["regex"]]
-    message("\n", reg, "\n", 
-        paste(rep("=", nchar(reg)), collapse=""), "\n"
-    )
-
-    x <- namer(x)
-
-    for (i in seq_along(x)) {
-        element <- sprintf("REGEX %s: ", i)
-        len <- nchar(element)
-        message(element,  x[[i]][["regex"]])
-        message(sprintf("NAME%s: ", paste(rep(" ", len - 6), collapse="")),  names(x)[i])        
-        message(sprintf("COMMENT%s: ", paste(rep(" ", len - 9), collapse="")), 
-            sprintf("\"%s\"", x[[i]][["comment"]]), "\n")
-    }
-}
-
-
-test.regexr <- function(x, quiet = FALSE, ...){
-
-    out <- sapply(regex(x), is.regex)
-    if (!isTRUE(quiet) && any(!out)){
-        warning("The following regex chunks are not valid:\n\n",
-            paste(paste0(seq_len(sum(!out)), ": ", as.character(unlist(regex(x)))[!out]), collapse="\n")
-        )
-    }
-    out
-}
-

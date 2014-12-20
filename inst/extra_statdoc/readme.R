@@ -1,4 +1,4 @@
 <p><img src="https://dl.dropbox.com/u/61803503/qdapicon.png" alt="qdapicon"/><br/>
-<a href="https://github.com/trinker/regexr">regexr</a> is a collection of regex tools associated with the qdap package that may be useful outside of the context of discourse analysis.  Tools include removal/extraction/replacement of emails addresses, person tags, hash tags, dollar amounts, percentages, times, zip codes, and phone numbers.</p>
+<a href="https://github.com/trinker/regexr">regexr</a> is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to (1) write in smaller, modular, named, regular expression chunks, (2) write top to bottom, rather than a single string (3) comment idividual chunks, (4) indent expressions to represent regular expression groups, and (5) test the validity of the concatenated expression and the modular chunks.</p>
 
 <p>Download the development version of regexr <a href="https://github.com/trinker/regexr/">here</a> 
