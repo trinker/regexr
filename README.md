@@ -7,7 +7,7 @@
 
 [regexr](http://trinker.github.com/regexr_dev) is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to (1) write in smaller, modular, named, regular expression chunks, (2) write top to bottom, rather than a single string (3) comment idividual chunks, (4) indent expressions to represent regular expression groups, and (5) test the validity of the concatenated expression and the modular chunks. 
 
-This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both coding writing and natural language conventions.
+This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both coding writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.
 
 
 ## Installation
@@ -33,8 +33,6 @@ devtools::install_github("trinker/regexr")
 ```{echo=FALSE}
 library(regexr)
 ```
-
-### Example 1
 
 
 ```r
@@ -205,75 +203,6 @@ test(m)
 ## $chunks
 ## space  simp    or                         
 ##  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
-```
-
-```r
-library(qdapRegex)
-explain(m)
-```
-
-```
-## NODE                     EXPLANATION
-## --------------------------------------------------------------------------------
-##   \\s                       whitespace (\n, \r, \t, \f, and " ")
-## --------------------------------------------------------------------------------
-##                            ' '
-## --------------------------------------------------------------------------------
-##   (?<=                     look behind to see if there is:
-## --------------------------------------------------------------------------------
-##     (                        group and capture to \\1:
-## --------------------------------------------------------------------------------
-##       foo                      'foo'
-## --------------------------------------------------------------------------------
-##     )                        end of \\1
-## --------------------------------------------------------------------------------
-##   )                        end of look-behind
-## --------------------------------------------------------------------------------
-##   (                        group and capture to \\2:
-## --------------------------------------------------------------------------------
-##     ;                        ';'
-## --------------------------------------------------------------------------------
-##    |                        OR
-## --------------------------------------------------------------------------------
-##     :                        ':'
-## --------------------------------------------------------------------------------
-##   )                        end of \\2
-## --------------------------------------------------------------------------------
-##   \\s*                      whitespace (\n, \r, \t, \f, and " ") (0 or
-##                            more times (matching the most amount
-##                            possible))
-## --------------------------------------------------------------------------------
-##   (                        group and capture to \\3:
-## --------------------------------------------------------------------------------
-##     F{O}2                    'F{O}2'
-## --------------------------------------------------------------------------------
-##   )                        end of \\3
-## --------------------------------------------------------------------------------
-##  |                        OR
-## --------------------------------------------------------------------------------
-##   (                        group and capture to \\4:
-## --------------------------------------------------------------------------------
-##     BAR                      'BAR'
-## --------------------------------------------------------------------------------
-##   )                        end of \\4
-## --------------------------------------------------------------------------------
-##   (                        group and capture to \\5:
-## --------------------------------------------------------------------------------
-##     (                        group and capture to \\6:
-## --------------------------------------------------------------------------------
-##       [A-Z]                    any character of: 'A' to 'Z'
-## --------------------------------------------------------------------------------
-##      |                        OR
-## --------------------------------------------------------------------------------
-##       (                        group and capture to \\7:
-## --------------------------------------------------------------------------------
-##         \\d{5}                    digits (0-9) (5 times)
-## --------------------------------------------------------------------------------
-##       )                        end of \\7
-## --------------------------------------------------------------------------------
-##     )                        end of \\6
-## --------------------------------------------------------------------------------
-##   )                        end of \\5
 ```
 
 ## Contact
