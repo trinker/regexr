@@ -24,31 +24,34 @@ library(highlight);  library(staticdocs);
 #STEP 1: create static doc  
 #right now examples are FALSE in the future this will be true
 #in the future qdap2 will be the go to source
-build_site(pkg="C:/Users/trinker/GitHub/regexr", launch = FALSE)
+R_USER <-  switch(Sys.info()[["user"]],
+    Tyler = "C:/Users/Tyler",
+    trinker = "C:/Users/trinker",
+    message("Computer name not found")
+)
+build_site(pkg=file.path(R_USER, "GitHub/regexr"), launch = FALSE)
 
 #STEP 2: reshape index
 path <- "inst/web"
 path2 <- file.path(path, "/index.html")
-rdme <- "C:/Users/trinker/GitHub/regexr/inst/extra_statdoc/readme.R"
+rdme <- file.path(R_USER, "GitHub/regexr/inst/extra_statdoc/readme.R")
 library(acc.roxygen2); library(qdap);
-extras <- qcv("%|%", "rm_twitter_url", "rm_white_bracket", "rm_white_colon", 
-	"rm_white_comma", "rm_white_endmark", "rm_white_lead", "rm_white_trail", 
-	"rm_white_lead_trail", "rm_white_multiple", "rm_white_punctuation", "L", 
-	"U")
+extras <- qcv("%comment%", "regex&lt;-", "comments&lt;-")
 ## drops <- qcv()
 expand_statdoc(path2, to.icon = extras, readme = rdme)
 
 x <- readLines(path2)
-x[grepl("<h2>Authors</h2>", x)] <- paste(c("<h2>Author</h2>", 
-    rep("<h2>Contributor</h2>", 1)),
-    c("Tyler W. Rinker", "Stackoverflow's hwnd"))
+x[grepl("<h2>Authors</h2>", x)] <- paste(c("<h2>Author</h2>" 
+    #rep("<h2>Contributor</h2>", 1)
+    ),
+    c("Tyler W. Rinker"))
 
 cat(paste(x, collapse="\n"), file=path2)
 
 
 #STEP 3: move to trinker.guthub
 library(reports)
-file <- "C:/Users/trinker/GitHub/trinker.github.com/"
+file <- file.path(R_USER, "/GitHub/trinker.github.com")
 incoming <- file.path(file, "regexr_dev")
 delete(incoming)
 file.copy(path, file, TRUE, TRUE)
@@ -65,31 +68,39 @@ library(highlight);library(staticdocs);
 #STEP 1: create static doc  
 #right now examples are FALSE in the future this will be true
 #in the future qdap2 will be the go to source
-build_site(pkg="C:/Users/trinker/GitHub/regexr", launch = FALSE)
+library(highlight);  library(staticdocs); 
+
+#STEP 1: create static doc  
+#right now examples are FALSE in the future this will be true
+#in the future qdap2 will be the go to source
+R_USER <-  switch(Sys.info()[["user"]],
+    Tyler = "C:/Users/Tyler",
+    trinker = "C:/Users/trinker",
+    message("Computer name not found")
+)
+build_site(pkg=file.path(R_USER, "GitHub/regexr"), launch = FALSE)
 
 #STEP 2: reshape index
 path <- "inst/web"
 path2 <- file.path(path, "/index.html")
-rdme <- "C:/Users/trinker/GitHub/regexr/inst/extra_statdoc/readme.R"
+rdme <- file.path(R_USER, "GitHub/regexr/inst/extra_statdoc/readme.R")
 library(acc.roxygen2); library(qdap);
-extras <- qcv("%|%", "rm_twitter_url", "rm_white_bracket", "rm_white_colon", 
-	"rm_white_comma", "rm_white_endmark", "rm_white_lead", "rm_white_trail", 
-	"rm_white_lead_trail", "rm_white_multiple", "rm_white_punctuation", "L", 
-	"U")
+extras <- qcv("%comment%", "regex&lt;-", "comments&lt;-")
 ## drops <- qcv()
 expand_statdoc(path2, to.icon = extras, readme = rdme)
 
 x <- readLines(path2)
-x[grepl("<h2>Authors</h2>", x)] <- paste(c("<h2>Author</h2>", 
-    rep("<h2>Contributor</h2>", 1)),
-    c("Tyler W. Rinker", "Stackoverflow's hwnd"))
+x[grepl("<h2>Authors</h2>", x)] <- paste(c("<h2>Author</h2>" 
+    #rep("<h2>Contributor</h2>", 1)
+    ),
+    c("Tyler W. Rinker"))
 
 cat(paste(x, collapse="\n"), file=path2)
 
 
 #STEP 3: move to trinker.guthub
 library(reports)
-file <- "C:/Users/trinker/GitHub/trinker.github.com/"
+file <- file.path(R_USER, "/GitHub/trinker.github.com")
 #incoming <- file.path(file, "regexr")
 delete(incoming)
 file.copy(path, file, TRUE, TRUE)

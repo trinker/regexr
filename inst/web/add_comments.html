@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>%:)%. regexr 0.0.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">regexr 0.0.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Add Comments to Character Strings.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>x %:)% y</div>
+<div>x %comment% y</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>A character string that is to be commented.</dd>
+      <dt>y</dt>
+      <dd>A character string (the comment).</dd>
+    </dl>
+    
+    <div class="Add Comments to Character Strings.">
+      <h2>Add Comments to Character Strings.</h2>
+      
+    </div>
+
+    <div class="Value">
+      <h2>Value</h2>
+      
+      <p>Returns a character string of the class <code>regex</code> with a comment
+added as a <code>"comment"</code> attribute.</p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+      
+      <p>This operator allows you to add comments to character strings.</p>
+  
+    </div>
+
+    <div class="Note">
+      <h2>Note</h2>
+      
+      <p>The operator, <code>%:)%</code>, is a simple smiley face emotion because
+commented code is happy code.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>a &lt;- &quot;The character string&quot;
+b &lt;- &quot;The comment&quot;
+
+(out &lt;- a %:)% b)
+</div>
+<div class='output'>[1] &quot;The character string&quot;
+</div>
+<div class='input'>attributes(out)
+</div>
+<div class='output'>$class
+[1] &quot;regex&quot;     &quot;character&quot;
+
+$comment
+[1] &quot;The comment&quot;
+
+</div>
+<div class='input'>comment(out)
+</div>
+<div class='output'>[1] &quot;The comment&quot;
+</div>
+<div class='input'>
+minimal &lt;- construct(&quot;a&quot;, &quot;b&quot;, &quot;c&quot; %:)% &quot;A love note to your future self&quot;)
+minimal
+</div>
+<div class='output'>[1] &quot;abc&quot;
+</div>
+<div class='input'>comments(minimal)
+</div>
+<div class='output'>[[1]]
+NULL
+
+[[2]]
+NULL
+
+[[3]]
+[1] &quot;A love note to your future self&quot;
+
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>%:)%</li><li>%comment%</li>
+    </ul>
+    <ul>
+      <li>comment</li>
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a href='http://www.inside-r.org/packages/cran/base/docs/comment'>comment</a></code>
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
