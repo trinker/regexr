@@ -30,6 +30,7 @@ devtools::install_github("trinker/regexr")
 ## Functions
 
 ```{r, echo=FALSE, results='asis', warning=FALSE}
+library(regexr)
 thefuns <- readLines("inst/functions_table/functions.R")
 cat(paste(thefuns, collapse="\n"))
 ```
