@@ -21,7 +21,7 @@ added as a \code{"comment"} attribute.
 This operator allows you to add comments to character strings.
 }
 \note{
-The operator \code{\%:)\%} is a simple smiley face emotion because
+The operator, \code{\%:)\%}, is a simple smiley face emotion because
 commented code is happy code.
 }
 \examples{

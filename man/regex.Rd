@@ -13,7 +13,7 @@ regex(x) <- value
 
 \item{value}{The comment(s) to assign.}
 
-\item{\ldots}{Ignored..}
+\item{\ldots}{Ignored.}
 }
 \value{
 \code{regex} - Returns a list of regexes.

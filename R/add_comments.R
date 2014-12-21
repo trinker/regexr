@@ -8,7 +8,7 @@
 #' added as a \code{"comment"} attribute.
 #' @keywords comment
 #' @export
-#' @note The operator \code{\%:)\%} is a simple smiley face emotion because 
+#' @note The operator, \code{\%:)\%}, is a simple smiley face emotion because 
 #' commented code is happy code.
 #' @seealso \code{\link[base]{comment}}
 #' @rdname add_comments

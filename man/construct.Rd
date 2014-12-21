@@ -6,20 +6,20 @@
 construct(...)
 }
 \arguments{
-\item{\ldots}{A series of comma separated charcter strings (chunks) that may
+\item{\ldots}{A series of comma separated character strings (chunks) that may
 optionally be named, commented (see \code{?`\%:)\%`}, and indented.}
 }
 \value{
 Returns a character vector of the class \code{regexr}. The attributes
-of the returned object retaint he original name and comment properties.
+of the returned object retain the original name and comment properties.
 }
 \description{
 This function is used to construct human readable regular expressions from
 chunks.  The user may provide additional meta information about each chunk.
 This meta information is an optional name and comment for the chunk.  This
-allows one to write regular expressions in a fasion similar to writing code,
+allows one to write regular expressions in a fashion similar to writing code,
 that is the regular expression is written top to bottom, the syntax is broken
-up into managable chunks, the expression can be indented to give structural
+up into manageable chunks, the expression can be indented to give structural
 insight such as nested groups, and the chunks can be commented to provide
 linguistic grounding for more complex chunks.
 }
@@ -65,7 +65,7 @@ test(m)
 library(qdapRegex)
 explain(m)
 
-## Exmaple 2 (Twitter Handle)
+## Example 2 (Twitter Handle)
 twitter <- construct(
         neg_lookbehing =
             "(?<![@\\\\w])"

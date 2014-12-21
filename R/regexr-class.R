@@ -4,7 +4,7 @@
 #' Prints a \code{regexr} object
 #' 
 #' @param x The \code{regexr} object.
-#' @param \ldots Ignored..
+#' @param \ldots Ignored.
 #' @export
 #' @method print regexr
 print.regexr <- function(x, ...){

@@ -5,7 +5,7 @@
 #' expressions in a way that is similar to the ways R code is written.  
 #' The tools allow the user to (1) write in smaller, modular, named, regular 
 #' expression chunks, (2) write top to bottom, rather than a single string (3) 
-#' comment idividual chunks, (4) indent expressions to represent regular 
+#' comment individual chunks, (4) indent expressions to represent regular 
 #' expression groups, and (5) test the validity of the concatenated expression 
 #' and the modular chunks. \cr \cr
 #' This framework harnesses the power and flexibility of regular expressions 

@@ -4,7 +4,7 @@
 #' 
 #' @param x A regexr object.
 #' @param value The comment(s) to assign.
-#' @param \ldots Ignored..
+#' @param \ldots Ignored.
 #' @rdname regex
 #' @export
 #' @return \code{regex} - Returns a list of regexes.

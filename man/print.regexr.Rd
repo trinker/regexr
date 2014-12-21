@@ -8,7 +8,7 @@
 \arguments{
 \item{x}{The \code{regexr} object.}
 
-\item{\ldots}{Ignored..}
+\item{\ldots}{Ignored.}
 }
 \description{
 Prints a \code{regexr} object

@@ -5,7 +5,7 @@
 
 <img src="inst/regexr_logo/r_regexr.png" alt="">   
 
-[regexr](http://trinker.github.com/regexr_dev) is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to (1) write in smaller, modular, named, *regular expression chunks*, (2) write top to bottom, rather than a single string (3) comment idividual chunks, (4) indent expressions to represent regular expression groups, and (5) test the validity of the *concatenated expression* and the modular chunks. 
+[regexr](http://trinker.github.com/regexr_dev) is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to (1) write in smaller, modular, named, *regular expression chunks*, (2) write top to bottom, rather than a single string (3) comment individual chunks, (4) indent expressions to represent regular expression groups, and (5) test the validity of the *concatenated expression* and the modular chunks. 
 
 This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both coding writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.
 
@@ -27,6 +27,17 @@ devtools::install_github("trinker/regexr")
 - [Web Page](http://trinker.github.com/regexr/)     
 - [Package PDF Help Manual](https://dl.dropboxusercontent.com/u/61803503/regexr.pdf)   
 
+## Functions
+
+| Function             |  Description         |
+|----------------------|----------------------|
+| `construct`  | Write Human Readable *Concatenated Regex* | 
+| `%:)%`  | Add Comments to a Regex Within `construct` | 
+| `unglue`  | Break *Concatenated Regex* Into *Regex Chunks* | 
+| `test`   |  Test Validity of *Concatenated Regex* & *Regex Chunks* |
+| `regex`   |  Get/Set Regexes in a `regexr` object |
+| `comments`   |  Get/Set Comments in a `regexr` object |
+| `names`   |  Get/Set Names in a `regexr` object |
 
 ## Examples
 
@@ -255,4 +266,3 @@ You are welcome to:
 * submit suggestions and bug-reports at: <https://github.com/trinker/regexr/issues>
 * send a pull request on: <https://github.com/trinker/regexr/>
 * compose a friendly e-mail to: <tyler.rinker@gmail.com>
-
