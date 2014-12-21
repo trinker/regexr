@@ -9,7 +9,7 @@
 #' expression groups, and (5) test the validity of the concatenated expression 
 #' and the modular chunks. \cr \cr
 #' This framework harnesses the power and flexibility of regular expressions 
-#' but provides a structural frame that is more consistent with both coding 
+#' but provides a structural frame that is more consistent with both code 
 #' writing and natural language conventions.  
 #'
 #' @docType package
