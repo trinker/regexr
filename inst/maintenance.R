@@ -101,7 +101,7 @@ cat(paste(x, collapse="\n"), file=path2)
 #STEP 3: move to trinker.guthub
 library(reports)
 file <- file.path(R_USER, "/GitHub/trinker.github.com")
-#incoming <- file.path(file, "regexr")
+# incoming <- file.path(file, "regexr")
 delete(incoming)
 file.copy(path, file, TRUE, TRUE)
 file.rename(file.path(file, "web"), incoming)
