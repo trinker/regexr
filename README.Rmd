@@ -87,7 +87,7 @@ The `unglue` function splits the concatenated `regexr` expression into component
 unglue(m)
 ```
 
-### Get/Set comments, regexes, and names of a `regexr` object.
+### Get/Set Comments, Regexes, and Names of a `regexr` Object.
 
 The `comments`, `regex`, and `names` functions allow the user to view and alter the comments, regexes, and names of a `regexr` object.
 

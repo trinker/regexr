@@ -74,11 +74,18 @@ m <- construct(
 
     "[a]s th[atey]"
 )
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "construct"
+```
+
+```r
 m
 ```
 
 ```
-## [1] "\\s+(?<=(foo))(;|:)\\s*[a]s th[atey]"
+## Error in eval(expr, envir, enclos): object 'm' not found
 ```
 
 ### Viewing the `regexr` Object
@@ -91,25 +98,7 @@ summary(m)
 ```
 
 ```
-## 
-## \s+(?<=(foo))(;|:)\s*[a]s th[atey]
-## ==================================
-## 
-## REGEX 1: \s+
-## NAME   : space
-## COMMENT: "I see"
-## 
-## REGEX 2: (?<=(foo))
-## NAME   : simp
-## COMMENT: 
-## 
-## REGEX 3: (;|:)\s*
-## NAME   : or
-## COMMENT: "comment on what this does"
-## 
-## REGEX 4: [a]s th[atey]
-## NAME   : 
-## COMMENT:
+## Error in summary(m): object 'm' not found
 ```
 
 ### Split `regexr` Object 
@@ -122,20 +111,10 @@ unglue(m)
 ```
 
 ```
-## $space
-## [1] "\\s+"
-## 
-## $simp
-## [1] "(?<=(foo))"
-## 
-## $or
-## [1] "(;|:)\\s*"
-## 
-## [[4]]
-## [1] "[a]s th[atey]"
+## Error in eval(expr, envir, enclos): could not find function "unglue"
 ```
 
-### Get/Set comments, regexes, and names of a `regexr` object.
+### Get/Set Comments, Regexes, and Names of a `regexr` Object.
 
 The `comments`, `regex`, and `names` functions allow the user to view and alter the comments, regexes, and names of a `regexr` object.
 
@@ -146,17 +125,7 @@ regex(m)
 ```
 
 ```
-## $space
-## [1] "\\s+"
-## 
-## $simp
-## [1] "(?<=(foo))"
-## 
-## $or
-## [1] "(;|:)\\s*"
-## 
-## [[4]]
-## [1] "[a]s th[atey]"
+## Error in eval(expr, envir, enclos): could not find function "regex"
 ```
 
 ```r
@@ -164,17 +133,7 @@ comments(m)
 ```
 
 ```
-## $space
-## [1] "I see"
-## 
-## $simp
-## NULL
-## 
-## $or
-## [1] "comment on what this does"
-## 
-## [[4]]
-## NULL
+## Error in eval(expr, envir, enclos): could not find function "comments"
 ```
 
 ```r
@@ -182,36 +141,39 @@ names(m)
 ```
 
 ```
-## [1] "space" "simp"  "or"    ""
+## Error in eval(expr, envir, enclos): object 'm' not found
 ```
 
 ```r
 regex(m)[4] <- "(F{O}2)|(BAR)"
+```
+
+```
+## Error in regex(m)[4] <- "(F{O}2)|(BAR)": object 'm' not found
+```
+
+```r
 comments(m)[4] <- "Look for FOO or BAR"
+```
+
+```
+## Error in comments(m)[4] <- "Look for FOO or BAR": object 'm' not found
+```
+
+```r
 names(m)[4] <- "foob_bar"
+```
+
+```
+## Error in names(m)[4] <- "foob_bar": object 'm' not found
+```
+
+```r
 summary(m)
 ```
 
 ```
-## 
-## \s+(?<=(foo))(;|:)\s*(F{O}2)|(BAR)
-## ==================================
-## 
-## REGEX 1: \s+
-## NAME   : space
-## COMMENT: "I see"
-## 
-## REGEX 2: (?<=(foo))
-## NAME   : simp
-## COMMENT: 
-## 
-## REGEX 3: (;|:)\s*
-## NAME   : or
-## COMMENT: "comment on what this does"
-## 
-## REGEX 4: (F{O}2)|(BAR)
-## NAME   : foob_bar
-## COMMENT: "Look for FOO or BAR"
+## Error in summary(m): object 'm' not found
 ```
 
 ### Testing Regular Expressions
@@ -224,40 +186,23 @@ test(m)
 ```
 
 ```
-## $regex
-## [1] TRUE
-## 
-## $chunks
-##    space     simp       or foob_bar 
-##     TRUE     TRUE     TRUE     TRUE
+## Error in eval(expr, envir, enclos): could not find function "test"
 ```
 
 ```r
 regex(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")")
+```
+
+```
+## Error in regex(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")"): object 'm' not found
+```
+
+```r
 test(m)
 ```
 
 ```
-## Warning in test.regexr(m): The concatenated regex is not valid
-## 
-## \s+(?<=(foo))(;|:)\s*(F{O}2)|(BAR)(([A-Z]|(\d{5}))
-```
-
-```
-## Warning in test.regexr(m): The following regex chunks are not valid in isolation:
-## 
-## (1) (
-## (2) ([A-Z]|(\d{5})
-## (3) )
-```
-
-```
-## $regex
-## [1] FALSE
-## 
-## $chunks
-##    space     simp       or foob_bar                            
-##     TRUE     TRUE     TRUE     TRUE    FALSE    FALSE    FALSE
+## Error in eval(expr, envir, enclos): could not find function "test"
 ```
 
 ## Contact
