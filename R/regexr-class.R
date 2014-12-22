@@ -141,8 +141,17 @@ names.regexr <- function(x, ...){
 #' @method names<- regexr
 `names<-.regexr` <- function(x, value){
 
+    rnull <- is.null(names(attributes(x)[["regex"]]))
+    cnull <- is.null(names(attributes(x)[["comments"]]))
+
     names(attributes(x)[["regex"]]) <- value
+    if (rnull) {
+        names(attributes(x)[["regex"]])[is.na(names(attributes(x)[["regex"]]))] <- ""
+    }
     names(attributes(x)[["comments"]]) <- value
+    if (cnull) {
+        names(attributes(x)[["comments"]])[is.na(names(attributes(x)[["comments"]]))] <- ""
+    }
     x
 
 }
