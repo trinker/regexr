@@ -194,7 +194,7 @@ print.summary_regexr <- function(x, ...){
     class(x) <- "list"
 
     reg <- attributes(x)[["regex"]]
-    message("\n", reg, "\n", 
+    cat("\n", reg, "\n", 
         paste(rep("=", nchar(reg)), collapse=""), "\n"
     )
 

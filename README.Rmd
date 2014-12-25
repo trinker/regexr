@@ -113,6 +113,18 @@ regex(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")")
 test(m)
 ```
 
+### Regex to `regexr`: Reverse Construction
+
+`as.regexr` allows the user to construct `regexr` objects from a regular expression and in the process generate an auto-commented & named `construct` script. 
+
+```{r}
+library("qdapRegex")
+(myregex <- grab("@rm_time"))
+out <- as.regexr(myregex)
+summary(out)
+get_construct(out)
+```
+
 ## Contact
 
 You are welcome to:

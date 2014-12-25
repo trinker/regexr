@@ -38,6 +38,7 @@ devtools::install_github("trinker/regexr")
 | `regex`   |  Get/Set Regexes in a `regexr` object |
 | `comments`   |  Get/Set Comments in a `regexr` object |
 | `names`   |  Get/Set Names in a `regexr` object |
+| `as.regexr`| Coerce regular expressions to `regexr` |
 
 ## Examples
 
@@ -92,9 +93,11 @@ summary(m)
 
 ```
 ## 
-## \s+(?<=(foo))(;|:)\s*[a]s th[atey]
-## ==================================
-## 
+##  \s+(?<=(foo))(;|:)\s*[a]s th[atey] 
+##  ==================================
+```
+
+```
 ## REGEX 1: \s+
 ## NAME   : space
 ## COMMENT: "I see"
@@ -194,9 +197,11 @@ summary(m)
 
 ```
 ## 
-## \s+(?<=(foo))(;|:)\s*(F{O}2)|(BAR)
-## ==================================
-## 
+##  \s+(?<=(foo))(;|:)\s*(F{O}2)|(BAR) 
+##  ==================================
+```
+
+```
 ## REGEX 1: \s+
 ## NAME   : space
 ## COMMENT: "I see"
@@ -258,6 +263,91 @@ test(m)
 ## $chunks
 ##    space     simp       or foob_bar                            
 ##     TRUE     TRUE     TRUE     TRUE    FALSE    FALSE    FALSE
+```
+
+### Regex to `regexr`: Reverse Construction
+
+`as.regexr` allows the user to construct `regexr` objects from a regular expression and in the process generate an auto-commented & named `construct` script. 
+
+
+```r
+library("qdapRegex")
+(myregex <- grab("@rm_time"))
+```
+
+```
+## [1] "\\d{0,2}:\\d{2}(?:[:.]\\d+)?"
+```
+
+```r
+out <- as.regexr(myregex)
+summary(out)
+```
+
+```
+## 
+##  \d{0,2}:\d{2}(?:[:.]\d+)? 
+##  =========================
+```
+
+```
+## REGEX 1: \d{0,2}
+## NAME   : 1
+## COMMENT: "digits (0-9) (between 0 and 2 times (matching the most amount possible))"
+## 
+## REGEX 2: :
+## NAME   : 2
+## COMMENT: "':'"
+## 
+## REGEX 3: \d{2}
+## NAME   : 3
+## COMMENT: "digits (0-9) (2 times)"
+## 
+## REGEX 4: (?:
+## NAME   : 4
+## COMMENT: "group, but do not capture (optional (matching the most amount possible)):"
+## 
+## REGEX 5: [:.]
+## NAME   : 5
+## COMMENT: "any character of: ':', '.'"
+## 
+## REGEX 6: \d+
+## NAME   : 6
+## COMMENT: "digits (0-9) (1 or more times (matching the most amount possible))"
+## 
+## REGEX 7: )?
+## NAME   : 7
+## COMMENT: "end of grouping"
+```
+
+```r
+get_construct(out)
+```
+
+```
+## construct(
+##     `1` = 
+##         "\\d{0,2}"
+##             %:)%"digits (0-9) (between 0 and 2 times (matching the most amount possible))",
+##     `2` = 
+##         ":"
+##             %:)%"':'",
+##     `3` = 
+##         "\\d{2}"
+##             %:)%"digits (0-9) (2 times)",
+##     `4` = 
+##         "(?:"
+##             %:)%"group, but do not capture (optional (matching the most amount possible)):",
+##         `5` = 
+##             "[:.]"
+##                 %:)%"any character of: ':', '.'",
+##         `6` = 
+##             "\\d+"
+##                 %:)%"digits (0-9) (1 or more times (matching the most amount possible))",
+##     `7` = 
+##         ")?"
+##             %:)%"end of grouping"
+## )
 ```
 
 ## Contact

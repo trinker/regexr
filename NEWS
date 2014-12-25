@@ -17,23 +17,43 @@ And constructed with the following guidelines:
 * Bug fixes and misc changes bumps the patch
 
 
-regexr 0.0.2
+regexr 0.0.3
 ----------------------------------------------------------------
 
 BUG FIXES
 
 NEW FEATURES
 
+* `as.regexr` added to coerce a regular expression to a `regexr` class using
+  the regular expression breakdown of http://rick.measham.id.au/paste/explain.pl.
+  The `get_construct` function extracts a script to create a `construct` regex
+  from `regexr` objects that were coerced using `as.regexr`.
+
 MINOR FEATURES
+
+* `set_comments`, `set_regex`, and `set_names` added as a  convenience functions
+  to set elements of a `regexr` object and return the object.
 
 IMPROVEMENTS
 
+* `print.summary_regexr` used `message` to print to the console which had the 
+  potential to not return the entire input.  `print.summary_regexr` now uses 
+  `cat` rather than `message`. 
+
 CHANGES
 
-regexr 0.0.1
+regexr 0.0.1 - 0.0.2
 ----------------------------------------------------------------
 
-**regexr** is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to (1) write in smaller, modular, named, regular expression chunks, (2) write top to bottom, rather than a single string (3) comment individual chunks, (4) indent expressions to represent regular expression groups, and (5) test the validity of the concatenated expression and the modular chunks. 
+**regexr** is an R framework for constructing human readable regular expressions.  
+It aims to provide tools that enable the user to write regular expressions in a 
+way that is similar to the ways R code is written.  The tools allow the user to 
+(1) write in smaller, modular, named, regular expression chunks, (2) write top 
+to bottom, rather than a single string (3) comment individual chunks, (4) indent 
+expressions to represent regular expression groups, and (5) test the validity of 
+the concatenated expression and the modular chunks. 
 
-This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both coding writing and natural language conventions.
+This framework harnesses the power and flexibility of regular expressions but 
+provides a structural frame that is more consistent with both coding writing and 
+natural language conventions.
 

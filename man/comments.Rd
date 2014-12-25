@@ -2,26 +2,37 @@
 \name{comments}
 \alias{comments}
 \alias{comments<-}
+\alias{set_comments}
 \title{Get/Set Comments From a regexr Object}
 \usage{
 comments(x, ...)
 
 comments(x) <- value
+
+set_comments(x, y)
 }
 \arguments{
 \item{x}{A regexr object.}
 
 \item{value}{The comment(s) to assign.}
 
+\item{y}{The comments to assign.}
+
 \item{\ldots}{Ignored.}
 }
 \value{
 \code{comments} - Returns a list of comments.
+
+\code{set_comments} - Returns a \code{regexr} object.
 }
 \description{
 \code{comments} - Get the \code{comments} from a \code{regexr} object.
 
 \code{comments<-} - Set the \code{comments} of a \code{regexr} object.
+
+\code{set_comments} - This is a convenience function that sets the
+\code{\link[regexr]{comments}} on a \code{regexr} object and returns the
+object.
 }
 \examples{
 minimal <- construct("a", "b", "c" \%:)\% "Comment #3")
@@ -29,5 +40,9 @@ minimal
 comments(minimal)
 comments(minimal)[2] <- "A comment"
 comments(minimal)
+
+minimal <- construct("a", "b", "c")
+out <- set_comments(minimal, paste("comment", 1:3))
+comments(out)
 }
 

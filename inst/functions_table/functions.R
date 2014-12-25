@@ -7,3 +7,4 @@
 | `regex`   |  Get/Set Regexes in a `regexr` object |
 | `comments`   |  Get/Set Comments in a `regexr` object |
 | `names`   |  Get/Set Names in a `regexr` object |
+| `as.regexr`| Coerce regular expressions to `regexr` |

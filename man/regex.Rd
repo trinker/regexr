@@ -2,26 +2,36 @@
 \name{regex}
 \alias{regex}
 \alias{regex<-}
+\alias{set_regex}
 \title{Get/Set Regex Chunks From a regexr Object}
 \usage{
 regex(x, ...)
 
 regex(x) <- value
+
+set_regex(x, y)
 }
 \arguments{
 \item{x}{A regexr object.}
 
 \item{value}{The comment(s) to assign.}
 
+\item{y}{The regexes to assign.}
+
 \item{\ldots}{Ignored.}
 }
 \value{
 \code{regex} - Returns a list of regexes.
+
+\code{set_regex} - Returns a \code{regexr} object.
 }
 \description{
 \code{regex} - Get the \code{regex} chunks from a \code{regexr} object.
 
 \code{regex<-} - Set the \code{regex} chunk(s) of a \code{regexr} object.
+
+\code{set_regex} - This is a convenience function that sets the
+\code{\link[regexr]{regex}} on a \code{regexr} object and returns the object.
 }
 \examples{
 minimal <- construct("a", "b", "c")
@@ -29,5 +39,9 @@ minimal
 regex(minimal)
 regex(minimal)[2] <- "\\\\s+[A-Z]|[0-9]"
 regex(minimal)
+
+minimal <- construct("a", "b", "c")
+out <- set_regex(minimal, c("(", "\\\\s??", ")"))
+regex(out)
 }
 

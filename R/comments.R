@@ -14,6 +14,10 @@
 #' comments(minimal)
 #' comments(minimal)[2] <- "A comment"
 #' comments(minimal)
+#' 
+#' minimal <- construct("a", "b", "c")
+#' out <- set_comments(minimal, paste("comment", 1:3))
+#' comments(out) 
 comments <- function (x, ...){
     UseMethod("comments")
 }
@@ -28,4 +32,19 @@ comments <- function (x, ...){
     UseMethod("comments<-")
 }
 
+
+#' Set the Comments in a \code{regexr} Object
+#' 
+#' \code{set_comments} - This is a convenience function that sets the 
+#' \code{\link[regexr]{comments}} on a \code{regexr} object and returns the 
+#' object.
+#' 
+#' @param y The comments to assign.
+#' @return \code{set_comments} - Returns a \code{regexr} object.
+#' @export
+#' @rdname comments
+set_comments <- function (x, y) {
+    comments(x) <- y
+    x
+}
 

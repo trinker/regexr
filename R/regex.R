@@ -14,6 +14,10 @@
 #' regex(minimal)
 #' regex(minimal)[2] <- "\\s+[A-Z]|[0-9]"
 #' regex(minimal)
+#' 
+#' minimal <- construct("a", "b", "c")
+#' out <- set_regex(minimal, c("(", "\\s??", ")"))
+#' regex(out)
 regex <- function (x, ...){
     UseMethod("regex")
 }
@@ -29,4 +33,17 @@ regex <- function (x, ...){
 }
 
 
+#' Set the Regexes in a \code{regexr} Object
+#' 
+#' \code{set_regex} - This is a convenience function that sets the 
+#' \code{\link[regexr]{regex}} on a \code{regexr} object and returns the object. 
+#' 
+#' @param y The regexes to assign.
+#' @return \code{set_regex} - Returns a \code{regexr} object.
+#' @export
+#' @rdname regex
+set_regex <- function (x, y) {
+    regex(x) <- y
+    x
+}
 
