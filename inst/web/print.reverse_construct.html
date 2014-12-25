@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>names.regexr. regexr 0.0.3</title>
+<title>print.reverse_construct. regexr 0.0.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -35,36 +35,41 @@
         
       </header>
       
-      <h1>Get Names of a regexr Object</h1>
+      <h1>Prints a reverse_construct object</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>"names"(x, ...)</div></pre>
+    <pre><div>"print"(x, file&nbsp;=&nbsp;"", ...)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
       <dt>x</dt>
-      <dd>The <code>regexr</code> object.</dd>
+      <dd>A <code>reverse_construct</code> object.</dd>
+      <dt>file</dt>
+      <dd>A connection, or a character string naming the file to print to.
+If "" (the default), <code><a href='http://www.inside-r.org/packages/cran/base/docs/cat'>cat</a></code> prints to the console unless
+redirected by <code><a href='http://www.inside-r.org/packages/cran/base/docs/sink'>sink</a></code>.  Windows users may use
+<code>file = "clipboard"</code> to copy the content to the clipboard.</dd>
       <dt>...</dt>
-      <dd>Ignored.</dd>
+      <dd>Other arguments passed to <code><a href='http://www.inside-r.org/packages/cran/base/docs/cat'>cat</a></code>.</dd>
     </dl>
     
-    <div class="Get Names of a regexr Object">
-      <h2>Get Names of a regexr Object</h2>
+    <div class="Prints a reverse_construct object">
+      <h2>Prints a reverse_construct object</h2>
       
     </div>
 
     <div class="Description">
       <h2>Description</h2>
       
-      <p>Get names of a <code>regexr</code> object.</p>
+      <p>Prints a reverse_construct object.</p>
   
     </div>
       </div>
   <div class="span4">
     <!-- <ul>
-      <li>names.regexr</li>
+      <li>print.reverse_construct</li>
     </ul>
     <ul>
       

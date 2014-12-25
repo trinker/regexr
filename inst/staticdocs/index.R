@@ -9,7 +9,9 @@ sd_section("Constructing & Testing Regular Expressions",
       "test",
       "regex",
       "comments",
-      "names"
+      "names",
+      "as.regexr",
+      "get_construct"
   )
 )
 

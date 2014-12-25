@@ -38,7 +38,7 @@ devtools::install_github("trinker/regexr")
 | `regex`   |  Get/Set Regexes in a `regexr` object |
 | `comments`   |  Get/Set Comments in a `regexr` object |
 | `names`   |  Get/Set Names in a `regexr` object |
-| `as.regexr`| Coerce regular expressions to `regexr` |
+| `as.regexr`| Coerce regular expressions to `regexr` object |
 
 ## Examples
 
@@ -320,34 +320,38 @@ summary(out)
 ## COMMENT: "end of grouping"
 ```
 
+
+We can use `get_construct` to extract an auto-commented & named `construct` script that can be optionally altered and used to `construct` a `regexr` object.
+
+
 ```r
 get_construct(out)
 ```
 
 ```
-## construct(
-##     `1` = 
-##         "\\d{0,2}"
-##             %:)%"digits (0-9) (between 0 and 2 times (matching the most amount possible))",
-##     `2` = 
-##         ":"
-##             %:)%"':'",
-##     `3` = 
-##         "\\d{2}"
-##             %:)%"digits (0-9) (2 times)",
-##     `4` = 
-##         "(?:"
-##             %:)%"group, but do not capture (optional (matching the most amount possible)):",
-##         `5` = 
-##             "[:.]"
-##                 %:)%"any character of: ':', '.'",
-##         `6` = 
-##             "\\d+"
-##                 %:)%"digits (0-9) (1 or more times (matching the most amount possible))",
-##     `7` = 
-##         ")?"
-##             %:)%"end of grouping"
-## )
+construct(
+    `1` = 
+        "\\d{0,2}"
+            %:)%"digits (0-9) (between 0 and 2 times (matching the most amount possible))",
+    `2` = 
+        ":"
+            %:)%"':'",
+    `3` = 
+        "\\d{2}"
+            %:)%"digits (0-9) (2 times)",
+    `4` = 
+        "(?:"
+            %:)%"group, but do not capture (optional (matching the most amount possible)):",
+        `5` = 
+            "[:.]"
+                %:)%"any character of: ':', '.'",
+        `6` = 
+            "\\d+"
+                %:)%"digits (0-9) (1 or more times (matching the most amount possible))",
+    `7` = 
+        ")?"
+            %:)%"end of grouping"
+)
 ```
 
 ## Contact

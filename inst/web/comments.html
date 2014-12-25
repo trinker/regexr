@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>comments. regexr 0.0.2</title>
+<title>comments. regexr 0.0.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">regexr 0.0.2</a>
+      <a class="brand" href="#">regexr 0.0.3</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -41,7 +41,8 @@
   <div class="span8">
     <h2>Usage</h2>
     <pre><div>comments(x, ...)</div>
-<div>comments(x) <- value</div></pre>
+<div>comments(x) <- value</div>
+<div>set_comments(x, y)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -49,6 +50,8 @@
       <dd>A regexr object.</dd>
       <dt>value</dt>
       <dd>The comment(s) to assign.</dd>
+      <dt>y</dt>
+      <dd>The comments to assign.</dd>
       <dt>...</dt>
       <dd>Ignored.</dd>
     </dl>
@@ -63,6 +66,8 @@
       
       <p><code>comments</code> - Returns a list of comments.</p>
   
+      <p><code>set_comments</code> - Returns a <code>regexr</code> object.</p>
+  
     </div>
 
     <div class="Description">
@@ -71,6 +76,10 @@
       <p><code>comments</code> - Get the <code>comments</code> from a <code>regexr</code> object.</p>
   
       <p><code>comments<-</code> - Set the <code>comments</code> of a <code>regexr</code> object.</p>
+  
+      <p><code>set_comments</code> - This is a convenience function that sets the
+<code>comments</code> on a <code>regexr</code> object and returns the
+object.</p>
   
     </div>
     
@@ -104,11 +113,18 @@ NULL
 [[3]]
 [1] &quot;Comment #3&quot;
 
+</div>
+<div class='input'>
+minimal &lt;- construct(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+out &lt;- set_comments(minimal, paste(&quot;comment&quot;, 1:3))
+comments(out)
+</div>
+<div class='output'>[1] &quot;comment 1&quot; &quot;comment 2&quot; &quot;comment 3&quot;
 </div></pre>
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>comments</li><li>comments&lt;-</li>
+      <li>comments</li><li>comments&lt;-</li><li>set_comments</li>
     </ul>
     <ul>
       

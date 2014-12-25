@@ -122,6 +122,12 @@ library("qdapRegex")
 (myregex <- grab("@rm_time"))
 out <- as.regexr(myregex)
 summary(out)
+```
+
+
+We can use `get_construct` to extract an auto-commented & named `construct` script that can be optionally altered and used to `construct` a `regexr` object.
+
+```{r, comment=NA}
 get_construct(out)
 ```
 

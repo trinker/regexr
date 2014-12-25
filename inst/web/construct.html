@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>construct. regexr 0.0.2</title>
+<title>construct. regexr 0.0.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">regexr 0.0.2</a>
+      <a class="brand" href="#">regexr 0.0.3</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -130,10 +130,10 @@ $chunks
 </div>
 <div class='input'>summary(minimal)
 </div>
-<strong class='message'>
-abc
-===
-</strong>
+<div class='output'>
+ abc 
+ === 
+</div>
 <strong class='message'>REGEX 1: a</strong>
 <strong class='message'>NAME   : </strong>
 <strong class='message'>COMMENT: 
@@ -184,10 +184,10 @@ $or
 </div>
 <div class='input'>summary(m)
 </div>
-<strong class='message'>
-\s+(?&lt;=(foo))(;|:)\s*[a]s th[atey]
-==================================
-</strong>
+<div class='output'>
+ \s+(?&lt;=(foo))(;|:)\s*[a]s th[atey] 
+ ================================== 
+</div>
 <strong class='message'>REGEX 1: \s+</strong>
 <strong class='message'>NAME   : space</strong>
 <strong class='message'>COMMENT: &quot;I see&quot;
@@ -237,10 +237,10 @@ NULL
 <div class='input'>regex(m)[4] &lt;- &quot;(F{O}2)|(BAR)&quot;
 summary(m)
 </div>
-<strong class='message'>
-\s+(?&lt;=(foo))(;|:)\s*(F{O}2)|(BAR)
-==================================
-</strong>
+<div class='output'>
+ \s+(?&lt;=(foo))(;|:)\s*(F{O}2)|(BAR) 
+ ================================== 
+</div>
 <strong class='message'>REGEX 1: \s+</strong>
 <strong class='message'>NAME   : space</strong>
 <strong class='message'>COMMENT: &quot;I see&quot;
@@ -295,11 +295,11 @@ space  simp    or
 library(qdapRegex)
 explain(m)
 </div>
-<strong class='message'>NODE                     EXPLANATION
+<div class='output'>NODE                     EXPLANATION
 --------------------------------------------------------------------------------
-  \\s                       whitespace (\n, \r, \t, \f, and &quot; &quot;)
---------------------------------------------------------------------------------
-                           &#39; &#39;
+  \\s+                      whitespace (\n, \r, \t, \f, and &quot; &quot;) (1 or
+                           more times (matching the most amount
+                           possible))
 --------------------------------------------------------------------------------
   (?&lt;=                     look behind to see if there is:
 --------------------------------------------------------------------------------
@@ -357,7 +357,7 @@ explain(m)
 --------------------------------------------------------------------------------
   )                        end of \\5
 
-</strong>
+</div>
 <div class='input'>
 ## Example 2 (Twitter Handle)
 twitter &lt;- construct(
@@ -449,10 +449,10 @@ $e_gr1
 </div>
 <div class='input'>summary(twitter)
 </div>
-<strong class='message'>
-(?&lt;![@\w])(@)(([a-z0-9_]{1,15})\b)
-==================================
-</strong>
+<div class='output'>
+ (?&lt;![@\w])(@)(([a-z0-9_]{1,15})\b) 
+ ================================== 
+</div>
 <strong class='message'>REGEX 1: (?&lt;![@\w])</strong>
 <strong class='message'>NAME   : neg_lookbehing</strong>
 <strong class='message'>COMMENT: &quot;Make sure the string doesn&#39;t start with @ or a word&quot;
@@ -494,7 +494,7 @@ neg_lookbehing             at          s_gr1         handle       boundary      
 </div>
 <div class='input'>explain(twitter)
 </div>
-<strong class='message'>NODE                     EXPLANATION
+<div class='output'>NODE                     EXPLANATION
 --------------------------------------------------------------------------------
   (?&lt;!                     look behind to see if there is not:
 --------------------------------------------------------------------------------
@@ -524,7 +524,7 @@ neg_lookbehing             at          s_gr1         handle       boundary      
 --------------------------------------------------------------------------------
   )                        end of \\2
 
-</strong>
+</div>
 <div class='input'>
 x &lt;- c(&quot;@hadley I like #rstats for #ggplot2 work.&quot;,
     &quot;Difference between #magrittr and #pipeR, both implement pipeline operators for #rstats:
@@ -686,10 +686,10 @@ $hash
 </div>
 <div class='input'>summary(combined)
 </div>
-<strong class='message'>
-(?&lt;![@\w])(@)(([a-z0-9_]{1,15})\b)|(?&lt;!/)((#)(\w+))
-===================================================
-</strong>
+<div class='output'>
+ (?&lt;![@\w])(@)(([a-z0-9_]{1,15})\b)|(?&lt;!/)((#)(\w+)) 
+ =================================================== 
+</div>
 <strong class='message'>REGEX 1: (?&lt;![@\w])(@)(([a-z0-9_]{1,15})\b)</strong>
 <strong class='message'>NAME   : twitter</strong>
 <strong class='message'>COMMENT: &quot;Twitter regex created previously&quot;
@@ -714,7 +714,7 @@ twitter      or    hash
 </div>
 <div class='input'>explain(combined)
 </div>
-<strong class='message'>NODE                     EXPLANATION
+<div class='output'>NODE                     EXPLANATION
 --------------------------------------------------------------------------------
   (?&lt;!                     look behind to see if there is not:
 --------------------------------------------------------------------------------
@@ -760,7 +760,7 @@ twitter      or    hash
 --------------------------------------------------------------------------------
   )                        end of \\4
 
-</strong></pre>
+</div></pre>
   </div>
   <div class="span4">
     <!-- <ul>

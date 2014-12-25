@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>regex. regexr 0.0.2</title>
+<title>regex. regexr 0.0.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">regexr 0.0.2</a>
+      <a class="brand" href="#">regexr 0.0.3</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -41,7 +41,8 @@
   <div class="span8">
     <h2>Usage</h2>
     <pre><div>regex(x, ...)</div>
-<div>regex(x) <- value</div></pre>
+<div>regex(x) <- value</div>
+<div>set_regex(x, y)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -49,6 +50,8 @@
       <dd>A regexr object.</dd>
       <dt>value</dt>
       <dd>The comment(s) to assign.</dd>
+      <dt>y</dt>
+      <dd>The regexes to assign.</dd>
       <dt>...</dt>
       <dd>Ignored.</dd>
     </dl>
@@ -63,6 +66,8 @@
       
       <p><code>regex</code> - Returns a list of regexes.</p>
   
+      <p><code>set_regex</code> - Returns a <code>regexr</code> object.</p>
+  
     </div>
 
     <div class="Description">
@@ -71,6 +76,9 @@
       <p><code>regex</code> - Get the <code>regex</code> chunks from a <code>regexr</code> object.</p>
   
       <p><code>regex<-</code> - Set the <code>regex</code> chunk(s) of a <code>regexr</code> object.</p>
+  
+      <p><code>set_regex</code> - This is a convenience function that sets the
+<code>regex</code> on a <code>regexr</code> object and returns the object.</p>
   
     </div>
     
@@ -104,11 +112,18 @@ regex(minimal)
 [[3]]
 [1] &quot;c&quot;
 
+</div>
+<div class='input'>
+minimal &lt;- construct(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+out &lt;- set_regex(minimal, c(&quot;(&quot;, &quot;\\s??&quot;, &quot;)&quot;))
+regex(out)
+</div>
+<div class='output'>[1] &quot;(&quot;     &quot;\\s??&quot; &quot;)&quot;    
 </div></pre>
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>regex</li><li>regex&lt;-</li>
+      <li>regex</li><li>regex&lt;-</li><li>set_regex</li>
     </ul>
     <ul>
       
