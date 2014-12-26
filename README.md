@@ -6,9 +6,9 @@
 
 <img src="inst/regexr_logo/r_regexr.png" alt="">   
 
-> One of the most powerful tools in writing maintainable code is break large methods into well-named smaller methods – a technique Kent Beck refers to as the Composed Method pattern.
+> One of the most powerful tools in writing maintainable code is break large methods into well-named smaller methods - a technique Kent Beck refers to as the Composed Method pattern.
 
-<a href=\"http://martinfowler.com/bliki/ComposedRegex.html\" style="text-align: right;" >-Martin Fowler-</a>
+<p style="margin-left:70%;"><a href=\"http://martinfowler.com/bliki/ComposedRegex.html\" >-Martin Fowler-</a></p>
 
 [regexr](http://trinker.github.com/regexr_dev) is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to: 
 
