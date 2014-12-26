@@ -118,6 +118,29 @@
 #' summary(combined)
 #' test(combined)
 #' explain(combined)
+#' 
+#' ## Different Structure: Example from Martin Fowler: 
+#' ## browseURL("http://martinfowler.com/bliki/ComposedRegex.html")
+#' 
+#' pattern <- construct(
+#'         '@@"^score'       ,
+#'         '\\s+'            ,
+#'         '(\\d+)'          %:)% 'points',
+#'         '\\s+'            ,
+#'         'for'             ,
+#'         '\\s+'            ,
+#'         '(\\d+)'          %:)% 'number of nights',
+#'         '\\s+'            ,
+#'         'night'           ,
+#'         's?'              %:)% 'optional plural',
+#'         '\\s+'            ,
+#'         'at'              ,
+#'         '\\s+'            ,
+#'         '(.*)'            %:)% 'hotel name',
+#'         '";'
+#' )
+#'   
+#' summary(pattern)
 construct <- function(...){
     out <- paste0(...)
     class(out) <- c("regexr", class(out))

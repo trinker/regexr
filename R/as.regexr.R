@@ -3,6 +3,13 @@
 #' Coerce an object to \code{regexr} class.
 #' 
 #' @param x An object to coerce to a \code{regexr} object.
+#' @param names logical.  Should names be included in the \code{construct} 
+#' script?
+#' @param comments  logical.  Should comments be included in the \code{construct} 
+#' script?
+#' @param comments.below  logical.  Should comments be included below the regex
+#' in the \code{construct} script?  If \code{FALSE} comments are placed behind 
+#' the regular expression chunks.
 #' @param \ldots Other arguments passed to \code{as.regexr} methods.
 #' @return Returns a dual \code{regexr} and \code{reverse_construct} object.
 #' @export
@@ -21,7 +28,11 @@
 #' ## On Windows copy to clipboard
 #' get_construct(out, file="clipboard")
 #' }
-as.regexr <- function(x, ...){
+#' 
+#' ## No names & comments behind regex
+#' myregex2 <- "(\\s*[a-z]+)([^)]+\\))"
+#' get_construct(as.regexr(myregex2, names=FALSE, comments.below=FALSE))
+as.regexr <- function(x, names = TRUE, comments = TRUE, comments.below = TRUE, ...){
     UseMethod("as.regexr")
 }
 
@@ -32,10 +43,18 @@ as.regexr <- function(x, ...){
 #' 
 #' character Method for as.regexr
 #' @param x The \code{character} object.
+#' @param names logical.  Should names be included in the \code{construct} 
+#' script?
+#' @param comments  logical.  Should comments be included in the \code{construct} 
+#' script?
+#' @param comments.below  logical.  Should comments be included below the regex
+#' in the \code{construct} script?  If \code{FALSE} comments are placed behind 
+#' the regular expression chunks.
 #' @param \ldots Ignored.
 #' @export
 #' @method as.regexr character
-as.regexr.character <- function(x, ...){
+as.regexr.character <- function(x, names = TRUE, comments = TRUE, 
+    comments.below = TRUE, ...){
 
     out <- regex_break_down(x)
 
@@ -74,6 +93,10 @@ as.regexr.character <- function(x, ...){
     attributes(out)[["comments"]] <- setNames(sapply(pieces4regexr, "[", 2), 
         names(pieces4regexr))
 
+    if (!comments.below) {
+        max.nchar.regex <- max(sapply(pieces, function(x) nchar(x[[1]])))
+    }
+
     pieces4construct <- sapply(seq_along(pieces), function(i){
         x <- pieces[[i]]
         x[[1]] <- gsub("\"", "\\\\\"", x[[1]])
@@ -81,11 +104,30 @@ as.regexr.character <- function(x, ...){
         x[[1]] <- gsub(" ", "  ", x[[1]])
         indent <- (nchar(x[[1]]) - nchar(gsub("^\\s+", "", x[[1]]))) 
         x[[1]] <- paste0("    ", x[[1]])
-        paste0(
-            paste0(paste(rep(" ", indent), collapse=""), "`", names(pieces)[i], "` = \n"),
-            gsub("(^\\s+)", "\\1\"", x[[1]]), "\"\n",
-            paste0(paste(rep(" ", indent + 8), collapse=""), "%:)%\"", x[[2]], "\"")
-        )
+
+
+        if (isTRUE(names)) {
+            thenames <- paste0(paste(rep(" ", indent), collapse=""), "`", 
+                names(pieces)[i], "` = \n")
+        } else {
+            thenames <- ""
+        }
+        
+        theregexes <- gsub("(^\\s+)", "\\1\"", x[[1]])
+
+        if (isTRUE(comments)) {
+            if (isTRUE(comments.below)) {
+                thecomments <- paste0("\"\n", paste(rep(" ", indent + 8), 
+                    collapse=""), "%:)%\"", x[[2]], "\"")
+            } else {
+                thecomments <- paste0("\"", 
+                    paste(rep(" ", indent + (max.nchar.regex - nchar(theregexes)) + 10), 
+                    collapse=""), "%:)%\"", x[[2]], "\"")
+            }
+        } else {
+            thecomments <- ""
+        }
+        paste0(thenames, theregexes, thecomments)
     })
     reverse_construct <- paste0("construct(\n", 
         paste(pieces4construct, collapse=",\n"), "\n)\n")
@@ -120,6 +162,13 @@ print.reverse_construct <- function(x, file = "", ...){
 #' 
 #' default Method for as.regexr
 #' @param x The object to be corced to \code{regexr}.
+#' @param names logical.  Should names be included in the \code{construct} 
+#' script?
+#' @param comments  logical.  Should comments be included in the \code{construct} 
+#' script?
+#' @param comments.below  logical.  Should comments be included below the regex
+#' in the \code{construct} script?  If \code{FALSE} comments are placed behind 
+#' the regular expression chunks.
 #' @param \ldots Ignored.
 #' @export
 #' @method as.regexr default
@@ -224,3 +273,4 @@ regex_break_down <- function(pattern){
 
     lns
 }
+

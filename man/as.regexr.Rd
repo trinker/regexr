@@ -3,10 +3,20 @@
 \alias{as.regexr}
 \title{Generic Method to Coerce to regexr}
 \usage{
-as.regexr(x, ...)
+as.regexr(x, names = TRUE, comments = TRUE, comments.below = TRUE, ...)
 }
 \arguments{
 \item{x}{An object to coerce to a \code{regexr} object.}
+
+\item{names}{logical.  Should names be included in the \code{construct}
+script?}
+
+\item{comments}{logical.  Should comments be included in the \code{construct}
+script?}
+
+\item{comments.below}{logical.  Should comments be included below the regex
+in the \code{construct} script?  If \code{FALSE} comments are placed behind
+the regular expression chunks.}
 
 \item{\ldots}{Other arguments passed to \code{as.regexr} methods.}
 }
@@ -31,5 +41,9 @@ cat(get_construct(out))
 ## On Windows copy to clipboard
 get_construct(out, file="clipboard")
 }
+
+## No names & comments behind regex
+myregex2 <- "(\\\\s*[a-z]+)([^)]+\\\\))"
+get_construct(as.regexr(myregex2, names=FALSE, comments.below=FALSE))
 }
 

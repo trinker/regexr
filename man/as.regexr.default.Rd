@@ -3,10 +3,21 @@
 \alias{as.regexr.default}
 \title{Coerce default to regexr}
 \usage{
-\method{as.regexr}{default}(x, ...)
+\method{as.regexr}{default}(x, names = TRUE, comments = TRUE,
+  comments.below = TRUE, ...)
 }
 \arguments{
 \item{x}{The object to be corced to \code{regexr}.}
+
+\item{names}{logical.  Should names be included in the \code{construct}
+script?}
+
+\item{comments}{logical.  Should comments be included in the \code{construct}
+script?}
+
+\item{comments.below}{logical.  Should comments be included below the regex
+in the \code{construct} script?  If \code{FALSE} comments are placed behind
+the regular expression chunks.}
 
 \item{\ldots}{Ignored.}
 }

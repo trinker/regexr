@@ -3,10 +3,21 @@
 \alias{as.regexr.character}
 \title{Coerce character to regexr}
 \usage{
-\method{as.regexr}{character}(x, ...)
+\method{as.regexr}{character}(x, names = TRUE, comments = TRUE,
+  comments.below = TRUE, ...)
 }
 \arguments{
 \item{x}{The \code{character} object.}
+
+\item{names}{logical.  Should names be included in the \code{construct}
+script?}
+
+\item{comments}{logical.  Should comments be included in the \code{construct}
+script?}
+
+\item{comments.below}{logical.  Should comments be included below the regex
+in the \code{construct} script?  If \code{FALSE} comments are placed behind
+the regular expression chunks.}
 
 \item{\ldots}{Ignored.}
 }
