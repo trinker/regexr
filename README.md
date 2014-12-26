@@ -369,16 +369,16 @@ get_construct(as.regexr(myregex2, names=FALSE, comments.below=FALSE))
 ```
 
 ```
-## construct(
-##         "("              %:)%"group and capture to \\1:",
-##             "\\s*"           %:)%"whitespace (\n, \r, \t, \f, and \" \") (0 or more times (matching the most amount possible))",
-##             "[a-z]+"         %:)%"any character of: 'a' to 'z' (1 or more times (matching the most amount possible))",
-##         ")"              %:)%"end of \\1",
-##         "("              %:)%"group and capture to \\2:",
-##             "[^)]+"          %:)%"any character except: ')' (1 or more times (matching the most amount possible))",
-##             "\\)"            %:)%"')'",
-##         ")"              %:)%"end of \\2"
-## )
+construct(
+        "("              %:)%"group and capture to \\1:",
+            "\\s*"           %:)%"whitespace (\n, \r, \t, \f, and \" \") (0 or more times (matching the most amount possible))",
+            "[a-z]+"         %:)%"any character of: 'a' to 'z' (1 or more times (matching the most amount possible))",
+        ")"              %:)%"end of \\1",
+        "("              %:)%"group and capture to \\2:",
+            "[^)]+"          %:)%"any character except: ')' (1 or more times (matching the most amount possible))",
+            "\\)"            %:)%"')'",
+        ")"              %:)%"end of \\2"
+)
 ```
 
 ## Contact
