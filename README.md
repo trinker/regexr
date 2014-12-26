@@ -360,7 +360,7 @@ construct(
 )
 ```
 
-Some may prefer that the `construct` script contains no names and or comments.  The user may also wish to place comments behind the *regular expression chunks*.
+Some may prefer that the `construct` script contains no names and/or comments.  The user may also wish to place comments behind the *regular expression chunks*.
 
 
 ```r
