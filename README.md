@@ -6,6 +6,10 @@
 
 <img src="inst/regexr_logo/r_regexr.png" alt="">   
 
+> One of the most powerful tools in writing maintainable code is break large methods into well-named smaller methods – a technique Kent Beck refers to as the Composed Method pattern.
+
+-[Martin Fowler](http://martinfowler.com/bliki/ComposedRegex.html)-
+
 [regexr](http://trinker.github.com/regexr_dev) is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to: 
 
 1. Write in smaller, modular, named, *regular expression chunks*    
@@ -379,6 +383,21 @@ construct(
             "[^)]+"          %:)%"any character except: ')' (1 or more times (matching the most amount possible))",
             "\\)"            %:)%"')'",
         ")"              %:)%"end of \\2"
+)
+```
+
+## Using regexr With the regex Package
+
+Richard Cotton maintains the [`regex`](https://github.com/richierocks/regex) package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the **regexr** framework to maintain manageable commented and named *regular expression chunks*.
+
+```r
+library(qdapRegex)
+devtools::install_github("richierocks/regex")
+
+out <- construct(
+    year = YEAR                   %:)%"a year",
+    or = "|"                      %:)%"or",
+    min = ":" %c% MINUTE          %:)%"colon followed by valid minutes"
 )
 ```
 
