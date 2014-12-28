@@ -18,9 +18,9 @@ Description: An R framework for constructing human readable regular
     The tools allow the user to (1) write in smaller, modular, named, regular
     expression chunks, (2) write top to bottom, rather than a single string (3)
     comment individual chunks, (4) indent expressions to represent regular
-    expression groups, (5) Add vertical line spaces and R comments (i.e., #),
+    expression groups, (5) add vertical line spaces and R comments (i.e., #),
     and (6) test the validity of the concatenated expression and the modular
-    chunks.
+    regular expression chunks.
 License: GPL-2
 URL: http://trinker.github.com/regexr/
 BugReports: http://github.com/trinker/regexr/issues
