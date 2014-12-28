@@ -26,4 +26,18 @@ test_that("regex is changed by assigment",{
     expect_equivalent(regex(minimal), x2)
 })
 
+test_that("regexes are changed by setting (similar to `setNames`)",{
+    
+    minimal <- structure("abc", class = c("regexr", "character"), regex = list(
+            "a", "b", "c"), comments = list(NULL, NULL, NULL))
+    
+    out <- set_regex(minimal, c("\\s+", "(?:foo)", "[A-Za-z-]*"))
+    
+    out_check <- structure("\\s+(?:foo)[A-Za-z-]*", class = c("regexr", "character"
+        ), regex = c("\\s+", "(?:foo)", "[A-Za-z-]*"), comments = list(
+            NULL, NULL, NULL))
+    
+    expect_equivalent(out, out_check)
+
+})
 
