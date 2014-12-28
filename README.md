@@ -16,8 +16,8 @@
 2. Write top to bottom, rather than a single string    
 3. Comment individual chunks    
 4. Indent expressions to represent regular expression groups
-5. Add vertical line spaces and R comments (i.e., #)
-6. Test the validity of the *concatenated expression* and the modular chunks     
+5. Add vertical line spaces and R comments (i.e., `#`)
+6. Test the validity of the *concatenated expression* and the modular *regular expression chunks*      
 
 This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both code writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.
 
@@ -38,6 +38,13 @@ devtools::install_github("trinker/regexr")
 
 - [Web Page](http://trinker.github.com/regexr/)     
 - [Package PDF Help Manual](https://dl.dropboxusercontent.com/u/61803503/regexr.pdf)   
+
+## Contact
+
+You are welcome to:
+* submit suggestions and bug-reports at: <https://github.com/trinker/regexr/issues>
+* send a pull request on: <https://github.com/trinker/regexr/>
+* compose a friendly e-mail to: <tyler.rinker@gmail.com>
 
 ## Functions
 
@@ -410,9 +417,4 @@ out <- construct(
 )
 ```
 
-## Contact
 
-You are welcome to:
-* submit suggestions and bug-reports at: <https://github.com/trinker/regexr/issues>
-* send a pull request on: <https://github.com/trinker/regexr/>
-* compose a friendly e-mail to: <tyler.rinker@gmail.com>

@@ -16,7 +16,7 @@
 2. Write top to bottom, rather than a single string    
 3. Comment individual chunks    
 4. Indent expressions to represent regular expression groups
-5. Add vertical line spaces and R comments (i.e., #)
+5. Add vertical line spaces and R comments (i.e., `#`)
 6. Test the validity of the *concatenated expression* and the modular *regular expression chunks*      
 
 This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both code writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.
