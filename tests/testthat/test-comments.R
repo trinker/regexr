@@ -26,3 +26,18 @@ test_that("comments are changed by assigment",{
     
     expect_equivalent(comments(minimal), x2)
 })
+
+test_that("comments are changed by setting (similar to `setNames`)",{
+    
+    minimal <- structure("abc", class = c("regexr", "character"), regex = list(
+            "a", "b", "c"), comments = list(NULL, NULL, NULL))
+    
+    out <- set_comments(minimal, c("a", "b", "c"))
+    
+    out_check <- structure("abc", class = c("regexr", "character"), regex = list(
+            "a", "b", "c"), comments = c("a", "b", "c"))
+    
+    
+    expect_equivalent(out, out_check)
+
+})
