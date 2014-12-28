@@ -400,8 +400,8 @@ construct(
 Richard Cotton maintains the [`regex`](https://github.com/richierocks/regex) package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the **regexr** framework to maintain manageable commented and named *regular expression chunks*.
 
 ```r
-library(qdapRegex)
 devtools::install_github("richierocks/regex")
+library(regex)
 
 out <- construct(
     year = YEAR                    %:)%  "a year",
