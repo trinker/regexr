@@ -7,6 +7,9 @@
 #' script?
 #' @param comments  logical.  Should comments be included in the \code{construct} 
 #' script?
+#' @param names.above logical.  Should ames be included above the regex
+#' in the \code{construct} script?  If \code{FALSE} names are placed in front of 
+#' the regular expression chunks.
 #' @param comments.below  logical.  Should comments be included below the regex
 #' in the \code{construct} script?  If \code{FALSE} comments are placed behind 
 #' the regular expression chunks.
@@ -23,7 +26,7 @@
 #' comments(out)
 #' regex(out)
 #' test(out)
-#' cat(get_construct(out))
+#' get_construct(out)
 #' \donttest{
 #' ## On Windows copy to clipboard
 #' get_construct(out, file="clipboard")
@@ -31,8 +34,11 @@
 #' 
 #' ## No names & comments behind regex
 #' myregex2 <- "(\\s*[a-z]+)([^)]+\\))"
-#' get_construct(as.regexr(myregex2, names=FALSE, comments.below=FALSE))
-as.regexr <- function(x, names = TRUE, comments = TRUE, comments.below = TRUE, ...){
+#' get_construct(as.regexr(myregex2, names=FALSE))
+#' get_construct(as.regexr(myregex2, names=FALSE, names.above = TRUE, 
+#'     comments.below = TRUE))
+as.regexr <- function(x, names = TRUE, comments = TRUE, names.above = FALSE, 
+    comments.below = FALSE, ...){
     UseMethod("as.regexr")
 }
 
@@ -47,14 +53,17 @@ as.regexr <- function(x, names = TRUE, comments = TRUE, comments.below = TRUE, .
 #' script?
 #' @param comments  logical.  Should comments be included in the \code{construct} 
 #' script?
-#' @param comments.below  logical.  Should comments be included below the regex
+#' @param names.above logical.  Should ames be included above the regex
+#' in the \code{construct} script?  If \code{FALSE} names are placed in front of 
+#' the regular expression chunks.
+#' @param comments.below logical.  Should comments be included below the regex
 #' in the \code{construct} script?  If \code{FALSE} comments are placed behind 
 #' the regular expression chunks.
 #' @param \ldots Ignored.
 #' @export
 #' @method as.regexr character
 as.regexr.character <- function(x, names = TRUE, comments = TRUE, 
-    comments.below = TRUE, ...){
+    names.above = FALSE, comments.below = FALSE, ...){
 
     out <- regex_break_down(x)
 
@@ -87,6 +96,7 @@ as.regexr.character <- function(x, names = TRUE, comments = TRUE,
     })
 
     out <- x
+
     class(out) <- c("regexr", "reverse_construct", class(out))
     attributes(out)[["regex"]] <- setNames(sapply(pieces4regexr, "[", 1), 
         names(pieces4regexr))
@@ -105,15 +115,27 @@ as.regexr.character <- function(x, names = TRUE, comments = TRUE,
         indent <- (nchar(x[[1]]) - nchar(gsub("^\\s+", "", x[[1]]))) 
         x[[1]] <- paste0("    ", x[[1]])
 
-
         if (isTRUE(names)) {
-            thenames <- paste0(paste(rep(" ", indent), collapse=""), "`", 
-                names(pieces)[i], "` = \n")
+            if (isTRUE(names.above)) {
+                thenames <- paste0(paste(rep(" ", indent), collapse=""), "`", 
+                    names(pieces)[i], "` = \n")
+            } else {
+                thenames <- paste0(paste(rep(" ", indent), collapse=""), "`", 
+                    names(pieces)[i], "` = ")
+            }
         } else {
             thenames <- ""
         }
         
-        theregexes <- gsub("(^\\s+)", "\\1\"", x[[1]])
+        if (isTRUE(names)) {
+            if (isTRUE(names.above)) {
+                theregexes <- gsub("(^\\s+)", "\\1\"", x[[1]])
+            } else {
+                theregexes <- gsub("^\\s+", "\\1\"", x[[1]])
+            }
+        } else {
+            theregexes <- gsub("^\\s{4}", "", gsub("(^\\s+)", "\\1\"", x[[1]]))
+        }
 
         if (isTRUE(comments)) {
             if (isTRUE(comments.below)) {
@@ -122,13 +144,14 @@ as.regexr.character <- function(x, names = TRUE, comments = TRUE,
             } else {
                 thecomments <- paste0("\"", 
                     paste(rep(" ", indent + (max.nchar.regex - nchar(theregexes)) + 10), 
-                    collapse=""), "%:)%\"", x[[2]], "\"")
+                    collapse=""), "%:)%  \"", x[[2]], "\"")
             }
         } else {
             thecomments <- ""
         }
         paste0(thenames, theregexes, thecomments)
     })
+
     reverse_construct <- paste0("construct(\n", 
         paste(pieces4construct, collapse=",\n"), "\n)\n")
     class(reverse_construct) <- c("reverse_construct", class(reverse_construct))
@@ -166,6 +189,9 @@ print.reverse_construct <- function(x, file = "", ...){
 #' script?
 #' @param comments  logical.  Should comments be included in the \code{construct} 
 #' script?
+#' @param names.above logical.  Should ames be included above the regex
+#' in the \code{construct} script?  If \code{FALSE} names are placed in front of 
+#' the regular expression chunks.
 #' @param comments.below  logical.  Should comments be included below the regex
 #' in the \code{construct} script?  If \code{FALSE} comments are placed behind 
 #' the regular expression chunks.
@@ -273,4 +299,3 @@ regex_break_down <- function(pattern){
 
     lns
 }
-

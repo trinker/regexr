@@ -12,8 +12,9 @@ expressions in a way that is similar to the ways R code is written.
 The tools allow the user to (1) write in smaller, modular, named, regular
 expression chunks, (2) write top to bottom, rather than a single string (3)
 comment individual chunks, (4) indent expressions to represent regular
-expression groups, and (5) test the validity of the concatenated expression
-and the modular chunks. \cr \cr
+expression groups, (5) test the validity of the concatenated expression
+and the modular chunks, and (6) test the validity of the concatenated
+expression and the modular chunks.. \cr \cr
 This framework harnesses the power and flexibility of regular expressions
 but provides a structural frame that is more consistent with both code
 writing and natural language conventions.

@@ -16,7 +16,8 @@
 2. Write top to bottom, rather than a single string    
 3. Comment individual chunks    
 4. Indent expressions to represent regular expression groups
-5. Test the validity of the *concatenated expression* and the modular chunks     
+5. Add vertical line spaces and R comments (i.e., #)
+6. Test the validity of the *concatenated expression* and the modular chunks     
 
 This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both code writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.
 
@@ -61,11 +62,6 @@ library(regexr)
 
 The `construct` function creates an object of the class `regexr`.  This is a character string with meta expression information contained in the object's attributes.
 
-Notice that the *regular expression chunks* follow the following convention:
-
-> name     
--> regular expression      
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  -> comment     
 
 The `%:)%` binary operator allows the user to optionally add comments to the regular expressions.  The `%:)%`, containing a smiley face emoticon, is used here because commented code/expressions is happy code&#9786;.
 
@@ -73,25 +69,19 @@ The `%:)%` binary operator allows the user to optionally add comments to the reg
 
 ```r
 m <- construct(
-    space =
-        "\\s+"
-            %:)%"I see",
-
-    simp =
-        "(?<=(foo))",
-
-    or =
-        "(;|:)\\s*"
-            %:)%"comment on what this does",
-
-    "[a]s th[atey]"
+    space =   "\\s+"              %:)%  "I see",
+    simp =    "(?<=(foo))",
+    or =      "(;|:)\\s*"         %:)%  "comment on what this does",
+    is_then = "[ia]s th[ae]n"
 )
 m
 ```
 
 ```
-## [1] "\\s+(?<=(foo))(;|:)\\s*[a]s th[atey]"
+## [1] "\\s+(?<=(foo))(;|:)\\s*[ia]s th[ae]n"
 ```
+
+To see a larger script of a regular expession managed by **regexr** for the **qdapRegex** package [CLICK HERE](https://raw.githubusercontent.com/trinker/qdapRegex/master/inst/regex_scripts/rm_citation2.R).
 
 ### Viewing the `regexr` Object
 
@@ -104,7 +94,7 @@ summary(m)
 
 ```
 ## 
-##  \s+(?<=(foo))(;|:)\s*[a]s th[atey] 
+##  \s+(?<=(foo))(;|:)\s*[ia]s th[ae]n 
 ##  ==================================
 ```
 
@@ -121,8 +111,8 @@ summary(m)
 ## NAME   : or
 ## COMMENT: "comment on what this does"
 ## 
-## REGEX 4: [a]s th[atey]
-## NAME   : 
+## REGEX 4: [ia]s th[ae]n
+## NAME   : is_then
 ## COMMENT:
 ```
 
@@ -145,8 +135,8 @@ unglue(m)
 ## $or
 ## [1] "(;|:)\\s*"
 ## 
-## [[4]]
-## [1] "[a]s th[atey]"
+## $is_then
+## [1] "[ia]s th[ae]n"
 ```
 
 ### Get/Set Comments, Regexes, and Names of a `regexr` Object.
@@ -169,8 +159,8 @@ regex(m)
 ## $or
 ## [1] "(;|:)\\s*"
 ## 
-## [[4]]
-## [1] "[a]s th[atey]"
+## $is_then
+## [1] "[ia]s th[ae]n"
 ```
 
 ```r
@@ -187,7 +177,7 @@ comments(m)
 ## $or
 ## [1] "comment on what this does"
 ## 
-## [[4]]
+## $is_then
 ## NULL
 ```
 
@@ -196,19 +186,19 @@ names(m)
 ```
 
 ```
-## [1] "space" "simp"  "or"    ""
+## [1] "space"   "simp"    "or"      "is_then"
 ```
 
 ```r
-regex(m)[4] <- "(F{O}2)|(BAR)"
+regex(m)[4] <- "(FO{2})|(BAR)"
 comments(m)[4] <- "Look for FOO or BAR"
-names(m)[4] <- "foob_bar"
+names(m)[4] <- "foo_bar"
 summary(m)
 ```
 
 ```
 ## 
-##  \s+(?<=(foo))(;|:)\s*(F{O}2)|(BAR) 
+##  \s+(?<=(foo))(;|:)\s*(FO{2})|(BAR) 
 ##  ==================================
 ```
 
@@ -225,8 +215,8 @@ summary(m)
 ## NAME   : or
 ## COMMENT: "comment on what this does"
 ## 
-## REGEX 4: (F{O}2)|(BAR)
-## NAME   : foob_bar
+## REGEX 4: (FO{2})|(BAR)
+## NAME   : foo_bar
 ## COMMENT: "Look for FOO or BAR"
 ```
 
@@ -244,8 +234,8 @@ test(m)
 ## [1] TRUE
 ## 
 ## $chunks
-##    space     simp       or foob_bar 
-##     TRUE     TRUE     TRUE     TRUE
+##   space    simp      or foo_bar 
+##    TRUE    TRUE    TRUE    TRUE
 ```
 
 ```r
@@ -256,7 +246,7 @@ test(m)
 ```
 ## Warning in test.regexr(m): The concatenated regex is not valid
 ## 
-## \s+(?<=(foo))(;|:)\s*(F{O}2)|(BAR)(([A-Z]|(\d{5}))
+## \s+(?<=(foo))(;|:)\s*(FO{2})|(BAR)(([A-Z]|(\d{5}))
 ```
 
 ```
@@ -272,8 +262,8 @@ test(m)
 ## [1] FALSE
 ## 
 ## $chunks
-##    space     simp       or foob_bar                            
-##     TRUE     TRUE     TRUE     TRUE    FALSE    FALSE    FALSE
+##   space    simp      or foo_bar                         
+##    TRUE    TRUE    TRUE    TRUE   FALSE   FALSE   FALSE
 ```
 
 ### Regex to `regexr`: Reverse Construction
@@ -341,48 +331,67 @@ get_construct(out)
 
 ```
 construct(
-    `1` = 
-        "\\d{0,2}"
-            %:)%"digits (0-9) (between 0 and 2 times (matching the most amount possible))",
-    `2` = 
-        ":"
-            %:)%"':'",
-    `3` = 
-        "\\d{2}"
-            %:)%"digits (0-9) (2 times)",
-    `4` = 
-        "(?:"
-            %:)%"group, but do not capture (optional (matching the most amount possible)):",
-        `5` = 
-            "[:.]"
-                %:)%"any character of: ':', '.'",
-        `6` = 
-            "\\d+"
-                %:)%"digits (0-9) (1 or more times (matching the most amount possible))",
-    `7` = 
-        ")?"
-            %:)%"end of grouping"
+    `1` = "\\d{0,2}"               %:)%  "digits (0-9) (between 0 and 2 times (matching the most amount possible))",
+    `2` = ":"                      %:)%  "':'",
+    `3` = "\\d{2}"                 %:)%  "digits (0-9) (2 times)",
+    `4` = "(?:"                    %:)%  "group, but do not capture (optional (matching the most amount possible)):",
+        `5` = "[:.]"                       %:)%  "any character of: ':', '.'",
+        `6` = "\\d+"                       %:)%  "digits (0-9) (1 or more times (matching the most amount possible))",
+    `7` = ")?"                     %:)%  "end of grouping"
 )
 ```
 
-Some may prefer that the `construct` script contains no names and/or comments.  The user may also wish to place comments behind the *regular expression chunks*.
+Some may prefer that the `construct` script contains no names and/or comments.  The user may also wish to place comments indented below the *regular expression chunks* or names outdented and above the *regular expression chunks*.
 
 
 ```r
 myregex2 <- "(\\s*[a-z]+)([^)]+\\))"
-get_construct(as.regexr(myregex2, names=FALSE, comments.below=FALSE))
+get_construct(as.regexr(myregex2, comments.below=TRUE, names.above = TRUE))
 ```
 
 ```
 construct(
-        "("              %:)%"group and capture to \\1:",
-            "\\s*"           %:)%"whitespace (\n, \r, \t, \f, and \" \") (0 or more times (matching the most amount possible))",
-            "[a-z]+"         %:)%"any character of: 'a' to 'z' (1 or more times (matching the most amount possible))",
-        ")"              %:)%"end of \\1",
-        "("              %:)%"group and capture to \\2:",
-            "[^)]+"          %:)%"any character except: ')' (1 or more times (matching the most amount possible))",
-            "\\)"            %:)%"')'",
-        ")"              %:)%"end of \\2"
+    `1` = 
+        "("
+            %:)%"group and capture to \\1:",
+        `2` = 
+            "\\s*"
+                %:)%"whitespace (\n, \r, \t, \f, and \" \") (0 or more times (matching the most amount possible))",
+        `3` = 
+            "[a-z]+"
+                %:)%"any character of: 'a' to 'z' (1 or more times (matching the most amount possible))",
+    `4` = 
+        ")"
+            %:)%"end of \\1",
+    `5` = 
+        "("
+            %:)%"group and capture to \\2:",
+        `6` = 
+            "[^)]+"
+                %:)%"any character except: ')' (1 or more times (matching the most amount possible))",
+        `7` = 
+            "\\)"
+                %:)%"')'",
+    `8` = 
+        ")"
+            %:)%"end of \\2"
+)
+```
+
+```r
+get_construct(as.regexr(myregex2, names = FALSE))
+```
+
+```
+construct(
+    "("                  %:)%  "group and capture to \\1:",
+        "\\s*"               %:)%  "whitespace (\n, \r, \t, \f, and \" \") (0 or more times (matching the most amount possible))",
+        "[a-z]+"             %:)%  "any character of: 'a' to 'z' (1 or more times (matching the most amount possible))",
+    ")"                  %:)%  "end of \\1",
+    "("                  %:)%  "group and capture to \\2:",
+        "[^)]+"              %:)%  "any character except: ')' (1 or more times (matching the most amount possible))",
+        "\\)"                %:)%  "')'",
+    ")"                  %:)%  "end of \\2"
 )
 ```
 
@@ -395,9 +404,9 @@ library(qdapRegex)
 devtools::install_github("richierocks/regex")
 
 out <- construct(
-    year = YEAR                   %:)%"a year",
-    or = "|"                      %:)%"or",
-    min = ":" %c% MINUTE          %:)%"colon followed by valid minutes"
+    year = YEAR                    %:)%  "a year",
+    or =   "|"                     %:)%  "or",
+    min =  ":" %c% MINUTE          %:)%  "colon followed by valid minutes"
 )
 ```
 

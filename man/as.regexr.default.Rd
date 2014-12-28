@@ -4,7 +4,7 @@
 \title{Coerce default to regexr}
 \usage{
 \method{as.regexr}{default}(x, names = TRUE, comments = TRUE,
-  comments.below = TRUE, ...)
+  names.above = FALSE, comments.below = FALSE, ...)
 }
 \arguments{
 \item{x}{The object to be corced to \code{regexr}.}
@@ -14,6 +14,10 @@ script?}
 
 \item{comments}{logical.  Should comments be included in the \code{construct}
 script?}
+
+\item{names.above}{logical.  Should ames be included above the regex
+in the \code{construct} script?  If \code{FALSE} names are placed in front of
+the regular expression chunks.}
 
 \item{comments.below}{logical.  Should comments be included below the regex
 in the \code{construct} script?  If \code{FALSE} comments are placed behind

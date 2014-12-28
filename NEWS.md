@@ -17,7 +17,7 @@ And constructed with the following guidelines:
 * Bug fixes and misc changes bumps the patch
 
 
- <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 0.0.3
+ <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 0.0.3 - 0.0.4
 ----------------------------------------------------------------
 
 **BUG FIXES**
@@ -41,6 +41,14 @@ And constructed with the following guidelines:
   `cat` rather than `message`. 
 
 **CHANGES**
+
+* The recommended structure for the `construct` code is no longer a separate 
+  line for each regular expression chunk's *name*, *regex*, and *comment* but
+  *name*, *regex*, and *comment* all go on the same line.   This makes the  code
+  less cluttered and easier to navigate, particularity if indentation is used to
+  indicate nested grouping structures.  Users may choose whatever configuration 
+  that suits their preference, however, examples will generally be shown via the 
+  new recommended, single line, structure. 
 
  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 0.0.1 - 0.0.2
 ----------------------------------------------------------------

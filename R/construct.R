@@ -27,18 +27,10 @@
 #' 
 #' ## Example 1
 #' m <- construct(
-#'     space = 
-#'         "\\s+" 
-#'             %:)%"I see",
-#' 
-#'     simp = 
-#'         "(?<=(foo))",
-#' 
-#'     or = 
-#'         "(;|:)\\s*"  
-#'             %:)%"comment on what this does",
-#' 
-#'     "[a]s th[atey]"
+#'     space =   "\\s+"              %:)%  "I see",
+#'     simp =    "(?<=(foo))",
+#'     or =      "(;|:)\\s*"         %:)%  "comment on what this does",
+#'     is_then = "[ia]s th[ae]n"
 #' )
 #' 
 #' m
@@ -46,7 +38,7 @@
 #' summary(m)
 #' regex(m)
 #' comments(m)
-#' regex(m)[4] <- "(F{O}2)|(BAR)"
+#' regex(m)[4] <- "(FO{2})|(BAR)"
 #' summary(m)
 #' test(m)
 #' \donttest{
@@ -57,25 +49,23 @@
 #' library(qdapRegex)
 #' explain(m)
 #' 
-#' ## Example 2 (Twitter Handle)
+#' ## Example 2 (Twitter Handle 2 ways)
+#' ## Bigger Chunks
 #' twitter <- construct(
-#'         neg_lookbehing = 
-#'             "(?<![@@\\w])"
-#'                 %:)%"Make sure the string doesn't start with @@ or a word",
-#'         at = 
-#'             "(@@)"
-#'                 %:)%"capture starting with @@ symbol",
-#'         s_gr1 = 
-#'             "("
-#'                 %:)%"Opening parenthesis group 1",            
-#'             handle =     
-#'                 "([a-z0-9_]{1,15})"
-#'                 %:)%"Mix of 15 letters, numbers, or underscores", 
-#'             boundary =
-#'                 "\\b",
-#'         e_gr1 = 
-#'             ")"
-#'                 %:)%"Closing parenthesis group 1"
+#'   no_at_wrd = "(?<![@@\\w])"            %:)%  "Ensure doesn't start with @@ or a word",
+#'   at =        "(@@)"                    %:)%  "Capture starting with @@ symbol",
+#'   handle =    "(([a-z0-9_]{1,15})\\b)"  %:)%  "Any 15 letters, numbers, or underscores"  
+#' )
+#' 
+#' ## Smaller Chunks
+#' twitter <- construct(
+#'   no_at_wrd = "(?<![@@\\w])"          %:)%  "Ensure doesn't start with @@ or a word",
+#'   at =        "(@@)"                  %:)%  "Capture starting with @@ symbol",
+#'   
+#'   s_gr1 =     "("                     %:)%  "GROUP 1 START",            
+#'       handle =    "([a-z0-9_]{1,15})"       %:)%  "Any 15 letters, numbers, or underscores", 
+#'       boundary =  "\\b",
+#'   e_gr1 =     ")"                      %:)%"GROUP 1 END"
 #' )
 #' 
 #' twitter
@@ -100,15 +90,9 @@
 #' 
 #' ## Example 3 (Modular Chunks)
 #' combined <- construct(
-#'     twitter = 
-#'         twitter 
-#'             %:)%"Twitter regex created previously",
-#'     or =
-#'         "|"
-#'             %:)%"Join the twitter handle regex and a hash tag regex",
-#'     hash =
-#'         grab("@@rm_hash")
-#'             %:)%"Twitter hash tag regex"
+#'     twitter = twitter               %:)%"Twitter regex created previously",
+#'     or =      "|"                   %:)%"Join handle regex & hash tag regex",
+#'     hash =    grab("@@rm_hash")     %:)%"Twitter hash tag regex"
 #' )
 #' 
 #' combined
@@ -119,25 +103,28 @@
 #' test(combined)
 #' explain(combined)
 #' 
-#' ## Different Structure: Example from Martin Fowler: 
+#' ## Different Structure (no names): Example from Martin Fowler: 
+#' ## *Note: Fowler argues for improved choices in regex representation
+#' ## and names that make the regex functionality more evident, commenting
+#' ## only where needed. See:
 #' ## browseURL("http://martinfowler.com/bliki/ComposedRegex.html")
 #' 
 #' pattern <- construct(
-#'         '@@"^score'       ,
-#'         '\\s+'            ,
-#'         '(\\d+)'          %:)% 'points',
-#'         '\\s+'            ,
-#'         'for'             ,
-#'         '\\s+'            ,
-#'         '(\\d+)'          %:)% 'number of nights',
-#'         '\\s+'            ,
-#'         'night'           ,
-#'         's?'              %:)% 'optional plural',
-#'         '\\s+'            ,
-#'         'at'              ,
-#'         '\\s+'            ,
-#'         '(.*)'            %:)% 'hotel name',
-#'         '";'
+#'     '@@"^score',
+#'     '\\s+',
+#'     '(\\d+)'          %:)% 'points',
+#'     '\\s+',
+#'     'for',
+#'     '\\s+',
+#'     '(\\d+)'          %:)% 'number of nights',
+#'     '\\s+',
+#'     'night'           ,
+#'     's?'              %:)% 'optional plural',
+#'     '\\s+',
+#'     'at',
+#'     '\\s+',
+#'     '(.*)'            %:)% 'hotel name',
+#'     '";'
 #' )
 #'   
 #' summary(pattern)

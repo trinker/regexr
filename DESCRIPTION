@@ -1,7 +1,7 @@
 Package: regexr
 Type: Package
 Title: Readable Regular Expressions
-Version: 0.0.3
+Version: 0.0.4
 Date: 2014-04-19
 Authors@R: c(person("Tyler", "Rinker", email = "tyler.rinker@gmail.com",
     role = c("aut", "cre")))
@@ -18,8 +18,9 @@ Description: An R framework for constructing human readable regular
     The tools allow the user to (1) write in smaller, modular, named, regular
     expression chunks, (2) write top to bottom, rather than a single string (3)
     comment individual chunks, (4) indent expressions to represent regular
-    expression groups, and (5) test the validity of the concatenated expression
-    and the modular chunks.
+    expression groups, (5) Add vertical line spaces and R comments (i.e., #),
+    and (6) test the validity of the concatenated expression and the modular
+    chunks.
 License: GPL-2
 URL: http://trinker.github.com/regexr/
 BugReports: http://github.com/trinker/regexr/issues
