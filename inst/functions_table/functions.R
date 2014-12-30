@@ -7,4 +7,4 @@
 | `subs`   |  Get/Set Sub-expressions in a `regexr` object |
 | `comments`   |  Get/Set Comments of Sub-expressions in a `regexr` object |
 | `names`   |  Get/Set Names of Sub-expressions in a `regexr` object |
-| `as.regexr`| Coerce regular expressions to `regexr` object |
+| `as.regexr`| Coerce Existing Regular Expressions to `regexr` object |
