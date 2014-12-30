@@ -96,7 +96,7 @@ The `unglue` function splits the concatenated `regexr` expression into sub-expre
 unglue(m)
 ```
 
-### Get/Set Comments, Regexes, and Names of a `regexr` Object.
+### Get/Set Sub-Expressions, Comments, and Names of the Sub-Expressions of a `regexr` Object.
 
 The `subs`, `comments`, and `names` functions allow the user to view and alter the sub-expressions, comments, and names of the sub-expressions from a `regexr` object.
 
