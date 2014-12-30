@@ -67,7 +67,7 @@ library(regexr)
 
 ### Construction a Regular Expression
 
-The `construct` function creates an object of the class `regexr`.  This is a character string with meta expression information (i.e., sub-expressions and coresponding names and comments) contained in the object's attributes.
+The `construct` function creates an object of the class `regexr`.  This is a character string with meta expression information (i.e., sub-expressions with coresponding names and comments) contained in the object's attributes.
 
 
 The `%:)%` binary operator allows the user to optionally add comments to the sub-expressions.  The `%:)%`, containing a smiley face emoticon, is used here because commented code/expressions is happy code&#9786;.
