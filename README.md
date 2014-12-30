@@ -12,12 +12,12 @@
 
 [regexr](http://trinker.github.com/regexr_dev) is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to: 
 
-1. Write in smaller, modular, named, *regular expression chunks*    
+1. Write in smaller, modular, named, *sub-expressions*    
 2. Write top to bottom, rather than a single string    
 3. Comment individual chunks    
 4. Indent expressions to represent regular expression groups
 5. Add vertical line spaces and R comments (i.e., `#`)
-6. Test the validity of the *concatenated expression* and the modular *regular expression chunks*      
+6. Test the validity of the *concatenated expression* and the modular *sub-expressions*      
 
 This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both code writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.
 
@@ -51,12 +51,12 @@ You are welcome to:
 | Function             |  Description         |
 |----------------------|----------------------|
 | `construct`  | Write Human Readable *Concatenated Regex* | 
-| `%:)%`  | Add Comments to a Regex Within `construct` | 
-| `unglue`  | Break *Concatenated Regex* Into *Regex Chunks* | 
-| `test`   |  Test Validity of *Concatenated Regex* & *Regex Chunks* |
-| `regex`   |  Get/Set Regexes in a `regexr` object |
-| `comments`   |  Get/Set Comments in a `regexr` object |
-| `names`   |  Get/Set Names in a `regexr` object |
+| `%:)%`  | Add Comments to a Sub-expressions Within `construct` | 
+| `unglue`  | Break *Concatenated Regex* Into *Sub-expressions* | 
+| `test`   |  Test Validity of *Concatenated Regex* & *Sub-expressions* |
+| `subs`   |  Get/Set Sub-expressions in a `regexr` object |
+| `comments`   |  Get/Set Comments of Sub-expressions in a `regexr` object |
+| `names`   |  Get/Set Names of Sub-expressions in a `regexr` object |
 | `as.regexr`| Coerce regular expressions to `regexr` object |
 
 ## Examples
@@ -106,21 +106,21 @@ summary(m)
 ```
 
 ```
-## REGEX 1: \s+
-## NAME   : space
-## COMMENT: "I see"
+## SUB-EXPR 1: \s+
+## NAME      : space
+## COMMENT   : "I see"
 ## 
-## REGEX 2: (?<=(foo))
-## NAME   : simp
-## COMMENT: 
+## SUB-EXPR 2: (?<=(foo))
+## NAME      : simp
+## COMMENT   : 
 ## 
-## REGEX 3: (;|:)\s*
-## NAME   : or
-## COMMENT: "comment on what this does"
+## SUB-EXPR 3: (;|:)\s*
+## NAME      : or
+## COMMENT   : "comment on what this does"
 ## 
-## REGEX 4: [ia]s th[ae]n
-## NAME   : is_then
-## COMMENT:
+## SUB-EXPR 4: [ia]s th[ae]n
+## NAME      : is_then
+## COMMENT   :
 ```
 
 ### Split `regexr` Object 
@@ -153,7 +153,7 @@ The `comments`, `regex`, and `names` functions allow the user to view and alter 
 
 
 ```r
-regex(m)
+subs(m)
 ```
 
 ```
@@ -197,7 +197,7 @@ names(m)
 ```
 
 ```r
-regex(m)[4] <- "(FO{2})|(BAR)"
+subs(m)[4] <- "(FO{2})|(BAR)"
 comments(m)[4] <- "Look for FOO or BAR"
 names(m)[4] <- "foo_bar"
 summary(m)
@@ -210,21 +210,21 @@ summary(m)
 ```
 
 ```
-## REGEX 1: \s+
-## NAME   : space
-## COMMENT: "I see"
+## SUB-EXPR 1: \s+
+## NAME      : space
+## COMMENT   : "I see"
 ## 
-## REGEX 2: (?<=(foo))
-## NAME   : simp
-## COMMENT: 
+## SUB-EXPR 2: (?<=(foo))
+## NAME      : simp
+## COMMENT   : 
 ## 
-## REGEX 3: (;|:)\s*
-## NAME   : or
-## COMMENT: "comment on what this does"
+## SUB-EXPR 3: (;|:)\s*
+## NAME      : or
+## COMMENT   : "comment on what this does"
 ## 
-## REGEX 4: (FO{2})|(BAR)
-## NAME   : foo_bar
-## COMMENT: "Look for FOO or BAR"
+## SUB-EXPR 4: (FO{2})|(BAR)
+## NAME      : foo_bar
+## COMMENT   : "Look for FOO or BAR"
 ```
 
 ### Testing Regular Expressions
@@ -240,13 +240,13 @@ test(m)
 ## $regex
 ## [1] TRUE
 ## 
-## $chunks
+## $subexpressions
 ##   space    simp      or foo_bar 
 ##    TRUE    TRUE    TRUE    TRUE
 ```
 
 ```r
-regex(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")")
+subs(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")")
 test(m)
 ```
 
@@ -257,7 +257,7 @@ test(m)
 ```
 
 ```
-## Warning in test.regexr(m): The following regex chunks are not valid in isolation:
+## Warning in test.regexr(m): The following regex sub-expressions are not valid in isolation:
 ## 
 ## (1) (
 ## (2) ([A-Z]|(\d{5})
@@ -268,12 +268,12 @@ test(m)
 ## $regex
 ## [1] FALSE
 ## 
-## $chunks
+## $subexpressions
 ##   space    simp      or foo_bar                         
 ##    TRUE    TRUE    TRUE    TRUE   FALSE   FALSE   FALSE
 ```
 
-### Regex to `regexr`: Reverse Construction
+### Existing Regular Expression to `regexr`: Reverse Construction
 
 `as.regexr` allows the user to construct `regexr` objects from a regular expression and in the process generate an auto-commented & named `construct` script. 
 
@@ -299,33 +299,33 @@ summary(out)
 ```
 
 ```
-## REGEX 1: \d{0,2}
-## NAME   : 1
-## COMMENT: "digits (0-9) (between 0 and 2 times (matching the most amount possible))"
+## SUB-EXPR 1: \d{0,2}
+## NAME      : 1
+## COMMENT   : "digits (0-9) (between 0 and 2 times (matching the most amount possible))"
 ## 
-## REGEX 2: :
-## NAME   : 2
-## COMMENT: "':'"
+## SUB-EXPR 2: :
+## NAME      : 2
+## COMMENT   : "':'"
 ## 
-## REGEX 3: \d{2}
-## NAME   : 3
-## COMMENT: "digits (0-9) (2 times)"
+## SUB-EXPR 3: \d{2}
+## NAME      : 3
+## COMMENT   : "digits (0-9) (2 times)"
 ## 
-## REGEX 4: (?:
-## NAME   : 4
-## COMMENT: "group, but do not capture (optional (matching the most amount possible)):"
+## SUB-EXPR 4: (?:
+## NAME      : 4
+## COMMENT   : "group, but do not capture (optional (matching the most amount possible)):"
 ## 
-## REGEX 5: [:.]
-## NAME   : 5
-## COMMENT: "any character of: ':', '.'"
+## SUB-EXPR 5: [:.]
+## NAME      : 5
+## COMMENT   : "any character of: ':', '.'"
 ## 
-## REGEX 6: \d+
-## NAME   : 6
-## COMMENT: "digits (0-9) (1 or more times (matching the most amount possible))"
+## SUB-EXPR 6: \d+
+## NAME      : 6
+## COMMENT   : "digits (0-9) (1 or more times (matching the most amount possible))"
 ## 
-## REGEX 7: )?
-## NAME   : 7
-## COMMENT: "end of grouping"
+## SUB-EXPR 7: )?
+## NAME      : 7
+## COMMENT   : "end of grouping"
 ```
 
 
@@ -348,7 +348,7 @@ construct(
 )
 ```
 
-Some may prefer that the `construct` script contains no names and/or comments.  The user may also wish to place comments indented below the *regular expression chunks* or names outdented and above the *regular expression chunks*.
+Some may prefer that the `construct` script contains no names and/or comments.  The user may also wish to place comments indented below the *sub-expressions* or names outdented and above the *sub-expressions*.
 
 
 ```r
@@ -404,7 +404,7 @@ construct(
 
 ## Using regexr With the regex Package
 
-Richard Cotton maintains the [`regex`](https://github.com/richierocks/regex) package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the **regexr** framework to maintain manageable commented and named *regular expression chunks*.
+Richard Cotton maintains the [`regex`](https://github.com/richierocks/regex) package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the **regexr** framework to maintain manageable commented and named *sub-expressions*.
 
 ```r
 devtools::install_github("richierocks/regex")

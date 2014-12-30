@@ -12,12 +12,12 @@
 
 [regexr](http://trinker.github.com/regexr_dev) is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to: 
 
-1. Write in smaller, modular, named, *regular expression chunks*    
+1. Write in smaller, modular, named, *sub-expressions*    
 2. Write top to bottom, rather than a single string    
 3. Comment individual chunks    
 4. Indent expressions to represent regular expression groups
 5. Add vertical line spaces and R comments (i.e., `#`)
-6. Test the validity of the *concatenated expression* and the modular *regular expression chunks*      
+6. Test the validity of the *concatenated expression* and the modular *sub-expressions*      
 
 This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both code writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.
 
@@ -102,10 +102,10 @@ The `comments`, `regex`, and `names` functions allow the user to view and alter 
 
 
 ```{r}
-regex(m)
+subs(m)
 comments(m)
 names(m)
-regex(m)[4] <- "(FO{2})|(BAR)"
+subs(m)[4] <- "(FO{2})|(BAR)"
 comments(m)[4] <- "Look for FOO or BAR"
 names(m)[4] <- "foo_bar"
 summary(m)
@@ -117,11 +117,11 @@ The `test` function allows the user to check if the concatenated `regexr` expres
 
 ```{r}
 test(m)
-regex(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")")
+subs(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")")
 test(m)
 ```
 
-### Regex to `regexr`: Reverse Construction
+### Existing Regular Expression to `regexr`: Reverse Construction
 
 `as.regexr` allows the user to construct `regexr` objects from a regular expression and in the process generate an auto-commented & named `construct` script. 
 
@@ -139,7 +139,7 @@ We can use `get_construct` to extract an auto-commented & named `construct` scri
 get_construct(out)
 ```
 
-Some may prefer that the `construct` script contains no names and/or comments.  The user may also wish to place comments indented below the *regular expression chunks* or names outdented and above the *regular expression chunks*.
+Some may prefer that the `construct` script contains no names and/or comments.  The user may also wish to place comments indented below the *sub-expressions* or names outdented and above the *sub-expressions*.
 
 ```{r, comment=NA}
 myregex2 <- "(\\s*[a-z]+)([^)]+\\))"
@@ -149,7 +149,7 @@ get_construct(as.regexr(myregex2, names = FALSE))
 
 ## Using regexr With the regex Package
 
-Richard Cotton maintains the [`regex`](https://github.com/richierocks/regex) package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the **regexr** framework to maintain manageable commented and named *regular expression chunks*.
+Richard Cotton maintains the [`regex`](https://github.com/richierocks/regex) package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the **regexr** framework to maintain manageable commented and named *sub-expressions*.
 
 ```r
 devtools::install_github("richierocks/regex")

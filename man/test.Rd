@@ -9,14 +9,14 @@ test(x, quiet, ...)
 \item{x}{A \code{regexr} object.}
 
 \item{quiet}{logical.  Should \code{test} print warnings about the
-concatenated expression and individual chunks?}
+concatenated expression and individual sub-expressions?}
 
 \item{\ldots}{Ignored.}
 }
 \value{
 Returns a list of two logical vectors.  The first vector is a test of
 the concatenated expression.  The second vector is a logical test of the
-validity of each regular expression chunk that makes up the concatenated
+validity of each sub-expressions that makes up the concatenated
 expression.
 }
 \description{
@@ -41,7 +41,7 @@ m <- construct(
 
 test(m)
 \donttest{
-regex(m)[5:7] <- c("(", "([A-Z]|(\\\\d{5})", ")")
+subs(m)[5:7] <- c("(", "([A-Z]|(\\\\d{5})", ")")
 test(m)
 }
 }

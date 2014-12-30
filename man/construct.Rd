@@ -6,8 +6,8 @@
 construct(...)
 }
 \arguments{
-\item{\ldots}{A series of comma separated character strings (chunks) that may
-optionally be named, commented (see \code{?`\%:)\%`}, and indented.}
+\item{\ldots}{A series of comma separated character strings (sub-expressions)
+that may optionally be named, commented (see \code{?`\%:)\%`}, and indented.}
 }
 \value{
 Returns a character vector of the class \code{regexr}. The attributes
@@ -15,13 +15,14 @@ of the returned object retain the original name and comment properties.
 }
 \description{
 This function is used to construct human readable regular expressions from
-chunks.  The user may provide additional meta information about each chunk.
-This meta information is an optional name and comment for the chunk.  This
-allows one to write regular expressions in a fashion similar to writing code,
-that is the regular expression is written top to bottom, the syntax is broken
-up into manageable chunks, the expression can be indented to give structural
-insight such as nested groups, and the chunks can be commented to provide
-linguistic grounding for more complex chunks.
+sub-expressions.  The user may provide additional meta information about each
+sub-expression. This meta information is an optional name and comment for the
+sub-expressions.  This allows one to write regular expressions in a fashion
+similar to writing code, that is the regular expression is written top to
+bottom, the syntax is broken up into manageable chunks, the sub-expressions
+can be indented to give structural insight such as nested groups.  Finally,
+sub-expressions can be commented to provide linguistic grounding for more
+complex sub-expressions.
 }
 \examples{
 ## Minimal Example
@@ -29,7 +30,7 @@ minimal <- construct("a", "b", "c")
 minimal
 unglue(minimal)
 comments(minimal)
-regex(minimal)
+subs(minimal)
 test(minimal)
 summary(minimal)
 
@@ -44,13 +45,13 @@ m <- construct(
 m
 unglue(m)
 summary(m)
-regex(m)
+subs(m)
 comments(m)
-regex(m)[4] <- "(FO{2})|(BAR)"
+subs(m)[4] <- "(FO{2})|(BAR)"
 summary(m)
 test(m)
 \donttest{
-regex(m)[5:7] <- c("(", "([A-Z]|(\\\\d{5})", ")")
+subs(m)[5:7] <- c("(", "([A-Z]|(\\\\d{5})", ")")
 test(m)
 }
 
@@ -58,14 +59,14 @@ library(qdapRegex)
 explain(m)
 
 ## Example 2 (Twitter Handle 2 ways)
-## Bigger Chunks
+## Bigger Sub-expressions
 twitter <- construct(
   no_at_wrd = "(?<![@\\\\w])"            \%:)\%  "Ensure doesn't start with @ or a word",
   at =        "(@)"                    \%:)\%  "Capture starting with @ symbol",
   handle =    "(([a-z0-9_]{1,15})\\\\b)"  \%:)\%  "Any 15 letters, numbers, or underscores"
 )
 
-## Smaller Chunks
+## Smaller Sub-expressions
 twitter <- construct(
   no_at_wrd = "(?<![@\\\\w])"          \%:)\%  "Ensure doesn't start with @ or a word",
   at =        "(@)"                  \%:)\%  "Capture starting with @ symbol",
@@ -79,7 +80,7 @@ twitter <- construct(
 twitter
 unglue(twitter)
 comments(twitter)
-regex(twitter)
+subs(twitter)
 summary(twitter)
 test(twitter)
 explain(twitter)
@@ -96,7 +97,7 @@ x <- c("@hadley I like #rstats for #ggplot2 work.",
 library(qdapRegex)
 rm_default(x, pattern = twitter, extract = TRUE)
 
-## Example 3 (Modular Chunks)
+## Example 3 (Modular Sub-expression Chunks)
 combined <- construct(
     twitter = twitter               \%:)\%"Twitter regex created previously",
     or =      "|"                   \%:)\%"Join handle regex & hash tag regex",
@@ -106,7 +107,7 @@ combined <- construct(
 combined
 unglue(combined)
 comments(combined)
-regex(combined)
+subs(combined)
 summary(combined)
 test(combined)
 explain(combined)

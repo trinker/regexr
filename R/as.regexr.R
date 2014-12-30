@@ -9,10 +9,10 @@
 #' script?
 #' @param names.above logical.  Should ames be included above the regex
 #' in the \code{construct} script?  If \code{FALSE} names are placed in front of 
-#' the regular expression chunks.
-#' @param comments.below  logical.  Should comments be included below the regex
-#' in the \code{construct} script?  If \code{FALSE} comments are placed behind 
-#' the regular expression chunks.
+#' the sub-expressions.
+#' @param comments.below  logical.  Should comments be included below the 
+#' sub-expressions in the \code{construct} script?  If \code{FALSE} comments 
+#' are placed behind the sub-expressions.
 #' @param \ldots Other arguments passed to \code{as.regexr} methods.
 #' @return Returns a dual \code{regexr} and \code{reverse_construct} object.
 #' @export
@@ -24,7 +24,7 @@
 #' out
 #' summary(out)
 #' comments(out)
-#' regex(out)
+#' subs(out)
 #' test(out)
 #' get_construct(out)
 #' \donttest{
@@ -32,7 +32,7 @@
 #' get_construct(out, file="clipboard")
 #' }
 #' 
-#' ## No names & comments behind regex
+#' ## No names & comments behind sub-expressions
 #' myregex2 <- "(\\s*[a-z]+)([^)]+\\))"
 #' get_construct(as.regexr(myregex2, names=FALSE))
 #' get_construct(as.regexr(myregex2, names=FALSE, names.above = TRUE, 
@@ -53,12 +53,12 @@ as.regexr <- function(x, names = TRUE, comments = TRUE, names.above = FALSE,
 #' script?
 #' @param comments  logical.  Should comments be included in the \code{construct} 
 #' script?
-#' @param names.above logical.  Should ames be included above the regex
+#' @param names.above logical.  Should ames be included above the sub-expressions
 #' in the \code{construct} script?  If \code{FALSE} names are placed in front of 
-#' the regular expression chunks.
-#' @param comments.below logical.  Should comments be included below the regex
-#' in the \code{construct} script?  If \code{FALSE} comments are placed behind 
-#' the regular expression chunks.
+#' the sub-expressions.
+#' @param comments.below logical.  Should comments be included below the 
+#' sub-expressions in the \code{construct} script?  If \code{FALSE} comments are 
+#' placed behind the sub-expressions.
 #' @param \ldots Ignored.
 #' @export
 #' @method as.regexr character
@@ -98,7 +98,7 @@ as.regexr.character <- function(x, names = TRUE, comments = TRUE,
     out <- x
 
     class(out) <- c("regexr", "reverse_construct", class(out))
-    attributes(out)[["regex"]] <- setNames(sapply(pieces4regexr, "[", 1), 
+    attributes(out)[["subs"]] <- setNames(sapply(pieces4regexr, "[", 1), 
         names(pieces4regexr))
     attributes(out)[["comments"]] <- setNames(sapply(pieces4regexr, "[", 2), 
         names(pieces4regexr))
@@ -189,12 +189,12 @@ print.reverse_construct <- function(x, file = "", ...){
 #' script?
 #' @param comments  logical.  Should comments be included in the \code{construct} 
 #' script?
-#' @param names.above logical.  Should ames be included above the regex
+#' @param names.above logical.  Should ames be included above the sub-expressions
 #' in the \code{construct} script?  If \code{FALSE} names are placed in front of 
-#' the regular expression chunks.
-#' @param comments.below  logical.  Should comments be included below the regex
-#' in the \code{construct} script?  If \code{FALSE} comments are placed behind 
-#' the regular expression chunks.
+#' the sub-expressions.
+#' @param comments.below  logical.  Should comments be included below the 
+#' sub-expressions in the \code{construct} script?  If \code{FALSE} comments are 
+#' placed behind the sub-expressions.
 #' @param \ldots Ignored.
 #' @export
 #' @method as.regexr default
@@ -225,7 +225,7 @@ as.regexr.default <- as.regexr.character
 #' out
 #' summary(out)
 #' comments(out)
-#' regex(out)
+#' subs(out)
 #' test(out)
 #' cat(get_construct(out))
 #' \donttest{

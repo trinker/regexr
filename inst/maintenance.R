@@ -13,6 +13,11 @@ devtools::test()
 #==========================
 knitr::knit2html("README.Rmd", output ='README.md'); reports::delete("README.html")
 
+#==========================
+# UPDATE NEWS
+#==========================
+update_news()
+
 #========================
 #staticdocs dev version
 #========================
@@ -36,7 +41,7 @@ path <- "inst/web"
 path2 <- file.path(path, "/index.html")
 rdme <- file.path(R_USER, "GitHub/regexr/inst/extra_statdoc/readme.R")
 library(acc.roxygen2); library(qdap);
-extras <- qcv("%comment%", "regex&lt;-", "comments&lt;-")
+extras <- qcv("%comment%", "subs&lt;-", "comments&lt;-")
 ## drops <- qcv()
 expand_statdoc(path2, to.icon = extras, readme = rdme)
 

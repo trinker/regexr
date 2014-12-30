@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>as.regexr. regexr 0.0.3</title>
+<title>as.regexr. regexr 1.0.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">regexr 0.0.3</a>
+      <a class="brand" href="#">regexr 1.0.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -40,12 +40,26 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>as.regexr(x, ...)</div></pre>
+    <pre><div>as.regexr(x, names&nbsp;=&nbsp;TRUE, comments&nbsp;=&nbsp;TRUE, names.above&nbsp;=&nbsp;FALSE, comments.below&nbsp;=&nbsp;FALSE, ...)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
       <dt>x</dt>
       <dd>An object to coerce to a <code>regexr</code> object.</dd>
+      <dt>names</dt>
+      <dd>logical.  Should names be included in the <code>construct</code>
+script?</dd>
+      <dt>comments</dt>
+      <dd>logical.  Should comments be included in the <code>construct</code>
+script?</dd>
+      <dt>names.above</dt>
+      <dd>logical.  Should ames be included above the regex
+in the <code>construct</code> script?  If <code>FALSE</code> names are placed in front of
+the sub-expressions.</dd>
+      <dt>comments.below</dt>
+      <dd>logical.  Should comments be included below the
+sub-expressions in the <code>construct</code> script?  If <code>FALSE</code> comments
+are placed behind the sub-expressions.</dd>
       <dt>...</dt>
       <dd>Other arguments passed to <code>as.regexr</code> methods.</dd>
     </dl>
@@ -71,7 +85,15 @@
     
     <h2 id="examples">Examples</h2>
     <pre class="examples"><div class='input'>library(&quot;qdapRegex&quot;)
-(myregex &lt;- grab(&quot;@rm_time2&quot;))
+</div>
+<strong class='message'>
+Attaching package: ‘qdapRegex’
+</strong>
+<strong class='message'>The following object is masked from ‘package:regexr’:
+
+    is.regex
+</strong>
+<div class='input'>(myregex &lt;- grab(&quot;@rm_time2&quot;))
 </div>
 <div class='output'>[1] &quot;(\\d{0,2}:\\d{2}(?:[:.]\\d+)?)(\\s+(([AP]\\.{0,1}M\\.{0,1})|([ap]\\.{0,1}m\\.{0,1})))&quot;
 </div>
@@ -87,113 +109,113 @@ out
  (\d{0,2}:\d{2}(?:[:.]\d+)?)(\s+(([AP]\.{0,1}M\.{0,1})|([ap]\.{0,1}m\.{0,1}))) 
  ============================================================================= 
 </div>
-<strong class='message'>REGEX 1: (</strong>
-<strong class='message'>NAME   : 1</strong>
-<strong class='message'>COMMENT: &quot;group and capture to \\1:&quot;
+<strong class='message'>SUB-EXPR 1: (</strong>
+<strong class='message'>NAME      : 1</strong>
+<strong class='message'>COMMENT   : &quot;group and capture to \\1:&quot;
 </strong>
-<strong class='message'>REGEX 2: \d{0,2}</strong>
-<strong class='message'>NAME   : 2</strong>
-<strong class='message'>COMMENT: &quot;digits (0-9) (between 0 and 2 times (matching the most amount possible))&quot;
+<strong class='message'>SUB-EXPR 2: \d{0,2}</strong>
+<strong class='message'>NAME      : 2</strong>
+<strong class='message'>COMMENT   : &quot;digits (0-9) (between 0 and 2 times (matching the most amount possible))&quot;
 </strong>
-<strong class='message'>REGEX 3: :</strong>
-<strong class='message'>NAME   : 3</strong>
-<strong class='message'>COMMENT: &quot;&#39;:&#39;&quot;
+<strong class='message'>SUB-EXPR 3: :</strong>
+<strong class='message'>NAME      : 3</strong>
+<strong class='message'>COMMENT   : &quot;&#39;:&#39;&quot;
 </strong>
-<strong class='message'>REGEX 4: \d{2}</strong>
-<strong class='message'>NAME   : 4</strong>
-<strong class='message'>COMMENT: &quot;digits (0-9) (2 times)&quot;
+<strong class='message'>SUB-EXPR 4: \d{2}</strong>
+<strong class='message'>NAME      : 4</strong>
+<strong class='message'>COMMENT   : &quot;digits (0-9) (2 times)&quot;
 </strong>
-<strong class='message'>REGEX 5: (?:</strong>
-<strong class='message'>NAME   : 5</strong>
-<strong class='message'>COMMENT: &quot;group, but do not capture (optional (matching the most amount possible)):&quot;
+<strong class='message'>SUB-EXPR 5: (?:</strong>
+<strong class='message'>NAME      : 5</strong>
+<strong class='message'>COMMENT   : &quot;group, but do not capture (optional (matching the most amount possible)):&quot;
 </strong>
-<strong class='message'>REGEX 6: [:.]</strong>
-<strong class='message'>NAME   : 6</strong>
-<strong class='message'>COMMENT: &quot;any character of: &#39;:&#39;, &#39;.&#39;&quot;
+<strong class='message'>SUB-EXPR 6: [:.]</strong>
+<strong class='message'>NAME      : 6</strong>
+<strong class='message'>COMMENT   : &quot;any character of: &#39;:&#39;, &#39;.&#39;&quot;
 </strong>
-<strong class='message'>REGEX 7: \d+</strong>
-<strong class='message'>NAME   : 7</strong>
-<strong class='message'>COMMENT: &quot;digits (0-9) (1 or more times (matching the most amount possible))&quot;
+<strong class='message'>SUB-EXPR 7: \d+</strong>
+<strong class='message'>NAME      : 7</strong>
+<strong class='message'>COMMENT   : &quot;digits (0-9) (1 or more times (matching the most amount possible))&quot;
 </strong>
-<strong class='message'>REGEX 8: )?</strong>
-<strong class='message'>NAME   : 8</strong>
-<strong class='message'>COMMENT: &quot;end of grouping&quot;
+<strong class='message'>SUB-EXPR 8: )?</strong>
+<strong class='message'>NAME      : 8</strong>
+<strong class='message'>COMMENT   : &quot;end of grouping&quot;
 </strong>
-<strong class='message'>REGEX 9: )</strong>
-<strong class='message'>NAME   : 9</strong>
-<strong class='message'>COMMENT: &quot;end of \\1&quot;
+<strong class='message'>SUB-EXPR 9: )</strong>
+<strong class='message'>NAME      : 9</strong>
+<strong class='message'>COMMENT   : &quot;end of \\1&quot;
 </strong>
-<strong class='message'>REGEX 10: (</strong>
-<strong class='message'>NAME    : 10</strong>
-<strong class='message'>COMMENT : &quot;group and capture to \\2:&quot;
+<strong class='message'>SUB-EXPR 10: (</strong>
+<strong class='message'>NAME       : 10</strong>
+<strong class='message'>COMMENT    : &quot;group and capture to \\2:&quot;
 </strong>
-<strong class='message'>REGEX 11: \s+</strong>
-<strong class='message'>NAME    : 11</strong>
-<strong class='message'>COMMENT : &quot;whitespace (\n, \r, \t, \f, and &quot; &quot;) (1 or more times (matching the most amount possible))&quot;
+<strong class='message'>SUB-EXPR 11: \s+</strong>
+<strong class='message'>NAME       : 11</strong>
+<strong class='message'>COMMENT    : &quot;whitespace (\n, \r, \t, \f, and &quot; &quot;) (1 or more times (matching the most amount possible))&quot;
 </strong>
-<strong class='message'>REGEX 12: (</strong>
-<strong class='message'>NAME    : 12</strong>
-<strong class='message'>COMMENT : &quot;group and capture to \\3:&quot;
+<strong class='message'>SUB-EXPR 12: (</strong>
+<strong class='message'>NAME       : 12</strong>
+<strong class='message'>COMMENT    : &quot;group and capture to \\3:&quot;
 </strong>
-<strong class='message'>REGEX 13: (</strong>
-<strong class='message'>NAME    : 13</strong>
-<strong class='message'>COMMENT : &quot;group and capture to \\4:&quot;
+<strong class='message'>SUB-EXPR 13: (</strong>
+<strong class='message'>NAME       : 13</strong>
+<strong class='message'>COMMENT    : &quot;group and capture to \\4:&quot;
 </strong>
-<strong class='message'>REGEX 14: [AP]</strong>
-<strong class='message'>NAME    : 14</strong>
-<strong class='message'>COMMENT : &quot;any character of: &#39;A&#39;, &#39;P&#39;&quot;
+<strong class='message'>SUB-EXPR 14: [AP]</strong>
+<strong class='message'>NAME       : 14</strong>
+<strong class='message'>COMMENT    : &quot;any character of: &#39;A&#39;, &#39;P&#39;&quot;
 </strong>
-<strong class='message'>REGEX 15: \.{0,1}</strong>
-<strong class='message'>NAME    : 15</strong>
-<strong class='message'>COMMENT : &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;
+<strong class='message'>SUB-EXPR 15: \.{0,1}</strong>
+<strong class='message'>NAME       : 15</strong>
+<strong class='message'>COMMENT    : &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;
 </strong>
-<strong class='message'>REGEX 16: M</strong>
-<strong class='message'>NAME    : 16</strong>
-<strong class='message'>COMMENT : &quot;&#39;M&#39;&quot;
+<strong class='message'>SUB-EXPR 16: M</strong>
+<strong class='message'>NAME       : 16</strong>
+<strong class='message'>COMMENT    : &quot;&#39;M&#39;&quot;
 </strong>
-<strong class='message'>REGEX 17: \.{0,1}</strong>
-<strong class='message'>NAME    : 17</strong>
-<strong class='message'>COMMENT : &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;
+<strong class='message'>SUB-EXPR 17: \.{0,1}</strong>
+<strong class='message'>NAME       : 17</strong>
+<strong class='message'>COMMENT    : &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;
 </strong>
-<strong class='message'>REGEX 18: )</strong>
-<strong class='message'>NAME    : 18</strong>
-<strong class='message'>COMMENT : &quot;end of \\4&quot;
+<strong class='message'>SUB-EXPR 18: )</strong>
+<strong class='message'>NAME       : 18</strong>
+<strong class='message'>COMMENT    : &quot;end of \\4&quot;
 </strong>
-<strong class='message'>REGEX 19: |</strong>
-<strong class='message'>NAME    : 19</strong>
-<strong class='message'>COMMENT : &quot;OR&quot;
+<strong class='message'>SUB-EXPR 19: |</strong>
+<strong class='message'>NAME       : 19</strong>
+<strong class='message'>COMMENT    : &quot;OR&quot;
 </strong>
-<strong class='message'>REGEX 20: (</strong>
-<strong class='message'>NAME    : 20</strong>
-<strong class='message'>COMMENT : &quot;group and capture to \\5:&quot;
+<strong class='message'>SUB-EXPR 20: (</strong>
+<strong class='message'>NAME       : 20</strong>
+<strong class='message'>COMMENT    : &quot;group and capture to \\5:&quot;
 </strong>
-<strong class='message'>REGEX 21: [ap]</strong>
-<strong class='message'>NAME    : 21</strong>
-<strong class='message'>COMMENT : &quot;any character of: &#39;a&#39;, &#39;p&#39;&quot;
+<strong class='message'>SUB-EXPR 21: [ap]</strong>
+<strong class='message'>NAME       : 21</strong>
+<strong class='message'>COMMENT    : &quot;any character of: &#39;a&#39;, &#39;p&#39;&quot;
 </strong>
-<strong class='message'>REGEX 22: \.{0,1}</strong>
-<strong class='message'>NAME    : 22</strong>
-<strong class='message'>COMMENT : &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;
+<strong class='message'>SUB-EXPR 22: \.{0,1}</strong>
+<strong class='message'>NAME       : 22</strong>
+<strong class='message'>COMMENT    : &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;
 </strong>
-<strong class='message'>REGEX 23: m</strong>
-<strong class='message'>NAME    : 23</strong>
-<strong class='message'>COMMENT : &quot;&#39;m&#39;&quot;
+<strong class='message'>SUB-EXPR 23: m</strong>
+<strong class='message'>NAME       : 23</strong>
+<strong class='message'>COMMENT    : &quot;&#39;m&#39;&quot;
 </strong>
-<strong class='message'>REGEX 24: \.{0,1}</strong>
-<strong class='message'>NAME    : 24</strong>
-<strong class='message'>COMMENT : &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;
+<strong class='message'>SUB-EXPR 24: \.{0,1}</strong>
+<strong class='message'>NAME       : 24</strong>
+<strong class='message'>COMMENT    : &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;
 </strong>
-<strong class='message'>REGEX 25: )</strong>
-<strong class='message'>NAME    : 25</strong>
-<strong class='message'>COMMENT : &quot;end of \\5&quot;
+<strong class='message'>SUB-EXPR 25: )</strong>
+<strong class='message'>NAME       : 25</strong>
+<strong class='message'>COMMENT    : &quot;end of \\5&quot;
 </strong>
-<strong class='message'>REGEX 26: )</strong>
-<strong class='message'>NAME    : 26</strong>
-<strong class='message'>COMMENT : &quot;end of \\3&quot;
+<strong class='message'>SUB-EXPR 26: )</strong>
+<strong class='message'>NAME       : 26</strong>
+<strong class='message'>COMMENT    : &quot;end of \\3&quot;
 </strong>
-<strong class='message'>REGEX 27: )</strong>
-<strong class='message'>NAME    : 27</strong>
-<strong class='message'>COMMENT : &quot;end of \\2&quot;
+<strong class='message'>SUB-EXPR 27: )</strong>
+<strong class='message'>NAME       : 27</strong>
+<strong class='message'>COMMENT    : &quot;end of \\2&quot;
 </strong>
 <div class='input'>comments(out)
 </div>
@@ -279,7 +301,7 @@ $`27`
 [1] &quot;end of \\\\2&quot;
 
 </div>
-<div class='input'>regex(out)
+<div class='input'>subs(out)
 </div>
 <div class='output'>$`1`
 [1] &quot;(&quot;
@@ -366,7 +388,7 @@ $`27`
 <div class='input'>test(out)
 </div>
 <strong class='warning'>Warning message:
-The following regex chunks are not valid in isolation:
+The following regex sub-expressions are not valid in isolation:
 
 (1) (
 (2) (?:
@@ -383,103 +405,86 @@ The following regex chunks are not valid in isolation:
 <div class='output'>$regex
 [1] TRUE
 
-$chunks
-    1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18 
-FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE 
-   19    20    21    22    23    24    25    26    27 
- TRUE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE 
+$subexpressions
+    1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17 
+FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE 
+   18    19    20    21    22    23    24    25    26    27 
+FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE 
 
 </div>
-<div class='input'>cat(get_construct(out))
+<div class='input'>get_construct(out)
 </div>
 <div class='output'>construct(
-    `1` = 
-        &quot;(&quot;
-            %:)%&quot;group and capture to \\1:&quot;,
-        `2` = 
-            &quot;\\d{0,2}&quot;
-                %:)%&quot;digits (0-9) (between 0 and 2 times (matching the most amount possible))&quot;,
-        `3` = 
-            &quot;:&quot;
-                %:)%&quot;&#39;:&#39;&quot;,
-        `4` = 
-            &quot;\\d{2}&quot;
-                %:)%&quot;digits (0-9) (2 times)&quot;,
-        `5` = 
-            &quot;(?:&quot;
-                %:)%&quot;group, but do not capture (optional (matching the most amount possible)):&quot;,
-            `6` = 
-                &quot;[:.]&quot;
-                    %:)%&quot;any character of: &#39;:&#39;, &#39;.&#39;&quot;,
-            `7` = 
-                &quot;\\d+&quot;
-                    %:)%&quot;digits (0-9) (1 or more times (matching the most amount possible))&quot;,
-        `8` = 
-            &quot;)?&quot;
-                %:)%&quot;end of grouping&quot;,
-    `9` = 
-        &quot;)&quot;
-            %:)%&quot;end of \\1&quot;,
-    `10` = 
-        &quot;(&quot;
-            %:)%&quot;group and capture to \\2:&quot;,
-        `11` = 
-            &quot;\\s+&quot;
-                %:)%&quot;whitespace (\n, \r, \t, \f, and \&quot; \&quot;) (1 or more times (matching the most amount possible))&quot;,
-        `12` = 
-            &quot;(&quot;
-                %:)%&quot;group and capture to \\3:&quot;,
-            `13` = 
-                &quot;(&quot;
-                    %:)%&quot;group and capture to \\4:&quot;,
-                `14` = 
-                    &quot;[AP]&quot;
-                        %:)%&quot;any character of: &#39;A&#39;, &#39;P&#39;&quot;,
-                `15` = 
-                    &quot;\\.{0,1}&quot;
-                        %:)%&quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;,
-                `16` = 
-                    &quot;M&quot;
-                        %:)%&quot;&#39;M&#39;&quot;,
-                `17` = 
-                    &quot;\\.{0,1}&quot;
-                        %:)%&quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;,
-            `18` = 
-                &quot;)&quot;
-                    %:)%&quot;end of \\4&quot;,
-          `19` = 
-              &quot;|&quot;
-                  %:)%&quot;OR&quot;,
-            `20` = 
-                &quot;(&quot;
-                    %:)%&quot;group and capture to \\5:&quot;,
-                `21` = 
-                    &quot;[ap]&quot;
-                        %:)%&quot;any character of: &#39;a&#39;, &#39;p&#39;&quot;,
-                `22` = 
-                    &quot;\\.{0,1}&quot;
-                        %:)%&quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;,
-                `23` = 
-                    &quot;m&quot;
-                        %:)%&quot;&#39;m&#39;&quot;,
-                `24` = 
-                    &quot;\\.{0,1}&quot;
-                        %:)%&quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;,
-            `25` = 
-                &quot;)&quot;
-                    %:)%&quot;end of \\5&quot;,
-        `26` = 
-            &quot;)&quot;
-                %:)%&quot;end of \\3&quot;,
-    `27` = 
-        &quot;)&quot;
-            %:)%&quot;end of \\2&quot;
+    `1` = &quot;(&quot;                            %:)%  &quot;group and capture to \\1:&quot;,
+        `2` = &quot;\\d{0,2}&quot;                         %:)%  &quot;digits (0-9) (between 0 and 2 times (matching the most amount possible))&quot;,
+        `3` = &quot;:&quot;                                %:)%  &quot;&#39;:&#39;&quot;,
+        `4` = &quot;\\d{2}&quot;                           %:)%  &quot;digits (0-9) (2 times)&quot;,
+        `5` = &quot;(?:&quot;                              %:)%  &quot;group, but do not capture (optional (matching the most amount possible)):&quot;,
+            `6` = &quot;[:.]&quot;                                 %:)%  &quot;any character of: &#39;:&#39;, &#39;.&#39;&quot;,
+            `7` = &quot;\\d+&quot;                                 %:)%  &quot;digits (0-9) (1 or more times (matching the most amount possible))&quot;,
+        `8` = &quot;)?&quot;                               %:)%  &quot;end of grouping&quot;,
+    `9` = &quot;)&quot;                            %:)%  &quot;end of \\1&quot;,
+    `10` = &quot;(&quot;                            %:)%  &quot;group and capture to \\2:&quot;,
+        `11` = &quot;\\s+&quot;                             %:)%  &quot;whitespace (\n, \r, \t, \f, and \&quot; \&quot;) (1 or more times (matching the most amount possible))&quot;,
+        `12` = &quot;(&quot;                                %:)%  &quot;group and capture to \\3:&quot;,
+            `13` = &quot;(&quot;                                    %:)%  &quot;group and capture to \\4:&quot;,
+                `14` = &quot;[AP]&quot;                                     %:)%  &quot;any character of: &#39;A&#39;, &#39;P&#39;&quot;,
+                `15` = &quot;\\.{0,1}&quot;                                 %:)%  &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;,
+                `16` = &quot;M&quot;                                        %:)%  &quot;&#39;M&#39;&quot;,
+                `17` = &quot;\\.{0,1}&quot;                                 %:)%  &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;,
+            `18` = &quot;)&quot;                                    %:)%  &quot;end of \\4&quot;,
+          `19` = &quot;|&quot;                                  %:)%  &quot;OR&quot;,
+            `20` = &quot;(&quot;                                    %:)%  &quot;group and capture to \\5:&quot;,
+                `21` = &quot;[ap]&quot;                                     %:)%  &quot;any character of: &#39;a&#39;, &#39;p&#39;&quot;,
+                `22` = &quot;\\.{0,1}&quot;                                 %:)%  &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;,
+                `23` = &quot;m&quot;                                        %:)%  &quot;&#39;m&#39;&quot;,
+                `24` = &quot;\\.{0,1}&quot;                                 %:)%  &quot;&#39;.&#39; (between 0 and 1 times (matching the most amount possible))&quot;,
+            `25` = &quot;)&quot;                                    %:)%  &quot;end of \\5&quot;,
+        `26` = &quot;)&quot;                                %:)%  &quot;end of \\3&quot;,
+    `27` = &quot;)&quot;                            %:)%  &quot;end of \\2&quot;
 )
 </div>
 <div class='input'>
 ## On Windows copy to clipboard
 get_construct(out, file=&quot;clipboard&quot;)
 
+
+## No names &amp; comments behind sub-expressions
+myregex2 &lt;- &quot;(\\s*[a-z]+)([^)]+\\))&quot;
+get_construct(as.regexr(myregex2, names=FALSE))
+</div>
+<div class='output'>construct(
+    &quot;(&quot;                  %:)%  &quot;group and capture to \\1:&quot;,
+        &quot;\\s*&quot;               %:)%  &quot;whitespace (\n, \r, \t, \f, and \&quot; \&quot;) (0 or more times (matching the most amount possible))&quot;,
+        &quot;[a-z]+&quot;             %:)%  &quot;any character of: &#39;a&#39; to &#39;z&#39; (1 or more times (matching the most amount possible))&quot;,
+    &quot;)&quot;                  %:)%  &quot;end of \\1&quot;,
+    &quot;(&quot;                  %:)%  &quot;group and capture to \\2:&quot;,
+        &quot;[^)]+&quot;              %:)%  &quot;any character except: &#39;)&#39; (1 or more times (matching the most amount possible))&quot;,
+        &quot;\\)&quot;                %:)%  &quot;&#39;)&#39;&quot;,
+    &quot;)&quot;                  %:)%  &quot;end of \\2&quot;
+)
+</div>
+<div class='input'>get_construct(as.regexr(myregex2, names=FALSE, names.above = TRUE,
+    comments.below = TRUE))
+</div>
+<div class='output'>construct(
+    &quot;(&quot;
+            %:)%&quot;group and capture to \\1:&quot;,
+        &quot;\\s*&quot;
+                %:)%&quot;whitespace (\n, \r, \t, \f, and \&quot; \&quot;) (0 or more times (matching the most amount possible))&quot;,
+        &quot;[a-z]+&quot;
+                %:)%&quot;any character of: &#39;a&#39; to &#39;z&#39; (1 or more times (matching the most amount possible))&quot;,
+    &quot;)&quot;
+            %:)%&quot;end of \\1&quot;,
+    &quot;(&quot;
+            %:)%&quot;group and capture to \\2:&quot;,
+        &quot;[^)]+&quot;
+                %:)%&quot;any character except: &#39;)&#39; (1 or more times (matching the most amount possible))&quot;,
+        &quot;\\)&quot;
+                %:)%&quot;&#39;)&#39;&quot;,
+    &quot;)&quot;
+            %:)%&quot;end of \\2&quot;
+)
 </div></pre>
   </div>
   <div class="span4">

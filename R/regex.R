@@ -1,49 +1,49 @@
-#' Get/Set Regex Chunks From a regexr Object
+#' Get/Set Regex Sub-expressions From a regexr Object
 #' 
-#' \code{regex} - Get the \code{regex} chunks from a \code{regexr} object.
+#' \code{subs} - Get the sub-expressions from a \code{regexr} object.
 #' 
 #' @param x A regexr object.
 #' @param value The comment(s) to assign.
 #' @param \ldots Ignored.
-#' @rdname regex
+#' @rdname subs
 #' @export
-#' @return \code{regex} - Returns a list of regexes.
+#' @return \code{subs} - Returns a list of sub-expressions.
 #' @examples 
 #' minimal <- construct("a", "b", "c")
 #' minimal
-#' regex(minimal)
-#' regex(minimal)[2] <- "\\s+[A-Z]|[0-9]"
-#' regex(minimal)
+#' subs(minimal)
+#' subs(minimal)[2] <- "\\s+[A-Z]|[0-9]"
+#' subs(minimal)
 #' 
 #' minimal <- construct("a", "b", "c")
-#' out <- set_regex(minimal, c("(", "\\s??", ")"))
-#' regex(out)
-regex <- function (x, ...){
-    UseMethod("regex")
+#' out <- set_subs(minimal, c("(", "\\s??", ")"))
+#' subs(out)
+subs <- function (x, ...){
+    UseMethod("subs")
 }
 
-#' Set Regex Chunks From a regexr Object
+#' Set Regex Sub-expressions From a regexr Object
 #' 
-#' \code{regex<-} - Set the \code{regex} chunk(s) of a \code{regexr} object.
+#' \code{subs<-} - Set the sub-expressions(s) of a \code{regexr} object.
 #' 
-#' @rdname regex
+#' @rdname subs
 #' @export
-`regex<-` <- function(x, value){
-    UseMethod("regex<-")
+`subs<-` <- function(x, value){
+    UseMethod("subs<-")
 }
 
 
-#' Set the Regexes in a \code{regexr} Object
+#' Set the Sub-expressions in a \code{regexr} Object
 #' 
-#' \code{set_regex} - This is a convenience function that sets the 
-#' \code{\link[regexr]{regex}} on a \code{regexr} object and returns the object. 
+#' \code{set_subs} - This is a convenience function that sets the 
+#' \code{\link[regexr]{subs}} on a \code{regexr} object and returns the object. 
 #' 
-#' @param y The regexes to assign.
-#' @return \code{set_regex} - Returns a \code{regexr} object.
+#' @param y The sub-expressions to assign.
+#' @return \code{set_subs} - Returns a \code{regexr} object.
 #' @export
-#' @rdname regex
-set_regex <- function (x, y) {
-    regex(x) <- y
+#' @rdname subs
+set_subs <- function (x, y) {
+    subs(x) <- y
     x
 }
 

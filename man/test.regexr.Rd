@@ -9,7 +9,7 @@
 \item{x}{The \code{regexr} object.}
 
 \item{quiet}{logical.  Should \code{test} print warnings about the
-concatenated expression and individual chunks?}
+concatenated expression and individual sub-expressions?}
 
 \item{\ldots}{Ignored.}
 }
@@ -17,6 +17,6 @@ concatenated expression and individual chunks?}
 Test regular expression validity of a \code{regexr} object.
 }
 \details{
-test Method for regex<-
+test Method for subs<-
 }
 

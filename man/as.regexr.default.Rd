@@ -15,13 +15,13 @@ script?}
 \item{comments}{logical.  Should comments be included in the \code{construct}
 script?}
 
-\item{names.above}{logical.  Should ames be included above the regex
+\item{names.above}{logical.  Should ames be included above the sub-expressions
 in the \code{construct} script?  If \code{FALSE} names are placed in front of
-the regular expression chunks.}
+the sub-expressions.}
 
-\item{comments.below}{logical.  Should comments be included below the regex
-in the \code{construct} script?  If \code{FALSE} comments are placed behind
-the regular expression chunks.}
+\item{comments.below}{logical.  Should comments be included below the
+sub-expressions in the \code{construct} script?  If \code{FALSE} comments are
+placed behind the sub-expressions.}
 
 \item{\ldots}{Ignored.}
 }

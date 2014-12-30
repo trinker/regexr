@@ -33,7 +33,7 @@ out <- as.regexr(myregex)
 out
 summary(out)
 comments(out)
-regex(out)
+subs(out)
 test(out)
 cat(get_construct(out))
 \donttest{

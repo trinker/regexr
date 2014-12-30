@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>as.regexr.character. regexr 0.0.3</title>
+<title>as.regexr.character. regexr 1.0.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">regexr 0.0.3</a>
+      <a class="brand" href="#">regexr 1.0.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -40,12 +40,26 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>"as.regexr"(x, ...)</div></pre>
+    <pre><div>"as.regexr"(x, names&nbsp;=&nbsp;TRUE, comments&nbsp;=&nbsp;TRUE, names.above&nbsp;=&nbsp;FALSE, comments.below&nbsp;=&nbsp;FALSE, ...)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
       <dt>x</dt>
       <dd>The <code>character</code> object.</dd>
+      <dt>names</dt>
+      <dd>logical.  Should names be included in the <code>construct</code>
+script?</dd>
+      <dt>comments</dt>
+      <dd>logical.  Should comments be included in the <code>construct</code>
+script?</dd>
+      <dt>names.above</dt>
+      <dd>logical.  Should ames be included above the sub-expressions
+in the <code>construct</code> script?  If <code>FALSE</code> names are placed in front of
+the sub-expressions.</dd>
+      <dt>comments.below</dt>
+      <dd>logical.  Should comments be included below the
+sub-expressions in the <code>construct</code> script?  If <code>FALSE</code> comments are
+placed behind the sub-expressions.</dd>
       <dt>...</dt>
       <dd>Ignored.</dd>
     </dl>

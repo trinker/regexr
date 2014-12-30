@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>Index. regexr 0.0.3</title>
+<title>Index. regexr 1.0.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">regexr 0.0.3</a>
+      <a class="brand" href="#">regexr 1.0.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -39,11 +39,412 @@
   <div class="span8">
     <h1>regexr</h1>
 
-<p><img src="https://dl.dropbox.com/u/61803503/qdapicon.png" alt="qdapicon"/><br/>
-<p><a href="http://trinker.github.com/regexr_dev">regexr</a> is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to (1) write in smaller, modular, named, <em>regular expression chunks</em>, (2) write top to bottom, rather than a single string (3) comment individual chunks, (4) indent expressions to represent regular expression groups, and (5) test the validity of the <em>concatenated expression</em> and the modular chunks. </p>
+<p><a href="https://travis-ci.org/trinker/regexr"><img src="https://travis-ci.org/trinker/regexr.png?branch=master" alt="Build Status"/></a>
+<a href="https://coveralls.io/r/trinker/regexr"><img src="https://coveralls.io/repos/trinker/regexr/badge.png" alt="Coverage Status"/></a>
+<a href="http://dx.doi.org/10.5281/zenodo.13332"><img src="https://zenodo.org/badge/5398/trinker/regexr.svg" alt="DOI"/></a></p>
+
+<p><img src="inst/regexr_logo/r_regexr.png" alt="">   </p>
+
+<blockquote>
+<p>One of the most powerful tools in writing maintainable code is break large methods into well-named smaller methods - a technique Kent Beck refers to as the Composed Method pattern.</p>
+</blockquote>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://martinfowler.com/bliki/ComposedRegex.html">-Martin Fowler-</a></p>
+
+<p><a href="http://trinker.github.com/regexr_dev">regexr</a> is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to: </p>
+
+<ol>
+<li>Write in smaller, modular, named, <em>sub-expressions</em><br/></li>
+<li>Write top to bottom, rather than a single string<br/></li>
+<li>Comment individual chunks<br/></li>
+<li>Indent expressions to represent regular expression groups</li>
+<li>Add vertical line spaces and R comments (i.e., <code>#</code>)</li>
+<li>Test the validity of the <em>concatenated expression</em> and the modular <em>sub-expressions</em><br/></li>
+</ol>
 
 <p>This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both code writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.</p>
-<p>Download the development version of regexr <a href="https://github.com/trinker/regexr/">here</a> 
+
+<h2>Installation</h2>
+
+<p>To download the development version of regexr:</p>
+
+<p>Download the <a href="https://github.com/trinker/regexr/zipball/master">zip ball</a> or <a href="https://github.com/trinker/regexr/tarball/master">tar ball</a>, decompress and run <code>R CMD INSTALL</code> on it, or use the <strong>devtools</strong> package to install the development version:</p>
+
+<pre><code class="r"># install.packages(&quot;devtools&quot;)
+
+devtools::install_github(&quot;trinker/regexr&quot;)
+</code></pre>
+
+<h2>Help</h2>
+
+<ul>
+<li><a href="http://trinker.github.com/regexr/">Web Page</a><br/></li>
+<li><a href="https://dl.dropboxusercontent.com/u/61803503/regexr.pdf">Package PDF Help Manual</a><br/></li>
+</ul>
+
+<h2>Contact</h2>
+
+<p>You are welcome to:</p>
+
+<ul>
+<li>submit suggestions and bug-reports at: <a href="https://github.com/trinker/regexr/issues">https://github.com/trinker/regexr/issues</a></li>
+<li>send a pull request on: <a href="https://github.com/trinker/regexr/">https://github.com/trinker/regexr/</a></li>
+<li>compose a friendly e-mail to: <a href="mailto:tyler.rinker@gmail.com">tyler.rinker@gmail.com</a></li>
+</ul>
+
+<h2>Functions</h2>
+
+<table><thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>construct</code></td>
+<td>Write Human Readable <em>Concatenated Regex</em></td>
+</tr>
+<tr>
+<td><code>%:)%</code></td>
+<td>Add Comments to a Sub-expressions Within <code>construct</code></td>
+</tr>
+<tr>
+<td><code>unglue</code></td>
+<td>Break <em>Concatenated Regex</em> Into <em>Sub-expressions</em></td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>Test Validity of <em>Concatenated Regex</em> &amp; <em>Sub-expressions</em></td>
+</tr>
+<tr>
+<td><code>subs</code></td>
+<td>Get/Set Sub-expressions in a <code>regexr</code> object</td>
+</tr>
+<tr>
+<td><code>comments</code></td>
+<td>Get/Set Comments of Sub-expressions in a <code>regexr</code> object</td>
+</tr>
+<tr>
+<td><code>names</code></td>
+<td>Get/Set Names of Sub-expressions in a <code>regexr</code> object</td>
+</tr>
+<tr>
+<td><code>as.regexr</code></td>
+<td>Coerce regular expressions to <code>regexr</code> object</td>
+</tr>
+</tbody></table>
+
+<h2>Examples</h2>
+
+<pre><code class="echo=FALSE">library(regexr)
+</code></pre>
+
+<h3>Construction a Regular Expression</h3>
+
+<p>The <code>construct</code> function creates an object of the class <code>regexr</code>.  This is a character string with meta expression information contained in the object&#39;s attributes.</p>
+
+<p>The <code>%:)%</code> binary operator allows the user to optionally add comments to the regular expressions.  The <code>%:)%</code>, containing a smiley face emoticon, is used here because commented code/expressions is happy code&#9786;.</p>
+
+<pre><code class="r">m &lt;- construct(
+    space =   &quot;\\s+&quot;              %:)%  &quot;I see&quot;,
+    simp =    &quot;(?&lt;=(foo))&quot;,
+    or =      &quot;(;|:)\\s*&quot;         %:)%  &quot;comment on what this does&quot;,
+    is_then = &quot;[ia]s th[ae]n&quot;
+)
+m
+</code></pre>
+
+<pre><code>## [1] &quot;\\s+(?&lt;=(foo))(;|:)\\s*[ia]s th[ae]n&quot;
+</code></pre>
+
+<p>To see a larger script of a regular expession managed by <strong>regexr</strong> for the <strong>qdapRegex</strong> package <a href="https://raw.githubusercontent.com/trinker/qdapRegex/master/inst/regex_scripts/rm_citation2.R">CLICK HERE</a>.</p>
+
+<h3>Viewing the <code>regexr</code> Object</h3>
+
+<p>Th generic <code>summary</code> function provides an integrated view the comments, regexes, and names that make up the <em>concatenated expression</em>.</p>
+
+<pre><code class="r">summary(m)
+</code></pre>
+
+<pre><code>## 
+##  \s+(?&lt;=(foo))(;|:)\s*[ia]s th[ae]n 
+##  ==================================
+</code></pre>
+
+<pre><code>## SUB-EXPR 1: \s+
+## NAME      : space
+## COMMENT   : &quot;I see&quot;
+## 
+## SUB-EXPR 2: (?&lt;=(foo))
+## NAME      : simp
+## COMMENT   : 
+## 
+## SUB-EXPR 3: (;|:)\s*
+## NAME      : or
+## COMMENT   : &quot;comment on what this does&quot;
+## 
+## SUB-EXPR 4: [ia]s th[ae]n
+## NAME      : is_then
+## COMMENT   :
+</code></pre>
+
+<h3>Split <code>regexr</code> Object</h3>
+
+<p>The <code>unglue</code> function splits the concatenated <code>regexr</code> expression into component expression chunks.</p>
+
+<pre><code class="r">unglue(m)
+</code></pre>
+
+<pre><code>## $space
+## [1] &quot;\\s+&quot;
+## 
+## $simp
+## [1] &quot;(?&lt;=(foo))&quot;
+## 
+## $or
+## [1] &quot;(;|:)\\s*&quot;
+## 
+## $is_then
+## [1] &quot;[ia]s th[ae]n&quot;
+</code></pre>
+
+<h3>Get/Set Comments, Regexes, and Names of a <code>regexr</code> Object.</h3>
+
+<p>The <code>comments</code>, <code>regex</code>, and <code>names</code> functions allow the user to view and alter the comments, regexes, and names of a <code>regexr</code> object.</p>
+
+<pre><code class="r">subs(m)
+</code></pre>
+
+<pre><code>## $space
+## [1] &quot;\\s+&quot;
+## 
+## $simp
+## [1] &quot;(?&lt;=(foo))&quot;
+## 
+## $or
+## [1] &quot;(;|:)\\s*&quot;
+## 
+## $is_then
+## [1] &quot;[ia]s th[ae]n&quot;
+</code></pre>
+
+<pre><code class="r">comments(m)
+</code></pre>
+
+<pre><code>## $space
+## [1] &quot;I see&quot;
+## 
+## $simp
+## NULL
+## 
+## $or
+## [1] &quot;comment on what this does&quot;
+## 
+## $is_then
+## NULL
+</code></pre>
+
+<pre><code class="r">names(m)
+</code></pre>
+
+<pre><code>## [1] &quot;space&quot;   &quot;simp&quot;    &quot;or&quot;      &quot;is_then&quot;
+</code></pre>
+
+<pre><code class="r">subs(m)[4] &lt;- &quot;(FO{2})|(BAR)&quot;
+comments(m)[4] &lt;- &quot;Look for FOO or BAR&quot;
+names(m)[4] &lt;- &quot;foo_bar&quot;
+summary(m)
+</code></pre>
+
+<pre><code>## 
+##  \s+(?&lt;=(foo))(;|:)\s*(FO{2})|(BAR) 
+##  ==================================
+</code></pre>
+
+<pre><code>## SUB-EXPR 1: \s+
+## NAME      : space
+## COMMENT   : &quot;I see&quot;
+## 
+## SUB-EXPR 2: (?&lt;=(foo))
+## NAME      : simp
+## COMMENT   : 
+## 
+## SUB-EXPR 3: (;|:)\s*
+## NAME      : or
+## COMMENT   : &quot;comment on what this does&quot;
+## 
+## SUB-EXPR 4: (FO{2})|(BAR)
+## NAME      : foo_bar
+## COMMENT   : &quot;Look for FOO or BAR&quot;
+</code></pre>
+
+<h3>Testing Regular Expressions</h3>
+
+<p>The <code>test</code> function allows the user to check if the concatenated <code>regexr</code> expression and component expression chunks are valid regular expressions.</p>
+
+<pre><code class="r">test(m)
+</code></pre>
+
+<pre><code>## $regex
+## [1] TRUE
+## 
+## $subexpressions
+##   space    simp      or foo_bar 
+##    TRUE    TRUE    TRUE    TRUE
+</code></pre>
+
+<pre><code class="r">subs(m)[5:7] &lt;- c(&quot;(&quot;, &quot;([A-Z]|(\\d{5})&quot;, &quot;)&quot;)
+test(m)
+</code></pre>
+
+<pre><code>## Warning in test.regexr(m): The concatenated regex is not valid
+## 
+## \s+(?&lt;=(foo))(;|:)\s*(FO{2})|(BAR)(([A-Z]|(\d{5}))
+</code></pre>
+
+<pre><code>## Warning in test.regexr(m): The following regex sub-expressions are not valid in isolation:
+## 
+## (1) (
+## (2) ([A-Z]|(\d{5})
+## (3) )
+</code></pre>
+
+<pre><code>## $regex
+## [1] FALSE
+## 
+## $subexpressions
+##   space    simp      or foo_bar                         
+##    TRUE    TRUE    TRUE    TRUE   FALSE   FALSE   FALSE
+</code></pre>
+
+<h3>Existing Regular Expression to <code>regexr</code>: Reverse Construction</h3>
+
+<p><code>as.regexr</code> allows the user to construct <code>regexr</code> objects from a regular expression and in the process generate an auto-commented &amp; named <code>construct</code> script. </p>
+
+<pre><code class="r">library(&quot;qdapRegex&quot;)
+(myregex &lt;- grab(&quot;@rm_time&quot;))
+</code></pre>
+
+<pre><code>## [1] &quot;\\d{0,2}:\\d{2}(?:[:.]\\d+)?&quot;
+</code></pre>
+
+<pre><code class="r">out &lt;- as.regexr(myregex)
+summary(out)
+</code></pre>
+
+<pre><code>## 
+##  \d{0,2}:\d{2}(?:[:.]\d+)? 
+##  =========================
+</code></pre>
+
+<pre><code>## SUB-EXPR 1: \d{0,2}
+## NAME      : 1
+## COMMENT   : &quot;digits (0-9) (between 0 and 2 times (matching the most amount possible))&quot;
+## 
+## SUB-EXPR 2: :
+## NAME      : 2
+## COMMENT   : &quot;&#39;:&#39;&quot;
+## 
+## SUB-EXPR 3: \d{2}
+## NAME      : 3
+## COMMENT   : &quot;digits (0-9) (2 times)&quot;
+## 
+## SUB-EXPR 4: (?:
+## NAME      : 4
+## COMMENT   : &quot;group, but do not capture (optional (matching the most amount possible)):&quot;
+## 
+## SUB-EXPR 5: [:.]
+## NAME      : 5
+## COMMENT   : &quot;any character of: &#39;:&#39;, &#39;.&#39;&quot;
+## 
+## SUB-EXPR 6: \d+
+## NAME      : 6
+## COMMENT   : &quot;digits (0-9) (1 or more times (matching the most amount possible))&quot;
+## 
+## SUB-EXPR 7: )?
+## NAME      : 7
+## COMMENT   : &quot;end of grouping&quot;
+</code></pre>
+
+<p>We can use <code>get_construct</code> to extract an auto-commented &amp; named <code>construct</code> script that can be optionally altered and used to <code>construct</code> a <code>regexr</code> object.</p>
+
+<pre><code class="r">get_construct(out)
+</code></pre>
+
+<pre><code>construct(
+    `1` = &quot;\\d{0,2}&quot;               %:)%  &quot;digits (0-9) (between 0 and 2 times (matching the most amount possible))&quot;,
+    `2` = &quot;:&quot;                      %:)%  &quot;&#39;:&#39;&quot;,
+    `3` = &quot;\\d{2}&quot;                 %:)%  &quot;digits (0-9) (2 times)&quot;,
+    `4` = &quot;(?:&quot;                    %:)%  &quot;group, but do not capture (optional (matching the most amount possible)):&quot;,
+        `5` = &quot;[:.]&quot;                       %:)%  &quot;any character of: &#39;:&#39;, &#39;.&#39;&quot;,
+        `6` = &quot;\\d+&quot;                       %:)%  &quot;digits (0-9) (1 or more times (matching the most amount possible))&quot;,
+    `7` = &quot;)?&quot;                     %:)%  &quot;end of grouping&quot;
+)
+</code></pre>
+
+<p>Some may prefer that the <code>construct</code> script contains no names and/or comments.  The user may also wish to place comments indented below the <em>sub-expressions</em> or names outdented and above the <em>sub-expressions</em>.</p>
+
+<pre><code class="r">myregex2 &lt;- &quot;(\\s*[a-z]+)([^)]+\\))&quot;
+get_construct(as.regexr(myregex2, comments.below=TRUE, names.above = TRUE))
+</code></pre>
+
+<pre><code>construct(
+    `1` = 
+        &quot;(&quot;
+            %:)%&quot;group and capture to \\1:&quot;,
+        `2` = 
+            &quot;\\s*&quot;
+                %:)%&quot;whitespace (\n, \r, \t, \f, and \&quot; \&quot;) (0 or more times (matching the most amount possible))&quot;,
+        `3` = 
+            &quot;[a-z]+&quot;
+                %:)%&quot;any character of: &#39;a&#39; to &#39;z&#39; (1 or more times (matching the most amount possible))&quot;,
+    `4` = 
+        &quot;)&quot;
+            %:)%&quot;end of \\1&quot;,
+    `5` = 
+        &quot;(&quot;
+            %:)%&quot;group and capture to \\2:&quot;,
+        `6` = 
+            &quot;[^)]+&quot;
+                %:)%&quot;any character except: &#39;)&#39; (1 or more times (matching the most amount possible))&quot;,
+        `7` = 
+            &quot;\\)&quot;
+                %:)%&quot;&#39;)&#39;&quot;,
+    `8` = 
+        &quot;)&quot;
+            %:)%&quot;end of \\2&quot;
+)
+</code></pre>
+
+<pre><code class="r">get_construct(as.regexr(myregex2, names = FALSE))
+</code></pre>
+
+<pre><code>construct(
+    &quot;(&quot;                  %:)%  &quot;group and capture to \\1:&quot;,
+        &quot;\\s*&quot;               %:)%  &quot;whitespace (\n, \r, \t, \f, and \&quot; \&quot;) (0 or more times (matching the most amount possible))&quot;,
+        &quot;[a-z]+&quot;             %:)%  &quot;any character of: &#39;a&#39; to &#39;z&#39; (1 or more times (matching the most amount possible))&quot;,
+    &quot;)&quot;                  %:)%  &quot;end of \\1&quot;,
+    &quot;(&quot;                  %:)%  &quot;group and capture to \\2:&quot;,
+        &quot;[^)]+&quot;              %:)%  &quot;any character except: &#39;)&#39; (1 or more times (matching the most amount possible))&quot;,
+        &quot;\\)&quot;                %:)%  &quot;&#39;)&#39;&quot;,
+    &quot;)&quot;                  %:)%  &quot;end of \\2&quot;
+)
+</code></pre>
+
+<h2>Using regexr With the regex Package</h2>
+
+<p>Richard Cotton maintains the <a href="https://github.com/richierocks/regex"><code>regex</code></a> package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the <strong>regexr</strong> framework to maintain manageable commented and named <em>sub-expressions</em>.</p>
+
+<pre><code class="r">devtools::install_github(&quot;richierocks/regex&quot;)
+library(regex)
+
+out &lt;- construct(
+    year = YEAR                    %:)%  &quot;a year&quot;,
+    or =   &quot;|&quot;                     %:)%  &quot;or&quot;,
+    min =  &quot;:&quot; %c% MINUTE          %:)%  &quot;colon followed by valid minutes&quot;
+)
+</code></pre>
+
 
     <h2>Help topics</h2>
 
@@ -57,31 +458,88 @@
         <code><a href="construct.html">construct</a></code><br />Construct Human Readable Regular Expressions</li>
             
       <li>
-        <code><a href="add_comments.html">%:)%</a></code> <code><a href="add_comments.html">%comment%</a></code><br />Add Comments to Character Strings.</li>
+        <code><a href="add_comments.html">%:)%</a></code>(%comment%)<br />Add Comments to Character Strings.</li>
             
       <li>
-        <code><a href="unglue.html">unglue</a></code><br />Get Regular Expression Chunks from </li>
+        <code><a href="unglue.html">unglue</a></code><br />Get Sub-expressions from </li>
             
       <li>
         <code><a href="test.html">test</a></code><br />Test Regular Expression Validity</li>
             
       <li>
-        <code><a href="regex.html">regex</a></code> <code><a href="regex.html">regex&lt;-</a></code><br />Get/Set Regex Chunks From a regexr Object</li>
-      <li>
-        <code><a href="regex.html">set_regex</a></code><br />Get/Set Regex Chunks From a regexr Object</li>
-            
+        <code><a href="subs.html">subs</a></code>(set_subs, subs&lt;-)<br />Get/Set Regex Sub-expressions From a regexr Object</li>
             
       <li>
-        <code><a href="comments.html">comments</a></code> <code><a href="comments.html">comments&lt;-</a></code><br />Get/Set Comments From a regexr Object</li>
-      <li>
-        <code><a href="comments.html">set_comments</a></code><br />Get/Set Comments From a regexr Object</li>
-            
+        <code><a href="comments.html">comments</a></code>(comments&lt;-, set_comments)<br />Get/Set Comments From a regexr Object</li>
             
       <li>
         <code><a href="as.regexr.html">as.regexr</a></code><br />Generic Method to Coerce to regexr</li>
             
       <li>
         <code><a href="get_construct.html">get_construct</a></code><br />Extract Script from </li>
+    
+    </ul>
+    <h3>Other</h3>
+    
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="as.regexr.character.html">as.regexr.character</a></code><br />Coerce character to regexr</li>
+            
+      <li>
+        <code><a href="as.regexr.default.html">as.regexr.default</a></code><br />Coerce default to regexr</li>
+            
+      <li>
+        <code><a href="comments.regexr.html">comments.regexr</a></code><br />Extract Comments From regexr Object</li>
+            
+      <li>
+        <code><a href="comments-set-.regexr.html">comments&lt;-.regexr</a></code><br />Set Comments For regexr</li>
+            
+      <li>
+        <code><a href="get_construct.reverse_construct.html">get_construct.reverse_construct</a></code><br />Extract Script from </li>
+            
+      <li>
+        <code><a href="names.regexr.html">names.regexr</a></code><br />Get Names of Sub-Expressions of a regexr Object</li>
+            
+      <li>
+        <code><a href="names-set-.regexr.html">names&lt;-.regexr</a></code><br />Set Names of a Sub-expressions of a regexr Object</li>
+            
+      <li>
+        <code><a href="print.regex.html">print.regex</a></code><br />Prints a regex object</li>
+            
+      <li>
+        <code><a href="print.regexr.html">print.regexr</a></code><br />Prints a regexr Object</li>
+            
+      <li>
+        <code><a href="print.reverse_construct.html">print.reverse_construct</a></code><br />Prints a reverse_construct object</li>
+            
+      <li>
+        <code><a href="print.summary_regexr.html">print.summary_regexr</a></code><br />Prints a summary_regexr object</li>
+            
+      <li>
+        <code><a href="print.unglued.html">print.unglued</a></code><br />Prints an unglued object</li>
+            
+      <li>
+        <code><a href="regexr.html">regexr</a></code>(package-regexr, regexr-package)<br />regexr: Tools for Human Readable Regular Expressions</li>
+            
+      <li>
+        <code><a href="set_names.html">set_names</a></code><br />Set the Names in a </li>
+            
+      <li>
+        <code><a href="subs.regexr.html">subs.regexr</a></code><br />Get Sub-expressions From a regexr Object</li>
+            
+      <li>
+        <code><a href="subs-set-.regexr.html">subs&lt;-.regexr</a></code><br />Set Regex Sub-expressions From a regexr Object</li>
+            
+      <li>
+        <code><a href="summary.regexr.html">summary.regexr</a></code><br />Summarize a regexr Object</li>
+            
+      <li>
+        <code><a href="test.regexr.html">test.regexr</a></code><br />Test Regular Expression Validity</li>
+            
+      <li>
+        <code><a href="unglue.regexr.html">unglue.regexr</a></code><br />Unglue regexr Object</li>
     
     </ul>
   </div>

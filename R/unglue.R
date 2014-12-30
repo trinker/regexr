@@ -1,6 +1,6 @@
-#' Get Regular Expression Chunks from \code{regexr} Object
+#' Get Sub-expressions from \code{regexr} Object
 #' 
-#' Get regular expression chunks from \code{regexr} object.
+#' Get sub-expressions from \code{regexr} object.
 #' 
 #' @param x A \code{regexr} object.
 #' @param \ldots Ignored.

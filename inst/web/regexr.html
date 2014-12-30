@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>regexr. regexr 0.0.3</title>
+<title>regexr. regexr 1.0.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">regexr 0.0.3</a>
+      <a class="brand" href="#">regexr 1.0.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -51,12 +51,23 @@
       <p><span class = "pkg">regexr</span> is an R framework for constructing human readable regular
 expressions.  It aims to provide tools that enable the user to write regular
 expressions in a way that is similar to the ways R code is written.
-The tools allow the user to (1) write in smaller, modular, named, regular
-expression chunks, (2) write top to bottom, rather than a single string (3)
-comment individual chunks, (4) indent expressions to represent regular
-expression groups, and (5) test the validity of the concatenated expression
-and the modular chunks.  
-This framework harnesses the power and flexibility of regular expressions
+The tools allow the user to:
+<ol>
+<li> Write in smaller, modular, named, <em>sub-expressions</em>
+  </li>
+<li> Write top to bottom, rather than a single string
+  </li>
+<li> Comment individual <em>sub-expressions</em>
+  </li>
+<li> Indent expressions to represent regular expression groups
+  </li>
+<li> Add vertical line spaces and R comments (i.e., <code>#</code>)
+  </li>
+<li> Test the validity of the <em>concatenated expression</em> and the modular sub-expressions
+</li>
+</ol></p>
+  
+      <p>This framework harnesses the power and flexibility of regular expressions
 but provides a structural frame that is more consistent with both code
 writing and natural language conventions.</p>
   

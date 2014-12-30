@@ -4,14 +4,14 @@ test_that("test matches epected regular expression validity",{
 
     m <- structure("\\s+(?<=(foo))(;|:)\\s*[a]s th[atey]", class = c("regexr", 
 
-        "character"), regex = structure(list(space = structure("\\s+", class = c("regex", 
+        "character"), subs = structure(list(space = structure("\\s+", class = c("regex", 
         "character"), comment = "I see"), simp = "(?<=(foo))", or = structure("(;|:)\\s*", class = c("regex", 
         "character"), comment = "comment on what this does"), "[a]s th[atey]"), .Names = c("space", 
         "simp", "or", "")), comments = structure(list(space = "I see", 
             simp = NULL, or = "comment on what this does", NULL), .Names = c("space", 
         "simp", "or", "")))
     
-    x1 <- structure(list(regex = TRUE, chunks = structure(c(TRUE, TRUE, 
+    x1 <- structure(list(subs = TRUE, chunks = structure(c(TRUE, TRUE, 
         TRUE, TRUE), .Names = c("space", "simp", "or", ""))), .Names = c("regex", 
         "chunks"))
     
@@ -21,7 +21,7 @@ test_that("test matches epected regular expression validity",{
 test_that("test matches epected regular expression validity",{
     
     m2 <- structure("\\s+(?<=(foo))(;|:)\\s*[a]s th[atey](([A-Z]|(\\d{5}))", class = c("regexr", 
-        "character"), regex = structure(list(space = structure("\\s+", class = c("regex", 
+        "character"), subs = structure(list(space = structure("\\s+", class = c("regex", 
         "character"), comment = "I see"), simp = "(?<=(foo))", or = structure("(;|:)\\s*", class = c("regex", 
         "character"), comment = "comment on what this does"), "[a]s th[atey]", 
             "(", "([A-Z]|(\\d{5})", ")"), .Names = c("space", "simp", 
@@ -32,7 +32,7 @@ test_that("test matches epected regular expression validity",{
     
     expect_warning(test(m2))
     
-    x2 <- structure(list(regex = FALSE, chunks = structure(c(TRUE, TRUE, 
+    x2 <- structure(list(subs = FALSE, chunks = structure(c(TRUE, TRUE, 
         TRUE, TRUE, FALSE, FALSE, FALSE), .Names = c("space", "simp", 
         "or", "", "", "", ""))), .Names = c("regex", "chunks"))
 

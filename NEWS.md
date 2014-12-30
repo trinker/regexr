@@ -16,11 +16,32 @@ And constructed with the following guidelines:
   (and resets the patch)
 * Bug fixes and misc changes bumps the patch
 
+ <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 1.0.0
+----------------------------------------------------------------
+
+The `regex` function has been removed (not `Deprecated`) as *regexr* is in beta 
+mode.  This move breaks backward compatibility and thus a bump in major release
+to version 1.0.0.
+
+**BUG FIXES**
+
+**NEW FEATURES**
+
+**MINOR FEATURES**
+
+**IMPROVEMENTS**
+
+**CHANGES**
+
+* `regex` function replaced with the `subs` function.  This move is both 
+  semantic and pragmatic.  The term "regular expression chunk" has been 
+  replaced with "sub-expressions".  The `subs` function reflects the semantic 
+  change.  Additionally, Richie Cotton's *regex* package 
+  (https://github.com/richierocks/regex), which is complementary to *regexr*,
+  contains a `regex` function.
 
  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 0.0.3 - 0.0.4
 ----------------------------------------------------------------
-
-**BUG FIXES**
 
 **NEW FEATURES**
 
@@ -49,6 +70,8 @@ And constructed with the following guidelines:
   indicate nested grouping structures.  Users may choose whatever configuration 
   that suits their preference, however, examples will generally be shown via the 
   new recommended, single line, structure. 
+
+
 
  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 0.0.1 - 0.0.2
 ----------------------------------------------------------------

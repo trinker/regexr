@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>unglue. regexr 1.0.0</title>
+<title>subs. regexr 1.0.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -35,37 +35,50 @@
         
       </header>
       
-      <h1>Get Sub-expressions from <code>regexr</code> Object</h1>
+      <h1>Get/Set Regex Sub-expressions From a regexr Object</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>unglue(x, ...)</div></pre>
+    <pre><div>subs(x, ...)</div>
+<div>subs(x) <- value</div>
+<div>set_subs(x, y)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
       <dt>x</dt>
-      <dd>A <code>regexr</code> object.</dd>
+      <dd>A regexr object.</dd>
+      <dt>value</dt>
+      <dd>The comment(s) to assign.</dd>
+      <dt>y</dt>
+      <dd>The sub-expressions to assign.</dd>
       <dt>...</dt>
       <dd>Ignored.</dd>
     </dl>
     
-    <div class="Get Sub-expressions from &lt;code&gt;regexr&lt;/code&gt; Object">
-      <h2>Get Sub-expressions from &lt;code&gt;regexr&lt;/code&gt; Object</h2>
+    <div class="Get/Set Regex Sub-expressions From a regexr Object">
+      <h2>Get/Set Regex Sub-expressions From a regexr Object</h2>
       
     </div>
 
     <div class="Value">
       <h2>Value</h2>
       
-      <p>Returns a list of regular expression chunks.</p>
+      <p><code>subs</code> - Returns a list of sub-expressions.</p>
+  
+      <p><code>set_subs</code> - Returns a <code>regexr</code> object.</p>
   
     </div>
 
     <div class="Description">
       <h2>Description</h2>
       
-      <p>Get sub-expressions from <code>regexr</code> object.</p>
+      <p><code>subs</code> - Get the sub-expressions from a <code>regexr</code> object.</p>
+  
+      <p><code>subs<-</code> - Set the sub-expressions(s) of a <code>regexr</code> object.</p>
+  
+      <p><code>set_subs</code> - This is a convenience function that sets the
+<code>subs</code> on a <code>regexr</code> object and returns the object.</p>
   
     </div>
     
@@ -75,7 +88,7 @@ minimal
 </div>
 <div class='output'>[1] &quot;abc&quot;
 </div>
-<div class='input'>unglue(minimal)
+<div class='input'>subs(minimal)
 </div>
 <div class='output'>[[1]]
 [1] &quot;a&quot;
@@ -86,11 +99,31 @@ minimal
 [[3]]
 [1] &quot;c&quot;
 
+</div>
+<div class='input'>subs(minimal)[2] &lt;- &quot;\\s+[A-Z]|[0-9]&quot;
+subs(minimal)
+</div>
+<div class='output'>[[1]]
+[1] &quot;a&quot;
+
+[[2]]
+[1] &quot;\\s+[A-Z]|[0-9]&quot;
+
+[[3]]
+[1] &quot;c&quot;
+
+</div>
+<div class='input'>
+minimal &lt;- construct(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+out &lt;- set_subs(minimal, c(&quot;(&quot;, &quot;\\s??&quot;, &quot;)&quot;))
+subs(out)
+</div>
+<div class='output'>[1] &quot;(&quot;     &quot;\\s??&quot; &quot;)&quot;    
 </div></pre>
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>unglue</li>
+      <li>set_subs</li><li>subs</li><li>subs&lt;-</li>
     </ul>
     <ul>
       

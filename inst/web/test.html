@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>test. regexr 0.0.3</title>
+<title>test. regexr 1.0.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">regexr 0.0.3</a>
+      <a class="brand" href="#">regexr 1.0.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -48,7 +48,7 @@
       <dd>A <code>regexr</code> object.</dd>
       <dt>quiet</dt>
       <dd>logical.  Should <code>test</code> print warnings about the
-concatenated expression and individual chunks?</dd>
+concatenated expression and individual sub-expressions?</dd>
       <dt>...</dt>
       <dd>Ignored.</dd>
     </dl>
@@ -63,7 +63,7 @@ concatenated expression and individual chunks?</dd>
       
       <p>Returns a list of two logical vectors.  The first vector is a test of
 the concatenated expression.  The second vector is a logical test of the
-validity of each regular expression chunk that makes up the concatenated
+validity of each sub-expressions that makes up the concatenated
 expression.</p>
   
     </div>
@@ -97,13 +97,13 @@ test(m)
 <div class='output'>$regex
 [1] TRUE
 
-$chunks
+$subexpressions
 space  simp    or       
  TRUE  TRUE  TRUE  TRUE 
 
 </div>
 <div class='input'>
-regex(m)[5:7] &lt;- c(&quot;(&quot;, &quot;([A-Z]|(\\d{5})&quot;, &quot;)&quot;)
+subs(m)[5:7] &lt;- c(&quot;(&quot;, &quot;([A-Z]|(\\d{5})&quot;, &quot;)&quot;)
 test(m)
 </div>
 <strong class='warning'>Warning message:
@@ -112,7 +112,7 @@ The concatenated regex is not valid
 \s+(?&lt;=(foo))(;|:)\s*[a]s th[atey](([A-Z]|(\d{5}))
 </strong>
 <strong class='warning'>Warning message:
-The following regex chunks are not valid in isolation:
+The following regex sub-expressions are not valid in isolation:
 
 (1) (
 (2) ([A-Z]|(\d{5})
@@ -120,7 +120,7 @@ The following regex chunks are not valid in isolation:
 <div class='output'>$regex
 [1] FALSE
 
-$chunks
+$subexpressions
 space  simp    or                         
  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE 
 
