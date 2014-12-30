@@ -82,7 +82,7 @@ To see a larger script of a regular expession managed by **regexr** for the **qd
 
 ### Viewing the `regexr` Object
 
-Th generic `summary` function provides an integrated view the sub-expressions with corresponding comments and names that make up the *concatenated expression*.
+Th generic `summary` function provides an integrated view the sub-expressions with corresponding comments and names which make up the *concatenated expression*.
 
 ```{r}
 summary(m)
@@ -90,7 +90,7 @@ summary(m)
 
 ### Split `regexr` Object 
 
-The `unglue` function splits the concatenated `regexr` expression into component expression chunks.
+The `unglue` function splits the concatenated `regexr` expression into sub-expressions.
 
 ```{r}
 unglue(m)
@@ -98,7 +98,7 @@ unglue(m)
 
 ### Get/Set Comments, Regexes, and Names of a `regexr` Object.
 
-The `comments`, `regex`, and `names` functions allow the user to view and alter the comments, regexes, and names of a `regexr` object.
+The `subs`, `comments`, and `names` functions allow the user to view and alter the sub-expressions, comments, and names of the sub-expressions from a `regexr` object.
 
 
 ```{r}
@@ -123,7 +123,7 @@ test(m)
 
 ### Existing Regular Expression to `regexr`: Reverse Construction
 
-`as.regexr` allows the user to construct `regexr` objects from a regular expression and in the process generate an auto-commented & named `construct` script. 
+`as.regexr` allows the user to construct `regexr` objects from a regular expression and in the process generate an auto-commented & named sub-expressions `construct` script. 
 
 ```{r}
 library("qdapRegex")

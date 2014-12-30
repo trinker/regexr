@@ -19,7 +19,7 @@ And constructed with the following guidelines:
  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 1.0.0
 ----------------------------------------------------------------
 
-The `regex` function has been removed (not `Deprecated`) as *regexr* is in beta 
+The `regex` function has been removed (not `Deprecated`) as  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> is in beta 
 mode.  This move breaks backward compatibility and thus a bump in major release
 to version 1.0.0.
 
@@ -36,8 +36,8 @@ to version 1.0.0.
 * `regex` function replaced with the `subs` function.  This move is both 
   semantic and pragmatic.  The term "regular expression chunk" has been 
   replaced with "sub-expressions".  The `subs` function reflects the semantic 
-  change.  Additionally, Richie Cotton's *regex* package 
-  (https://github.com/richierocks/regex), which is complementary to *regexr*,
+  change.  Additionally, Richie Cotton's **regex** package 
+  (https://github.com/richierocks/regex), which is complementary to  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a>,
   contains a `regex` function.
 
  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 0.0.3 - 0.0.4
