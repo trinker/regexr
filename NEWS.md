@@ -41,9 +41,11 @@ to version 1.0.0.
   contains a `regex` function.
 
 * The `regex` class (created from adding a comment to a string) has been 
-  replaced with the `subcom` (sub-expression commented) class.  THis name is 
+  replaced with the `subcom` (sub-expression commented) class.  This name is 
   more informative and avoids conflicts with other regex packages that may 
   contain a `regex` class.
+
+
 
  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 0.0.3 - 0.0.4
 ----------------------------------------------------------------
