@@ -6,9 +6,9 @@
 \alias{regexr-package}
 \title{regexr: Tools for Human Readable Regular Expressions}
 \description{
-\pkg{regexr} is an R framework for constructing human readable regular
-expressions.  It aims to provide tools that enable the user to write regular
-expressions in a way that is similar to the ways R code is written.
+\pkg{regexr} is an R framework for constructing and managing human readable
+regular expressions.  It aims to provide tools that enable the user to write
+regular expressions in a way that is similar to the ways R code is written.
 The tools allow the user to:
 \enumerate{
   \item Write in smaller, modular, named, \emph{sub-expressions}

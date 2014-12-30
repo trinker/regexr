@@ -10,7 +10,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Martin Fowler-](http://martinfowler.com/bliki/ComposedRegex.html)
 
-[regexr](http://trinker.github.com/regexr_dev) is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to: 
+[regexr](http://trinker.github.com/regexr_dev) is an R framework for constructing and managing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to: 
 
 1. Write in smaller, modular, named, *sub-expressions*    
 2. Write top to bottom, rather than a single string    
@@ -19,7 +19,7 @@
 5. Add vertical line spaces and R comments (i.e., `#`)
 6. Test the validity of the *concatenated expression* and the modular *sub-expressions*      
 
-This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both code writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.
+This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both code writing and natural language conventions.  The user decides how to break, indent, name, and comment the sub-expressions in a way that is human readable, meaningful, and modular.
 
 
 ## Installation
@@ -70,7 +70,7 @@ library(regexr)
 The `construct` function creates an object of the class `regexr`.  This is a character string with meta expression information contained in the object's attributes.
 
 
-The `%:)%` binary operator allows the user to optionally add comments to the regular expressions.  The `%:)%`, containing a smiley face emoticon, is used here because commented code/expressions is happy code&#9786;.
+The `%:)%` binary operator allows the user to optionally add comments to the sub-expressions.  The `%:)%`, containing a smiley face emoticon, is used here because commented code/expressions is happy code&#9786;.
 
 
 
@@ -229,7 +229,7 @@ summary(m)
 
 ### Testing Regular Expressions
 
-The `test` function allows the user to check if the concatenated `regexr` expression and component expression chunks are valid regular expressions.
+The `test` function allows the user to check if the concatenated `regexr` expression and sub-expressions are valid regular expressions.
 
 
 ```r
