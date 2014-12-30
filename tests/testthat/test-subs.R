@@ -3,10 +3,12 @@ context("Checking subs")
 test_that("subs grabs component chunks",{
 
     minimal <- structure("abc", class = c("regexr", "character"), subs = list(
-            "a", "b", structure("c", class = c("subs", "character"), comment = "A love note to your future self")), comments = list(
+            "a", "b", structure("c", class = c("subcom", "character"), 
+                comment = "A love note to your future self")), comments = list(
             NULL, NULL, "A love note to your future self"))
     
-    x1 <- list("a", "b", structure("c", class = c("subs", "character"), comment = "A love note to your future self"))
+    x1 <- list("a", "b", structure("c", class = c("subcom", "character"), 
+        comment = "A love note to your future self"))
     
     expect_equivalent(subs(minimal), x1)
 
@@ -15,12 +17,13 @@ test_that("subs grabs component chunks",{
 test_that("subs is changed by assigment",{
     
     minimal <- structure("abc", class = c("regexr", "character"), subs = list(
-            "a", "b", structure("c", class = c("subs", "character"), comment = "A love note to your future self")), comments = list(
+            "a", "b", structure("c", class = c("subcom", "character"), 
+                comment = "A love note to your future self")), comments = list(
             NULL, NULL, "A love note to your future self"))
     
     subs(minimal)[2] <- "\\s+[A-Z]|[0-9]"
     
-    x2 <- list("a", "\\s+[A-Z]|[0-9]", structure("c", class = c("subs", 
+    x2 <- list("a", "\\s+[A-Z]|[0-9]", structure("c", class = c("subcom", 
         "character"), comment = "A love note to your future self"))
     
     expect_equivalent(subs(minimal), x2)

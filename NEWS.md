@@ -40,6 +40,11 @@ to version 1.0.0.
   (https://github.com/richierocks/regex), which is complementary to  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a>,
   contains a `regex` function.
 
+* The `regex` class (created from adding a comment to a string) has been 
+  replaced with the `subcom` (sub-expression commented) class.  THis name is 
+  more informative and avoids conflicts with other regex packages that may 
+  contain a `regex` class.
+
  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 0.0.3 - 0.0.4
 ----------------------------------------------------------------
 

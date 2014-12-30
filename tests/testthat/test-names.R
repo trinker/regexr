@@ -3,7 +3,7 @@ context("Checking names")
 test_that("names are changed by assigment",{
     
     minimal <- structure("abc", class = c("regexr", "character"), subs = list(
-        "a", "b", structure("c", class = c("subs", "character"), 
+        "a", "b", structure("c", class = c("subcom", "character"), 
             comment = "A love note to your future self")), comments = list(
         NULL, NULL, "A love note to your future self"))
 

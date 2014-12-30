@@ -14,7 +14,7 @@ x \%comment\% y
 \item{y}{A character string (the comment).}
 }
 \value{
-Returns a character string of the class \code{regex} with a comment
+Returns a character string of the class \code{subcom} with a comment
 added as a \code{"comment"} attribute.
 }
 \description{

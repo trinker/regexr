@@ -40,6 +40,11 @@ CHANGES
   (https://github.com/richierocks/regex), which is complementary to **regexr**,
   contains a `regex` function.
 
+* The `regex` class (created from adding a comment to a string) has been 
+  replaced with the `subcom` (sub-expression commented) class.  THis name is 
+  more informative and avoids conflicts with other regex packages that may 
+  contain a `regex` class.
+
 regexr 0.0.3 - 0.0.4
 ----------------------------------------------------------------
 

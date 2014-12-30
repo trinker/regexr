@@ -3,10 +3,11 @@ context("Checking unglue")
 test_that("unglue extracts elements chunks from a regecr object",{
 
     minimal <- structure("abc", class = c("regexr", "character"), subs = list(
-            "a", "b", structure("c", class = c("subs", "character"), comment = "A love note to your future self")), comments = list(
+            "a", "b", structure("c", class = c("subcom", "character"), 
+                comment = "A love note to your future self")), comments = list(
             NULL, NULL, "A love note to your future self"))
     
-    x <- structure(list("a", "b", structure("c", class = c("subs", "character"
+    x <- structure(list("a", "b", structure("c", class = c("subcom", "character"
         ), comment = "A love note to your future self")), class = c("unglued", 
         "list"))
     
@@ -17,7 +18,7 @@ test_that("unglue extracts elements chunks from a regecr object",{
 
 test_that("unglue prints as expected",{
 
-    minimal_unglue <- structure(list("a", "b", structure("c", class = c("subs", "character"
+    minimal_unglue <- structure(list("a", "b", structure("c", class = c("subcom", "character"
         ), comment = "A love note to your future self")), class = c("unglued", 
         "list"))
 

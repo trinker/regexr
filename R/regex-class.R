@@ -1,12 +1,12 @@
-#' Prints a regex object
+#' Prints a subcom object
 #' 
-#' Prints a regex object.
+#' Prints a subcom object.
 #' 
-#' @param x The regex object.
+#' @param x The subcom object.
 #' @param \ldots Ignored.
 #' @export
-#' @method print regex
-print.regex <- function(x, ...){
+#' @method print subcom
+print.subcom <- function(x, ...){
     class(x) <- "character"
     print(x)
 }

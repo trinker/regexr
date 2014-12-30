@@ -3,7 +3,7 @@ context("Checking get_construct")
 test_that("get_construct creates a construct script",{
 
     x <- structure("\\d{0,2}:\\d{2}(?:[:.]\\d+)?", class = c("regexr", 
-        "reverse_construct", "character"), regex = structure(list(`1` = "\\d{0,2}", 
+        "reverse_construct", "character"), subs = structure(list(`1` = "\\d{0,2}", 
             `2` = ":", `3` = "\\d{2}", `4` = "(?:", `5` = "[:.]", `6` = "\\d+", 
             `7` = ")?"), .Names = c("1", "2", "3", "4", "5", "6", "7"
         )), comments = structure(list(`1` = "digits (0-9) (between 0 and 2 times (matching the most amount possible))", 

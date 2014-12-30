@@ -4,7 +4,7 @@
 #' 
 #' @param x A character string that is to be commented.
 #' @param y A character string (the comment).
-#' @return Returns a character string of the class \code{regex} with a comment 
+#' @return Returns a character string of the class \code{subcom} with a comment 
 #' added as a \code{"comment"} attribute.
 #' @keywords comment
 #' @export
@@ -24,7 +24,7 @@
 #' minimal
 #' comments(minimal)
 `%:)%` <- function(x, y) { 
-    class(x) <- c("regex", "character")
+    class(x) <- c("subcom", "character")
     attributes(x)[["comment"]] <- y
     x
 }

@@ -2,9 +2,10 @@ context("Checking comments")
 
 test_that("comments grabs component chunks comments",{
 
-    minimal <- structure("abc", class = c("regexr", "character"), regex = list(
-            "a", "b", structure("c", class = c("regex", "character"), comment = "A love note to your future self")), comments = list(
-            NULL, NULL, "A love note to your future self"))
+    minimal <- structure("abc", class = c("regexr", "character"), subs = list(
+        "a", "b", structure("c", class = c("subcom", "character"), 
+        comment = "A love note to your future self")), comments = list(
+        NULL, NULL, "A love note to your future self"))
 
     
     x1 <- list(NULL, NULL, "A love note to your future self")
@@ -15,9 +16,10 @@ test_that("comments grabs component chunks comments",{
 
 test_that("comments are changed by assigment",{
     
-    minimal <- structure("abc", class = c("regexr", "character"), regex = list(
-            "a", "b", structure("c", class = c("regex", "character"), comment = "A love note to your future self")), comments = list(
-            NULL, NULL, "A love note to your future self"))
+    minimal <- structure("abc", class = c("regexr", "character"), subs = list(
+        "a", "b", structure("c", class = c("subcom", "character"), 
+        comment = "A love note to your future self")), comments = list(
+        NULL, NULL, "A love note to your future self"))
 
     
     comments(minimal)[2] <- "\\s+[A-Z]|[0-9]"
@@ -29,12 +31,12 @@ test_that("comments are changed by assigment",{
 
 test_that("comments are changed by setting (similar to `setNames`)",{
     
-    minimal <- structure("abc", class = c("regexr", "character"), regex = list(
+    minimal <- structure("abc", class = c("regexr", "character"), subs = list(
             "a", "b", "c"), comments = list(NULL, NULL, NULL))
     
     out <- set_comments(minimal, c("a", "b", "c"))
     
-    out_check <- structure("abc", class = c("regexr", "character"), regex = list(
+    out_check <- structure("abc", class = c("regexr", "character"), subs = list(
             "a", "b", "c"), comments = c("a", "b", "c"))
     
     
