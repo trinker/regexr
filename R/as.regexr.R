@@ -16,6 +16,8 @@
 #' @param \ldots Other arguments passed to \code{as.regexr} methods.
 #' @return Returns a dual \code{regexr} and \code{reverse_construct} object.
 #' @export
+#' @note \code{as.regexr.character} utilizes \url{http://rick.measham.id.au/paste/explain}
+#' to break the regular expression into sub-expressions.
 #' @examples
 #' library("qdapRegex")
 #' (myregex <- grab("@@rm_time2"))

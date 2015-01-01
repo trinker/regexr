@@ -31,6 +31,10 @@ Returns a dual \code{regexr} and \code{reverse_construct} object.
 \description{
 Coerce an object to \code{regexr} class.
 }
+\note{
+\code{as.regexr.character} utilizes \url{http://rick.measham.id.au/paste/explain}
+to break the regular expression into sub-expressions.
+}
 \examples{
 library("qdapRegex")
 (myregex <- grab("@rm_time2"))
