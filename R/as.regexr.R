@@ -30,8 +30,10 @@
 #' test(out)
 #' get_construct(out)
 #' 
+#' \dontrun{
 #' ## On Windows copy to clipboard
 #' get_construct(out, file="clipboard")
+#' }
 #' 
 #' ## No names & comments behind sub-expressions
 #' myregex2 <- "(\\s*[a-z]+)([^)]+\\))"
@@ -230,8 +232,10 @@ as.regexr.default <- as.regexr.character
 #' test(out)
 #' get_construct(out)
 #' 
+#' \dontrun{
 #' ## On Windows copy to clipboard
 #' get_construct(out, file="clipboard")
+#' }
 get_construct <- function(x, file = "", ...){
     UseMethod("get_construct")
 }

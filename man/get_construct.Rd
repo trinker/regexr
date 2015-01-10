@@ -37,7 +37,9 @@ subs(out)
 test(out)
 get_construct(out)
 
+\dontrun{
 ## On Windows copy to clipboard
 get_construct(out, file="clipboard")
+}
 }
 
