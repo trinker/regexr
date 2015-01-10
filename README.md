@@ -251,13 +251,11 @@ test(m)
 ```
 
 ```
-## Warning in test.regexr(m): The concatenated regex is not valid
+## Warning: The concatenated regex is not valid
 ## 
 ## \s+(?<=(foo))(;|:)\s*(FO{2})|(BAR)(([A-Z]|(\d{5}))
-```
-
-```
-## Warning in test.regexr(m): The following regex sub-expressions are not valid in isolation:
+## 
+## Warning: The following regex sub-expressions are not valid in isolation:
 ## 
 ## (1) (
 ## (2) ([A-Z]|(\d{5})
@@ -280,6 +278,18 @@ test(m)
 
 ```r
 library("qdapRegex")
+```
+
+```
+## 
+## Attaching package: 'qdapRegex'
+## 
+## The following object is masked from 'package:regexr':
+## 
+##     is.regex
+```
+
+```r
 (myregex <- grab("@rm_time"))
 ```
 

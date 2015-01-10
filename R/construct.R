@@ -42,7 +42,7 @@
 #' subs(m)[4] <- "(FO{2})|(BAR)"
 #' summary(m)
 #' test(m)
-#' \donttest{
+#' \dontrun{
 #' subs(m)[5:7] <- c("(", "([A-Z]|(\\d{5})", ")")
 #' test(m)
 #' }
