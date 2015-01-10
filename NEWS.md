@@ -16,20 +16,12 @@ And constructed with the following guidelines:
   (and resets the patch)
 * Bug fixes and misc changes bumps the patch
 
- <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 1.0.0
+ <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 1.0.0 - 1.0.2
 ----------------------------------------------------------------
 
 The `regex` function has been removed (not `Deprecated`) as  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> is in beta 
 mode.  This move breaks backward compatibility and thus a bump in major release
 to version 1.0.0.
-
-**BUG FIXES**
-
-**NEW FEATURES**
-
-**MINOR FEATURES**
-
-**IMPROVEMENTS**
 
 **CHANGES**
 

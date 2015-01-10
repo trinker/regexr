@@ -1,6 +1,6 @@
 context("Checking test")
 
-test_that("test matches epected regular expression validity",{
+test_that("test matches epected regular expression validity (is valid)",{
 
     m <- structure("\\s+(?<=(foo))(;|:)\\s*[a]s th[atey]", class = c("regexr", 
 
@@ -18,7 +18,7 @@ test_that("test matches epected regular expression validity",{
     expect_equivalent(test(m), x1)
 })
 
-test_that("test matches epected regular expression validity",{
+test_that("test matches epected regular expression validity (not valid)",{
     
     m2 <- structure("\\s+(?<=(foo))(;|:)\\s*[a]s th[atey](([A-Z]|(\\d{5}))", class = c("regexr", 
         "character"), subs = structure(list(space = structure("\\s+", class = c("subcom", 
@@ -39,5 +39,4 @@ test_that("test matches epected regular expression validity",{
     out <- test(m2, quiet=TRUE)
     expect_equivalent(out, x2)
 })
-
 

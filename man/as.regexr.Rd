@@ -46,10 +46,9 @@ comments(out)
 subs(out)
 test(out)
 get_construct(out)
-\donttest{
+
 ## On Windows copy to clipboard
 get_construct(out, file="clipboard")
-}
 
 ## No names & comments behind sub-expressions
 myregex2 <- "(\\\\s*[a-z]+)([^)]+\\\\))"

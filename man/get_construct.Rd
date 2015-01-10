@@ -35,10 +35,9 @@ summary(out)
 comments(out)
 subs(out)
 test(out)
-cat(get_construct(out))
-\donttest{
+get_construct(out)
+
 ## On Windows copy to clipboard
 get_construct(out, file="clipboard")
-}
 }
 

@@ -29,10 +29,9 @@
 #' subs(out)
 #' test(out)
 #' get_construct(out)
-#' \donttest{
+#' 
 #' ## On Windows copy to clipboard
 #' get_construct(out, file="clipboard")
-#' }
 #' 
 #' ## No names & comments behind sub-expressions
 #' myregex2 <- "(\\s*[a-z]+)([^)]+\\))"
@@ -229,11 +228,10 @@ as.regexr.default <- as.regexr.character
 #' comments(out)
 #' subs(out)
 #' test(out)
-#' cat(get_construct(out))
-#' \donttest{
+#' get_construct(out)
+#' 
 #' ## On Windows copy to clipboard
 #' get_construct(out, file="clipboard")
-#' }
 get_construct <- function(x, file = "", ...){
     UseMethod("get_construct")
 }
@@ -259,6 +257,11 @@ get_construct <- function(x, file = "", ...){
 #' @method get_construct reverse_construct
 get_construct.reverse_construct <- function(x, file = "", ...){
 
+    if (.Platform$OS.type != "windows" && file == "clipboard"){
+        file <- ""
+        message("`file = \"clipboard\"` only works on Windows OS")
+    }
+    
     out <- attributes(x)[["reverse_construct"]]
     if (!is.null(file)) {
         print(out, file = file, ...)

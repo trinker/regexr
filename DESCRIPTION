@@ -1,7 +1,7 @@
 Package: regexr
 Type: Package
 Title: Readable Regular Expressions
-Version: 1.0.0
+Version: 1.0.2
 Date: 2014-04-19
 Authors@R: c(person("Tyler", "Rinker", email = "tyler.rinker@gmail.com",
     role = c("aut", "cre")))
