@@ -257,11 +257,6 @@ get_construct <- function(x, file = "", ...){
 #' @method get_construct reverse_construct
 get_construct.reverse_construct <- function(x, file = "", ...){
 
-    if (.Platform$OS.type != "windows" && file == "clipboard"){
-        file <- ""
-        message("`file = \"clipboard\"` only works on Windows OS")
-    }
-    
     out <- attributes(x)[["reverse_construct"]]
     if (!is.null(file)) {
         print(out, file = file, ...)
