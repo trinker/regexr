@@ -1,4 +1,4 @@
-<p><img src="https://dl.dropbox.com/u/61803503/qdapicon.png" alt="qdapicon"/><br/>
+<p><img src="https://raw.githubusercontent.com/trinker/regexr/master/inst/regexr_logo/r_regexr.png" width="200", height="150"/><br/>
 <p><a href="http://trinker.github.com/regexr_dev">regexr</a> is an R framework for constructing human readable regular expressions.  It aims to provide tools that enable the user to write regular expressions in a way that is similar to the ways R code is written.  The tools allow the user to (1) write in smaller, modular, named, <em>regular expression chunks</em>, (2) write top to bottom, rather than a single string (3) comment individual chunks, (4) indent expressions to represent regular expression groups, and (5) test the validity of the <em>concatenated expression</em> and the modular chunks. </p>
 
 <p>This framework harnesses the power and flexibility of regular expressions but provides a structural frame that is more consistent with both code writing and natural language conventions.  The user decides how to break, indent, name, and comment the regular expressions in a way that is human readable, meaningful, and modular.</p>

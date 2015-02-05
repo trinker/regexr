@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/trinker/regexr/badge.png)](https://coveralls.io/r/trinker/regexr)
 [![DOI](https://zenodo.org/badge/5398/trinker/regexr.svg)](http://dx.doi.org/10.5281/zenodo.13496)
 
-<img src="inst/regexr_logo/r_regexr.png" alt="">   
+<img src="inst/regexr_logo/r_regexr.png" alt="regexr logo">   
 
 > One of the most powerful tools in writing maintainable code is break large methods into well-named smaller methods - a technique Kent Beck refers to as the Composed Method pattern.
 
@@ -61,9 +61,7 @@ You are welcome to:
 
 ## Examples
 
-```{echo=FALSE}
-library(regexr)
-```
+
 
 ### Construction a Regular Expression
 
@@ -251,11 +249,13 @@ test(m)
 ```
 
 ```
-## Warning: The concatenated regex is not valid
+## Warning in test.regexr(m): The concatenated regex is not valid
 ## 
 ## \s+(?<=(foo))(;|:)\s*(FO{2})|(BAR)(([A-Z]|(\d{5}))
-## 
-## Warning: The following regex sub-expressions are not valid in isolation:
+```
+
+```
+## Warning in test.regexr(m): The following regex sub-expressions are not valid in isolation:
 ## 
 ## (1) (
 ## (2) ([A-Z]|(\d{5})
@@ -278,18 +278,6 @@ test(m)
 
 ```r
 library("qdapRegex")
-```
-
-```
-## 
-## Attaching package: 'qdapRegex'
-## 
-## The following object is masked from 'package:regexr':
-## 
-##     is.regex
-```
-
-```r
 (myregex <- grab("@rm_time"))
 ```
 
@@ -412,13 +400,13 @@ construct(
 )
 ```
 
-## Using regexr With the regex Package
+## Using regexr With the rebus Package
 
-Richard Cotton maintains the [`regex`](https://github.com/richierocks/regex) package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the **regexr** framework to maintain manageable commented and named *sub-expressions*.
+Richard Cotton maintains the [`rebus`](https://github.com/richierocks/rebus) package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the **regexr** framework to maintain manageable commented and named *sub-expressions*.
 
 ```r
-devtools::install_github("richierocks/regex")
-library(regex)
+devtools::install_github("richierocks/rebus")
+library(rebus)
 
 out <- construct(
     year = YEAR                    %:)%  "a year",
