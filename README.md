@@ -1,8 +1,10 @@
 # regexr
 
+
 [![Build Status](https://travis-ci.org/trinker/regexr.png?branch=master)](https://travis-ci.org/trinker/regexr)
 [![Coverage Status](https://coveralls.io/repos/trinker/regexr/badge.png)](https://coveralls.io/r/trinker/regexr)
 [![DOI](https://zenodo.org/badge/5398/trinker/regexr.svg)](http://dx.doi.org/10.5281/zenodo.13496)
+v
 
 <img src="inst/regexr_logo/r_regexr.png" alt="regexr logo">   
 
@@ -405,7 +407,7 @@ construct(
 Richard Cotton maintains the [`rebus`](https://github.com/richierocks/rebus) package to provide natural language based functions and constants that can be used to generate regular expressions.  His work can be utilized within the **regexr** framework to maintain manageable commented and named *sub-expressions*.
 
 ```r
-devtools::install_github("richierocks/rebus")
+install.packages("richierocks/rebus")
 library(rebus)
 
 out <- construct(
