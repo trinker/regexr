@@ -16,6 +16,19 @@ And constructed with the following guidelines:
   (and resets the patch)
 * Bug fixes and misc changes bumps the patch
 
+ <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 1.1.0
+----------------------------------------------------------------
+
+**BUG FIXES**
+
+**NEW FEATURES**
+
+**MINOR FEATURES**
+
+**IMPROVEMENTS**
+
+**CHANGES**
+
  <a href="https://github.com/trinker/regexr" target="_blank">regexr</a> 1.0.0 - 1.0.2
 ----------------------------------------------------------------
 
