@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/trinker/regexr.png?branch=master)](https://travis-ci.org/trinker/regexr)
 [![Coverage Status](https://coveralls.io/repos/trinker/regexr/badge.png)](https://coveralls.io/r/trinker/regexr)
 [![DOI](https://zenodo.org/badge/5398/trinker/regexr.svg)](http://dx.doi.org/10.5281/zenodo.13496)
-v
+<a href="https://img.shields.io/badge/Version-1.1.0-orange.svg"><img src="https://img.shields.io/badge/Version-1.1.0-orange.svg" alt="Version"/></a></p>
 
 <img src="inst/regexr_logo/r_regexr.png" alt="regexr logo">   
 
