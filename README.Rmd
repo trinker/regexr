@@ -37,9 +37,8 @@ To download the development version of regexr:
 Download the [zip ball](https://github.com/trinker/regexr/zipball/master) or [tar ball](https://github.com/trinker/regexr/tarball/master), decompress and run `R CMD INSTALL` on it, or use the **devtools** package to install the development version:
 
 ```r
-# install.packages("devtools")
-
-devtools::install_github("trinker/regexr")
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load_gh("trinker/regexr")
 ```
 
 ## Help
