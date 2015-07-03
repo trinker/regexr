@@ -101,9 +101,9 @@ as.regexr.character <- function(x, names = TRUE, comments = TRUE,
     out <- x
 
     class(out) <- c("regexr", "reverse_construct", class(out))
-    attributes(out)[["subs"]] <- setNames(sapply(pieces4regexr, "[", 1), 
+    attributes(out)[["subs"]] <- stats::setNames(sapply(pieces4regexr, "[", 1), 
         names(pieces4regexr))
-    attributes(out)[["comments"]] <- setNames(sapply(pieces4regexr, "[", 2), 
+    attributes(out)[["comments"]] <- stats::setNames(sapply(pieces4regexr, "[", 2), 
         names(pieces4regexr))
 
     if (!comments.below) {
